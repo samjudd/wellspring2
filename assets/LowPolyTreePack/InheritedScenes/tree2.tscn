@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/LowPolyTreePack/Textures/LowPolyTreePack.material" type="Material" id=1]
 [ext_resource path="res://assets/LowPolyTreePack/Textures/DefaultMaterial.material" type="Material" id=2]
-
 
 [sub_resource type="ArrayMesh" id=1]
 surfaces/0 = {
@@ -19,9 +18,48 @@ surfaces/0 = {
 "vertex_count": 1608
 }
 
+[sub_resource type="CylinderShape" id=2]
+height = 0.537562
+
+[sub_resource type="CylinderShape" id=3]
+radius = 0.73273
+height = 0.61032
+
+[sub_resource type="CylinderShape" id=4]
+radius = 0.484253
+height = 1.26461
+
+[sub_resource type="CylinderShape" id=5]
+radius = 0.392569
+height = 1.62902
+
+[sub_resource type="CylinderShape" id=6]
+radius = 0.140584
+height = 1.62902
+
 [node name="tree2" type="StaticBody"]
 
 [node name="Cube002" type="MeshInstance" parent="."]
-transform = Transform( 0.79416, 0, 0, 0, -1.29385e-07, 0.79416, 0, -0.79416, -1.29385e-07, -0.301679, 0.127244, 0.0616093 )
+transform = Transform( 0.79416, 0, 0, 0, -1.29385e-07, 0.79416, 0, -0.79416, -1.29385e-07, -0.2692, 0.209533, 0.0432463 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.411933, 0.155931, 0 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.411933, 0.734744, 0.115962 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="."]
+transform = Transform( 0.902758, -0.430149, 0, 0.429825, 0.902079, -0.0387889, 0.016685, 0.035017, 0.999247, -0.650407, 1.71423, 0.00808078 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="."]
+transform = Transform( 0.961516, 0.267746, 0.061632, -0.263639, 0.962268, -0.0673462, -0.0773381, 0.0485059, 0.995824, -0.759553, 2.8246, 0.0745437 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="."]
+transform = Transform( 0.876204, -0.181855, 0.446312, 0.174694, 0.98294, 0.0575498, -0.449164, 0.0275425, 0.893025, -1.16232, 4.24926, 0.395378 )
+shape = SubResource( 6 )

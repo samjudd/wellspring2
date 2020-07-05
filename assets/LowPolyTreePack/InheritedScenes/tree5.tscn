@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/LowPolyTreePack/Textures/LowPolyTreePack.material" type="Material" id=1]
 [ext_resource path="res://assets/LowPolyTreePack/Textures/DefaultMaterial.material" type="Material" id=2]
-
 
 [sub_resource type="ArrayMesh" id=1]
 surfaces/0 = {
@@ -19,9 +18,41 @@ surfaces/0 = {
 "vertex_count": 820
 }
 
+[sub_resource type="CylinderShape" id=2]
+radius = 0.500969
+height = 0.315422
+
+[sub_resource type="CylinderShape" id=3]
+radius = 0.129716
+height = 0.760681
+
+[sub_resource type="CylinderShape" id=4]
+radius = 0.129716
+height = 0.760681
+
+[sub_resource type="CylinderShape" id=5]
+radius = 0.265223
+height = 2.28886
+
 [node name="tree5" type="StaticBody"]
 
 [node name="Cube009" type="MeshInstance" parent="."]
 transform = Transform( 0.573114, 0, 0, 0, -9.33721e-08, 0.573114, 0, -0.573114, -9.33721e-08, -1.23585, 0.380409, 0.0184746 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13246, 0.191942, 0.0422032 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.547592, 0.836745, 0, -0.836745, 0.547592, -1.23068, 0.191942, 0.623779 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="."]
+transform = Transform( -0.167756, 0.834789, -0.524391, 0.00307756, 0.53237, 0.846506, 0.985824, 0.140392, -0.0918773, -1.60723, 0.191942, 0.0212081 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24161, 1.50821, -0.011853 )
+shape = SubResource( 5 )
