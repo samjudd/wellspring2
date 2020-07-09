@@ -21,14 +21,15 @@ public class Player : KinematicBody
   [Export]
   public float _sprintAccel = 12.0f;
 
-  private bool _isSprinting = false;
   // Current velocity in world coordinates
-  private Vector3 _vel = new Vector3();
+  protected Vector3 _vel = new Vector3();
+  protected AnimationTree _animationTree;
+
   // Player input direction in world coordinates
   private Vector3 _dir = new Vector3();
   private Camera _camera;
-  private AnimationPlayer _animationPlayer;
-  private Skeleton _skeleton;
+  private  Skeleton _skeleton;
+  private bool _isSprinting = false;
   private int _headBoneIndex;
   private Transform _initialHeadTransform;
   private Camera _debugCamera;
@@ -39,7 +40,7 @@ public class Player : KinematicBody
   public override void _Ready()
   {
     _camera = GetNode<Camera>("Camera");
-    _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+    _animationTree = GetNode<AnimationTree>("AnimationTree");
     _skeleton = GetNode<Skeleton>("Armature/Skeleton");
     _headBoneIndex = _skeleton.FindBone("head");
     _initialHeadTransform = _skeleton.GetBonePose(_headBoneIndex);
@@ -73,12 +74,12 @@ public class Player : KinematicBody
     _isOnFloorLast = IsOnFloor();
   }
 
-  private void ProcessInput(float delta)
+  protected virtual void ProcessInput(float delta)
   {
     //  ----------------------- Jumping -----------------------
     if (!_jumping && Input.IsActionJustPressed("movement_jump"))
     {
-      _animationPlayer.Play("jump", 0.1f, 3.0f);
+      _animationTree.Set("parameters/jump_os/active", true);
       _jumping = true;
     }
     
@@ -97,7 +98,8 @@ public class Player : KinematicBody
     // if you're jumping ignore directional input
     if (!_jumping)
     {
-      SetAnimation(inputMovementVector);
+      // set running animation
+      _animationTree.Set("parameters/run_bs2d/blend_position", inputMovementVector);
       inputMovementVector = inputMovementVector.Normalized();
     }
     else
@@ -172,7 +174,7 @@ public class Player : KinematicBody
     if (@event is InputEventMouseMotion && Input.GetMouseMode() == Input.MouseMode.Captured)
     {
       InputEventMouseMotion mouseEvent = @event as InputEventMouseMotion;
-      _camera.RotateX(Mathf.Deg2Rad(-mouseEvent.Relative.y * _mouseSensitivity));
+      _camera.RotateX(Mathf.Deg2Rad(mouseEvent.Relative.y * _mouseSensitivity));
       RotateY(Mathf.Deg2Rad(-mouseEvent.Relative.x * _mouseSensitivity));
 
       Vector3 cameraRot = _camera.RotationDegrees;
@@ -181,33 +183,8 @@ public class Player : KinematicBody
     }
   }
 
-  // plays correct animation 
-  // !(_animationPlayer.CurrentAnimation == "running_front" && _animationPlayer.GetPlayingSpeed() > 0.0f) means 
-  // if animation is playing the same one and is in the same play direction don't play it again
-  private void SetAnimation(Vector2 inputMovementVector)
+  protected virtual void JumpCallback()
   {
-    if (inputMovementVector == new Vector2(0, 0) && _animationPlayer.CurrentAnimation != "idle")
-      _animationPlayer.Play("idle", 0.1f);
-    else if (inputMovementVector == new Vector2(0, 1) && !(_animationPlayer.CurrentAnimation == "running_front" && _animationPlayer.GetPlayingSpeed() > 0.0f))
-      _animationPlayer.Play("running_front", 0.1f);
-    else if (inputMovementVector == new Vector2(-1, 1) && !(_animationPlayer.CurrentAnimation != "running_frontleft" && _animationPlayer.GetPlayingSpeed() > 0.0f))
-      _animationPlayer.Play("running_frontleft", 0.1f);
-    else if (inputMovementVector == new Vector2(1, 1) && !(_animationPlayer.CurrentAnimation != "running_frontright" && _animationPlayer.GetPlayingSpeed() > 0.0f))
-      _animationPlayer.Play("running_frontright", 0.1f);
-    else if (inputMovementVector == new Vector2(-1, 0) && _animationPlayer.CurrentAnimation != "running_left")
-      _animationPlayer.Play("running_left", 0.1f);
-    else if (inputMovementVector == new Vector2(1, 0) && _animationPlayer.CurrentAnimation != "running_right")
-      _animationPlayer.Play("running_right", 0.1f);
-    else if (inputMovementVector == new Vector2(0, -1) && !(_animationPlayer.CurrentAnimation != "running_front" && _animationPlayer.GetPlayingSpeed() < 0.0f))
-      _animationPlayer.PlayBackwards("running_front", 0.1f);
-    else if (inputMovementVector == new Vector2(-1, -1) && !(_animationPlayer.CurrentAnimation != "running_frontright" && _animationPlayer.GetPlayingSpeed() < 0.0f))
-      _animationPlayer.PlayBackwards("running_frontright", 0.1f);
-    else if (inputMovementVector == new Vector2(1, -1) && !(_animationPlayer.CurrentAnimation != "running_frontright" && _animationPlayer.GetPlayingSpeed() < 0.0f))
-      _animationPlayer.PlayBackwards("running_frontleft", 0.1f);
-  }
-
-  private void JumpCallback()
-  {
-    _vel.y = _jumpSpeed;
+    GD.PrintErr("This function needs to be overwritten in the child in order to work.");
   }
 }
