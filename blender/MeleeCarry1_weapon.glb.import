@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/MeleeCarry1.glb-3968aa89cbf579ba83d3a11f331f7ebb.scn"
+path="res://.import/MeleeCarry1_weapon.glb-6e3c3f5704045a7c6c5c564e57651825.scn"
 
 [deps]
 
-source_file="res://blender/MeleeCarry1.glb"
-dest_files=[ "res://.import/MeleeCarry1.glb-3968aa89cbf579ba83d3a11f331f7ebb.scn" ]
+source_file="res://blender/MeleeCarry1_weapon.glb"
+dest_files=[ "res://.import/MeleeCarry1_weapon.glb-6e3c3f5704045a7c6c5c564e57651825.scn" ]
 
 [params]
 

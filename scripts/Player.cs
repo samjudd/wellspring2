@@ -124,6 +124,9 @@ public class Player : KinematicBody
       else
         Input.SetMouseMode(Input.MouseMode.Visible);
     }
+    // if you freed the mouse and click on the main window it captures again 
+    if (Input.IsActionJustPressed("main_mouse") && Input.GetMouseMode() == Input.MouseMode.Visible)
+      Input.SetMouseMode(Input.MouseMode.Captured);
     // ---------------- Change Camera for Debug ----------------
     if (Input.IsActionJustPressed("debug_swap_camera"))
     {
