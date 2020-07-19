@@ -24,10 +24,11 @@ public class Player : KinematicBody
   // Current velocity in world coordinates
   protected Vector3 _vel = new Vector3();
   protected AnimationTree _animationTree;
+  protected Camera _camera;
 
-  // Player input direction in world coordinates
+
+  // Player input direction in global coordinates
   private Vector3 _dir = new Vector3();
-  private Camera _camera;
   private  Skeleton _skeleton;
   private bool _isSprinting = false;
   private int _headBoneIndex;
@@ -91,9 +92,9 @@ public class Player : KinematicBody
     if (Input.IsActionPressed("movement_backward"))
       inputMovementVector.y += -1;
     if (Input.IsActionPressed("movement_left"))
-      inputMovementVector.x += -1;
-    if (Input.IsActionPressed("movement_right"))
       inputMovementVector.x += 1;
+    if (Input.IsActionPressed("movement_right"))
+      inputMovementVector.x += -1;
 
     // if you're jumping ignore directional input
     if (!_jumping)
@@ -106,12 +107,10 @@ public class Player : KinematicBody
     {
       inputMovementVector = Vector2.Zero;
     }
-
-    _dir = new Vector3();
-    Transform camXform = _camera.GlobalTransform;
-    // Basis vectors are already normalized.
-    _dir += -camXform.basis.z * inputMovementVector.y;
-    _dir += camXform.basis.x * inputMovementVector.x;
+    // convert local movement vectors to global movement vectors
+    _dir = Vector3.Zero;
+    _dir += GlobalTransform.basis.x * inputMovementVector.x;
+    _dir += GlobalTransform.basis.z * inputMovementVector.y;
 
     //  ----------------------- Sprinting ----------------------- 
     _isSprinting = Input.IsActionPressed("movement_sprint") && !_jumping;
@@ -124,9 +123,6 @@ public class Player : KinematicBody
       else
         Input.SetMouseMode(Input.MouseMode.Visible);
     }
-    // if you freed the mouse and click on the main window it captures again 
-    if (Input.IsActionJustPressed("main_mouse") && Input.GetMouseMode() == Input.MouseMode.Visible)
-      Input.SetMouseMode(Input.MouseMode.Captured);
     // ---------------- Change Camera for Debug ----------------
     if (Input.IsActionJustPressed("debug_swap_camera"))
     {

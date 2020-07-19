@@ -2,7 +2,9 @@ using Godot;
 
 public class MeleeCarry1 : Player
 {
-  public Spatial _sword;
+  private PackedScene _weaponPS;
+  private Position3D _leftSwordSpawn;
+  private Position3D _rightSwordSpawn;
   private AnimationNodeStateMachinePlayback _attackSM;
   private Timer _attackTimer;
   private float _attackDuration = 0.666f;
@@ -14,7 +16,10 @@ public class MeleeCarry1 : Player
     _attackTimer = GetNode<Timer>("AttackTimer");
 
     // load sword scene 
-    ResourceLoader.Load("res://MeleeCarry1/MeleeCarry1_weapon.tscn");
+    _weaponPS = (PackedScene)ResourceLoader.Load("res://MeleeCarry1/MeleeCarry1_weapon.tscn");
+    // get spawn positions
+    _leftSwordSpawn = GetNode<Position3D>("Armature/Skeleton/headAttachment/LeftSwordSpawnPoint");
+    _rightSwordSpawn = GetNode<Position3D>("Armature/Skeleton/headAttachment/RightSwordSpawnPoint");
   }
   
   protected override void ProcessInput(float delta)
@@ -70,9 +75,22 @@ public class MeleeCarry1 : Player
     _vel.y = _jumpSpeed;
   }
 
-  private void ThrowSword()
+  private void ThrowSwordCallback()
   {
-      // create sword as child of tree root
-      // GetTree().Root.AddChild()
-  }
+    // instance node and reparent to the scene root
+    MeleeCarry1Weapon thrownWeapon = (MeleeCarry1Weapon)_weaponPS.Instance();
+    GetTree().Root.AddChild(thrownWeapon);
+    thrownWeapon.Owner = GetTree().Root;
+    if (_attackSM.GetCurrentNode() == "sword_throw_left_bt")
+    {
+      thrownWeapon.GlobalTransform = _leftSwordSpawn.GlobalTransform;
+      thrownWeapon.isRightWeapon = false;
+    }
+    else
+    {
+      thrownWeapon.GlobalTransform = _rightSwordSpawn.GlobalTransform;
+      thrownWeapon.isRightWeapon = true;
+    }
+    thrownWeapon.Throw(-_camera.GlobalTransform.basis.z);
+  } 
 }
