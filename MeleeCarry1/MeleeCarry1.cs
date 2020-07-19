@@ -14,12 +14,13 @@ public class MeleeCarry1 : Player
     base._Ready();
     _attackSM = (AnimationNodeStateMachinePlayback)_animationTree.Get("parameters/attack_sm/playback");
     _attackTimer = GetNode<Timer>("AttackTimer");
-
     // load sword scene 
     _weaponPS = (PackedScene)ResourceLoader.Load("res://MeleeCarry1/MeleeCarry1_weapon.tscn");
     // get spawn positions
     _leftSwordSpawn = GetNode<Position3D>("Armature/Skeleton/headAttachment/LeftSwordSpawnPoint");
     _rightSwordSpawn = GetNode<Position3D>("Armature/Skeleton/headAttachment/RightSwordSpawnPoint");
+    // connect 
+    GetNode<Area>("InteractionArea").Connect("area_entered", this, "InteractionCallback");
   }
   
   protected override void ProcessInput(float delta)
@@ -93,4 +94,26 @@ public class MeleeCarry1 : Player
     }
     thrownWeapon.Throw(-_camera.GlobalTransform.basis.z);
   } 
+
+  private void InteractionCallback(Area area)
+  {
+    if (area.GetParent() is MeleeCarry1Weapon weapon)
+    {
+      string currentNode = _attackSM.GetCurrentNode();
+      if (weapon.isRightWeapon)
+      {
+        if (currentNode == "idle_top_no_right_sword")
+          _attackSM.Travel("idle_top");
+        else if (currentNode == "idle_top_no_swords")
+          _attackSM.Travel("idle_top_no_left_sword");
+      }
+      else
+      {
+        if (currentNode == "idle_top_no_left_sword")
+          _attackSM.Travel("idle_top");
+        else if (currentNode == "idle_top_no_swords")
+          _attackSM.Travel("idle_top_no_right_sword");
+      }
+    }
+  }
 }
