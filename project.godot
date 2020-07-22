@@ -76,10 +76,12 @@ secondary_mouse={
 
 3d_physics/layer_1="environment"
 3d_physics/layer_2="player"
-3d_physics/layer_3="projectile"
-3d_physics/layer_4="friendly"
-3d_physics/layer_5="enemy"
-3d_physics/layer_6="interactive"
+3d_physics/layer_3="friendly"
+3d_physics/layer_4="enemy"
+3d_physics/layer_5="interactive"
+3d_physics/layer_6="player_attack"
+3d_physics/layer_7="friendly_attack"
+3d_physics/layer_8="enemy_attack"
 
 [rendering]
 

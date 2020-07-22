@@ -8,6 +8,8 @@ public class MeleeCarry1 : Player
   private AnimationNodeStateMachinePlayback _attackSM;
   private Timer _attackTimer;
   private float _attackDuration = 0.666f;
+  private bool _hasRightWeapon = true;
+
 
   public override void _Ready()
   {
@@ -36,22 +38,22 @@ public class MeleeCarry1 : Player
         _attackSM.Travel("attack_1");
         _attackTimer.Start(_attackDuration);
       }
-      else if (currentNode == "attack1" && _attackTimer.TimeLeft < _attackDuration/3.0f)
+      else if (currentNode == "attack_1" && _attackTimer.TimeLeft < _attackDuration/3.0f)
       {
         _attackSM.Travel("attack_2");
         _attackTimer.Start(_attackDuration);
       }
-      else if (currentNode == "attack2" && _attackTimer.TimeLeft < _attackDuration/3.0f)
+      else if (currentNode == "attack_2" && _attackTimer.TimeLeft < _attackDuration/3.0f)
       {
         _attackSM.Travel("attack_3");
       }
-      else if (currentNode == "idle_top_no_left_sword")
+      else if (currentNode == "idle_top_right_weapon")
       {
-        _attackSM.Travel("attack_1_no_left");
+        _attackSM.Travel("attack_1_right_weapon");
       }
-      else if (currentNode == "idle_top_no_right_sword")
+      else if (currentNode == "idle_top_left_weapon")
       {
-        _attackSM.Travel("attack_2_no_right");
+        _attackSM.Travel("attack_2_left_weapon");
       }
     }
 
@@ -59,13 +61,13 @@ public class MeleeCarry1 : Player
     else if (Input.IsActionJustPressed("secondary_mouse"))
     {
       string currentNode = _attackSM.GetCurrentNode();
-      if (currentNode == "idle_top" || currentNode == "idle_top_no_right_sword")
+      if (currentNode == "idle_top" || currentNode == "idle_top_left_weapon")
       {
-        _attackSM.Travel("sword_throw_left_bt");
+        _attackSM.Travel("weapon_throw_left_bt");
       }
-      else if (currentNode == "idle_top_no_left_sword")
+      else if (currentNode == "idle_top_right_weapon")
       {
-        _attackSM.Travel("sword_throw_right_bt");
+        _attackSM.Travel("weapon_throw_right_bt");
       }
     }
   }
@@ -76,43 +78,56 @@ public class MeleeCarry1 : Player
     _vel.y = _jumpSpeed;
   }
 
-  private void ThrowSwordCallback()
+  private void LeftThrowCallback()
   {
-    // instance node and reparent to the scene root
+    // instance weapon
     MeleeCarry1Weapon thrownWeapon = (MeleeCarry1Weapon)_weaponPS.Instance();
+    // add weapon as child of main scene (maybe not needed?)
     GetTree().Root.AddChild(thrownWeapon);
     thrownWeapon.Owner = GetTree().Root;
-    if (_attackSM.GetCurrentNode() == "sword_throw_left_bt")
-    {
-      thrownWeapon.GlobalTransform = _leftSwordSpawn.GlobalTransform;
-      thrownWeapon.isRightWeapon = false;
-    }
-    else
-    {
-      thrownWeapon.GlobalTransform = _rightSwordSpawn.GlobalTransform;
-      thrownWeapon.isRightWeapon = true;
-    }
+    // set transform and which weapon it is for pickup
+    thrownWeapon.GlobalTransform = _leftSwordSpawn.GlobalTransform;
+    thrownWeapon.isRightWeapon = false;
+    // call throw to impart velocity
     thrownWeapon.Throw(-_camera.GlobalTransform.basis.z);
+    if (!_hasRightWeapon)
+      _attackSM.Travel("idle_top_no_weapons");
   } 
+
+  private void RightThrowCallback()
+  {
+    // instance weapon
+    MeleeCarry1Weapon thrownWeapon = (MeleeCarry1Weapon)_weaponPS.Instance();
+    // add weapon as child of main scene (maybe not needed?)
+    GetTree().Root.AddChild(thrownWeapon);
+    thrownWeapon.Owner = GetTree().Root;
+    // set transform and which weapon it is for pickup
+    thrownWeapon.GlobalTransform = _rightSwordSpawn.GlobalTransform;
+    thrownWeapon.isRightWeapon = true;
+    // call throw to impart velocity
+    thrownWeapon.Throw(-_camera.GlobalTransform.basis.z);
+    _hasRightWeapon = false;
+  }
 
   private void InteractionCallback(Area area)
   {
-    if (area.GetParent() is MeleeCarry1Weapon weapon)
+    if (area.GetParent() is MeleeCarry1Weapon pickupWeapon)
     {
       string currentNode = _attackSM.GetCurrentNode();
-      if (weapon.isRightWeapon)
+      if (pickupWeapon.isRightWeapon)
       {
-        if (currentNode == "idle_top_no_right_sword")
+        if (currentNode == "idle_top_left_weapon")
           _attackSM.Travel("idle_top");
-        else if (currentNode == "idle_top_no_swords")
-          _attackSM.Travel("idle_top_no_left_sword");
+        else if (currentNode == "idle_top_no_weapons")
+          _attackSM.Travel("idle_top_right_weapon");
+        _hasRightWeapon = true;
       }
       else
       {
-        if (currentNode == "idle_top_no_left_sword")
-          _attackSM.Travel("idle_top");
-        else if (currentNode == "idle_top_no_swords")
-          _attackSM.Travel("idle_top_no_right_sword");
+        if (currentNode == "idle_top_right_weapon")
+          _attackSM.Travel("idle_top"); 
+        else if (currentNode == "idle_top_no_weapons")
+          _attackSM.Travel("idle_top_left_weapon");
       }
     }
   }

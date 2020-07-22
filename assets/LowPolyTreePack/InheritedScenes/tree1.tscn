@@ -53,7 +53,7 @@ radius = 0.256212
 height = 3.12058
 
 [node name="tree1" type="StaticBody"]
-collision_mask = 7
+collision_mask = 47
 
 [node name="Cube008" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -0.0343654, 0.32119, 0.217281 )

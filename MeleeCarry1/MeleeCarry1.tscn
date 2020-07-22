@@ -1,7 +1,8 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=80 format=2]
 
 [ext_resource path="res://MeleeCarry1/MeleeCarry1.cs" type="Script" id=1]
 [ext_resource path="res://MeleeCarry1/MeleeCarry1_material.material" type="Material" id=2]
+[ext_resource path="res://PlayerHUD.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.3
@@ -71,10 +72,10 @@ bind/13/name = "leg_2_r"
 bind/13/bone = -1
 bind/13/pose = Transform( -1, 0, -1.50996e-07, 0, -1, 0, -1.50996e-07, 0, 1, -0.151434, 0.245625, -1.02682e-08 )
 
-[sub_resource type="BoxShape" id=75]
+[sub_resource type="BoxShape" id=5]
 extents = Vector3( 0.473604, 0.528903, 0.912999 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.666667
 step = 0.0166667
 tracks/0/type = "transform"
@@ -113,7 +114,7 @@ tracks/4/imported = true
 tracks/4/enabled = true
 tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, -9.31321e-09, 8.19564e-08, -2.38419e-07, 1, 1, 1, 1, 0.0166667, 1, 0, 0, 0, -3.6987e-07, 6.08985e-08, 0.0166686, 0.999861, 1, 1, 1, 0.0333333, 1, 0, 0, 0, -1.33862e-07, 3.6378e-08, 0.0627296, 0.998031, 1, 1, 1, 0.05, 1, 0, 0, 0, -1.60371e-07, 1.1389e-07, 0.132331, 0.991206, 1, 1, 1, 0.0833333, 1, 0, 0, 0, 4.27658e-08, 7.28304e-08, 0.311589, 0.950217, 1, 1, 1, 0.116667, 1, 0, 0, 0, 5.49242e-08, 4.70665e-08, 0.480312, 0.877098, 1, 1, 1, 0.133333, 1, 0, 0, 0, -3.75893e-08, 3.78416e-08, 0.54044, 0.841383, 1, 1, 1, 0.15, 1, 0, 0, 0, 7.65603e-09, 9.2217e-08, 0.578641, 0.815583, 1, 1, 1, 0.166667, 1, 0, 0, 0, -7.92891e-08, 8.2735e-08, 0.592155, 0.805824, 1, 1, 1, 0.183333, 1, 0, 0, 0, -0.00756514, -0.00243872, 0.584996, 0.810997, 1, 1, 1, 0.2, 1, 0, 0, 0, -0.0282119, -0.00912161, 0.564695, 0.824767, 1, 1, 1, 0.216667, 1, 0, 0, 0, -0.0588683, -0.0191, 0.532668, 0.844059, 1, 1, 1, 0.25, 1, 0, 0, 0, -0.136626, -0.0447308, 0.44044, 0.886197, 1, 1, 1, 0.283333, 1, 0, 0, 0, -0.211511, -0.0701892, 0.330151, 0.917244, 1, 1, 1, 0.3, 1, 0, 0, 0, -0.239307, -0.0801801, 0.27774, 0.926911, 1, 1, 1, 0.316667, 1, 0, 0, 0, -0.257153, -0.0872675, 0.232173, 0.933998, 1, 1, 1, 0.333333, 1, 0, 0, 0, -0.262869, -0.0908113, 0.196681, 0.940197, 1, 1, 1, 0.35, 1, 0, 0, 0, -0.259964, -0.0915621, 0.168569, 0.946372, 1, 1, 1, 0.366667, 1, 0, 0, 0, -0.253701, -0.0908023, 0.14313, 0.952316, 1, 1, 1, 0.383333, 1, 0, 0, 0, -0.244459, -0.0886872, 0.120287, 0.958074, 1, 1, 1, 0.4, 1, 0, 0, 0, -0.232612, -0.0853717, 0.0999378, 0.963647, 1, 1, 1, 0.416667, 1, 0, 0, 0, -0.218529, -0.0810095, 0.081967, 0.969002, 1, 1, 1, 0.433333, 1, 0, 0, 0, -0.202587, -0.0757593, 0.0662459, 0.974079, 1, 1, 1, 0.45, 1, 0, 0, 0, -0.185166, -0.0697796, 0.0526412, 0.978812, 1, 1, 1, 0.466667, 1, 0, 0, 0, -0.166651, -0.0632322, 0.0410164, 0.983131, 1, 1, 1, 0.483334, 1, 0, 0, 0, -0.14743, -0.0562815, 0.0312237, 0.986976, 1, 1, 1, 0.5, 1, 0, 0, 0, -0.127898, -0.049094, 0.0231168, 0.990302, 1, 1, 1, 0.533333, 1, 0, 0, 0, -0.0894877, -0.0346769, 0.0113464, 0.995319, 1, 1, 1, 0.566667, 1, 0, 0, 0, -0.0545506, -0.0213055, 0.00444752, 0.998274, 1, 1, 1, 0.6, 1, 0, 0, 0, -0.0260979, -0.0102608, 0.0011221, 0.999606, 1, 1, 1, 0.616667, 1, 0, 0, 0, -0.0152016, -0.00599428, 0.000392197, 0.999866, 1, 1, 1, 0.633333, 1, 0, 0, 0, -0.00698951, -0.00276373, 6.84303e-05, 0.999972, 1, 1, 1, 0.65, 1, 0, 0, 0, -0.00180627, -0.000716007, -9.42936e-06, 0.999998, 1, 1, 1, 0.666667, 1, 0, 0, 0, -9.31321e-09, 8.19564e-08, -2.38419e-07, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.666667
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Armature/Skeleton:sword_l")
@@ -151,7 +152,7 @@ tracks/4/imported = true
 tracks/4/enabled = true
 tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, -9.31321e-09, 8.19564e-08, -2.38419e-07, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, -9.31321e-09, 8.19564e-08, -2.38419e-07, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.666667
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Armature/Skeleton:sword_l")
@@ -196,7 +197,7 @@ tracks/5/imported = true
 tracks/5/enabled = true
 tracks/5/keys = PoolRealArray( 0, 1, 0, 0, 0, -9.31321e-09, 8.19564e-08, -2.38419e-07, 1, 1, 1, 1, 0.0166667, 1, 0, 0, 0, -0.000109708, 0.00136772, 0.00637584, 0.999979, 1, 1, 1, 0.0333333, 1, 0, 0, 0, -0.000409044, 0.00510345, 0.024459, 0.999688, 1, 1, 1, 0.05, 1, 0, 0, 0, -0.000855309, 0.0106694, 0.0527592, 0.99855, 1, 1, 1, 0.116667, 1, 0, 0, 0, -0.00317471, 0.0396052, 0.235016, 0.971179, 1, 1, 1, 0.15, 1, 0, 0, 0, -0.00392561, 0.0489728, 0.339039, 0.939489, 1, 1, 1, 0.183333, 1, 0, 0, 0, -0.00386327, 0.0481964, 0.429, 0.90201, 1, 1, 1, 0.2, 1, 0, 0, 0, -0.00342336, 0.0427076, 0.464623, 0.884471, 1, 1, 1, 0.216667, 1, 0, 0, 0, -0.00266088, 0.0331947, 0.492454, 0.869701, 1, 1, 1, 0.233333, 1, 0, 0, 0, -0.00153554, 0.0191556, 0.511526, 0.859053, 1, 1, 1, 0.25, 1, 0, 0, 0, 3.79421e-10, 3.51423e-08, 0.520813, 0.853671, 1, 1, 1, 0.266667, 1, 0, 0, 0, -0.0242313, -0.0295585, 0.522992, 0.85148, 1, 1, 1, 0.283333, 1, 0, 0, 0, -0.0849918, -0.0685585, 0.520592, 0.846794, 1, 1, 1, 0.316667, 1, 0, 0, 0, -0.218253, -0.136848, 0.503876, 0.824468, 1, 1, 1, 0.333333, 1, 0, 0, 0, -0.243085, -0.148303, 0.499252, 0.81833, 1, 1, 1, 0.5, 1, 0, 0, 0, -0.243085, -0.148303, 0.499252, 0.81833, 1, 1, 1, 0.516667, 1, 0, 0, 0, -0.237455, -0.144868, 0.48769, 0.827518, 1, 1, 1, 0.533333, 1, 0, 0, 0, -0.221587, -0.135187, 0.4551, 0.851767, 1, 1, 1, 0.55, 1, 0, 0, 0, -0.196727, -0.12002, 0.404041, 0.885237, 1, 1, 1, 0.583333, 1, 0, 0, 0, -0.127469, -0.0777671, 0.261799, 0.953502, 1, 1, 1, 0.616667, 1, 0, 0, 0, -0.0542003, -0.0330667, 0.111317, 0.991755, 1, 1, 1, 0.633333, 1, 0, 0, 0, -0.02572, -0.0156912, 0.0528239, 0.998149, 1, 1, 1, 0.65, 1, 0, 0, 0, -0.00684024, -0.00417293, 0.0140485, 0.999869, 1, 1, 1, 0.666667, 1, 0, 0, 0, -9.31321e-09, 8.19564e-08, -2.38419e-07, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.001
 loop = true
 tracks/0/type = "transform"
@@ -249,52 +250,6 @@ tracks/6/imported = true
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=9]
-length = 0.001
-loop = true
-tracks/0/type = "transform"
-tracks/0/path = NodePath("Armature/Skeleton:sword_l")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = true
-tracks/0/enabled = true
-tracks/0/keys = PoolRealArray( 0, 1, -2.88128e-08, -7.567e-09, -5.96046e-08, -1.42109e-14, 8.88178e-15, 1.26218e-28, 1, 1, 1, 1 )
-tracks/1/type = "transform"
-tracks/1/path = NodePath("Armature/Skeleton:arm_2_l")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = true
-tracks/1/enabled = true
-tracks/1/keys = PoolRealArray( 0, 1, -2.95695e-08, 0, 0, 6.82194e-08, 1.67638e-08, -7.45058e-09, 1, 1, 1, 1 )
-tracks/2/type = "transform"
-tracks/2/path = NodePath("Armature/Skeleton:arm_1_l")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = true
-tracks/2/enabled = true
-tracks/2/keys = PoolRealArray( 0, 1, 0, 0, 0, -1.41561e-07, -1.11758e-08, -2.23517e-07, 1, 1, 1, 1 )
-tracks/3/type = "transform"
-tracks/3/path = NodePath("Armature/Skeleton:sword_r")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = true
-tracks/3/enabled = true
-tracks/3/keys = PoolRealArray( 0, 1, 0, -1.04308e-07, -5.96046e-08, -2.98023e-08, 9.71483e-09, 1.45384e-10, 1, 1, 1, 1 )
-tracks/4/type = "transform"
-tracks/4/path = NodePath("Armature/Skeleton:arm_2_r")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = true
-tracks/4/enabled = true
-tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, -1.11759e-08, -1.49012e-08, 4.47035e-08, 1, 1, 1, 1 )
-tracks/5/type = "transform"
-tracks/5/path = NodePath("Armature/Skeleton:arm_1_r")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = true
-tracks/5/enabled = true
-tracks/5/keys = PoolRealArray( 0, 1, 0, 0, 0, -9.31321e-09, 8.19564e-08, -2.38419e-07, 1, 1, 1, 1 )
-
 [sub_resource type="Animation" id=10]
 length = 0.001
 loop = true
@@ -304,7 +259,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = true
 tracks/0/enabled = true
-tracks/0/keys = PoolRealArray( 0, 1, -2.88128e-08, -7.567e-09, -5.96046e-08, 0, 0, 0, 1, 0, 0, 0 )
+tracks/0/keys = PoolRealArray( 0, 1, -2.88128e-08, -7.567e-09, -5.96046e-08, -1.42109e-14, 8.88178e-15, 1.26218e-28, 1, 1, 1, 1 )
 tracks/1/type = "transform"
 tracks/1/path = NodePath("Armature/Skeleton:arm_2_l")
 tracks/1/interp = 1
@@ -350,6 +305,52 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = true
 tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -2.88128e-08, -7.567e-09, -5.96046e-08, 0, 0, 0, 1, 0, 0, 0 )
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Armature/Skeleton:arm_2_l")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray( 0, 1, -2.95695e-08, 0, 0, 6.82194e-08, 1.67638e-08, -7.45058e-09, 1, 1, 1, 1 )
+tracks/2/type = "transform"
+tracks/2/path = NodePath("Armature/Skeleton:arm_1_l")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/keys = PoolRealArray( 0, 1, 0, 0, 0, -1.41561e-07, -1.11758e-08, -2.23517e-07, 1, 1, 1, 1 )
+tracks/3/type = "transform"
+tracks/3/path = NodePath("Armature/Skeleton:sword_r")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/keys = PoolRealArray( 0, 1, 0, -1.04308e-07, -5.96046e-08, -2.98023e-08, 9.71483e-09, 1.45384e-10, 1, 1, 1, 1 )
+tracks/4/type = "transform"
+tracks/4/path = NodePath("Armature/Skeleton:arm_2_r")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, -1.11759e-08, -1.49012e-08, 4.47035e-08, 1, 1, 1, 1 )
+tracks/5/type = "transform"
+tracks/5/path = NodePath("Armature/Skeleton:arm_1_r")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/keys = PoolRealArray( 0, 1, 0, 0, 0, -9.31321e-09, 8.19564e-08, -2.38419e-07, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+loop = true
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Armature/Skeleton:sword_l")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = true
+tracks/0/enabled = true
 tracks/0/keys = PoolRealArray( 0, 1, -2.88128e-08, -7.567e-09, -5.96046e-08, -1.42109e-14, 8.88178e-15, 1.26218e-28, 1, 1, 1, 1 )
 tracks/1/type = "transform"
 tracks/1/path = NodePath("Armature/Skeleton:arm_2_l")
@@ -387,7 +388,7 @@ tracks/5/imported = true
 tracks/5/enabled = true
 tracks/5/keys = PoolRealArray( 0, 1, 0, 0, 0, -9.31321e-09, 8.19564e-08, -2.38419e-07, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 0.001
 loop = true
 tracks/0/type = "transform"
@@ -433,7 +434,7 @@ tracks/5/imported = true
 tracks/5/enabled = true
 tracks/5/keys = PoolRealArray( 0, 1, 0, 0, 0, -9.31321e-09, 8.19564e-08, -2.38419e-07, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 length = 0.666667
 step = 0.0166667
 tracks/0/type = "transform"
@@ -500,7 +501,7 @@ tracks/7/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 length = 0.666667
 loop = true
 tracks/0/type = "transform"
@@ -553,7 +554,7 @@ tracks/6/imported = true
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 length = 0.666667
 loop = true
 tracks/0/type = "transform"
@@ -606,7 +607,7 @@ tracks/6/imported = true
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 length = 0.666667
 loop = true
 tracks/0/type = "transform"
@@ -659,7 +660,7 @@ tracks/6/imported = true
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=18]
 length = 0.666667
 loop = true
 tracks/0/type = "transform"
@@ -712,7 +713,7 @@ tracks/6/imported = true
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=19]
 length = 0.666667
 loop = true
 tracks/0/type = "transform"
@@ -765,7 +766,7 @@ tracks/6/imported = true
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=20]
 length = 0.666667
 loop = true
 tracks/0/type = "transform"
@@ -818,7 +819,7 @@ tracks/6/imported = true
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=21]
 length = 0.666667
 loop = true
 tracks/0/type = "transform"
@@ -871,7 +872,7 @@ tracks/6/imported = true
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=22]
 length = 0.666667
 loop = true
 tracks/0/type = "transform"
@@ -924,7 +925,7 @@ tracks/6/imported = true
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=23]
 length = 0.666667
 step = 0.0166667
 tracks/0/type = "transform"
@@ -973,11 +974,11 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "ThrowSwordCallback"
+"method": "LeftThrowCallback"
 } ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=24]
 length = 0.666667
 step = 0.0166667
 tracks/0/type = "transform"
@@ -1026,35 +1027,32 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "ThrowSwordCallback"
+"method": "RightThrowCallback"
 } ]
 }
 
-[sub_resource type="AnimationNodeAdd2" id=24]
+[sub_resource type="AnimationNodeAdd2" id=25]
 filters = [ "Armature/Skeleton:arm_1_l", "Armature/Skeleton:arm_1_r", "Armature/Skeleton:arm_2_l", "Armature/Skeleton:arm_2_r", "Armature/Skeleton:sword_l", "Armature/Skeleton:sword_r" ]
 
-[sub_resource type="AnimationNodeTimeScale" id=25]
-
-[sub_resource type="AnimationNodeAnimation" id=26]
-animation = "attack_1"
+[sub_resource type="AnimationNodeTimeScale" id=26]
 
 [sub_resource type="AnimationNodeAnimation" id=27]
 animation = "attack_1"
 
 [sub_resource type="AnimationNodeAnimation" id=28]
-animation = "attack_2"
+animation = "attack_1"
 
 [sub_resource type="AnimationNodeAnimation" id=29]
 animation = "attack_2"
 
 [sub_resource type="AnimationNodeAnimation" id=30]
-animation = "attack_3"
+animation = "attack_2"
 
 [sub_resource type="AnimationNodeAnimation" id=31]
-animation = "idle_top"
+animation = "attack_3"
 
 [sub_resource type="AnimationNodeAnimation" id=32]
-animation = "idle_top_no_left_sword"
+animation = "idle_top"
 
 [sub_resource type="AnimationNodeAnimation" id=33]
 animation = "idle_top_no_right_sword"
@@ -1063,47 +1061,45 @@ animation = "idle_top_no_right_sword"
 animation = "idle_top_no_swords"
 
 [sub_resource type="AnimationNodeAnimation" id=35]
+animation = "idle_top_no_left_sword"
+
+[sub_resource type="AnimationNodeAnimation" id=36]
 animation = "sword_throw_left"
 
-[sub_resource type="AnimationNodeTimeScale" id=36]
+[sub_resource type="AnimationNodeTimeScale" id=37]
 
-[sub_resource type="AnimationNodeBlendTree" id=37]
+[sub_resource type="AnimationNodeBlendTree" id=38]
 graph_offset = Vector2( -910, -34 )
-nodes/Animation/node = SubResource( 35 )
+nodes/Animation/node = SubResource( 36 )
 nodes/Animation/position = Vector2( -400, 120 )
-nodes/TimeScale/node = SubResource( 36 )
+nodes/TimeScale/node = SubResource( 37 )
 nodes/TimeScale/position = Vector2( -60, 120 )
 node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
-[sub_resource type="AnimationNodeAnimation" id=38]
+[sub_resource type="AnimationNodeAnimation" id=39]
 animation = "sword_throw_right"
 
-[sub_resource type="AnimationNodeTimeScale" id=39]
+[sub_resource type="AnimationNodeTimeScale" id=40]
 
-[sub_resource type="AnimationNodeBlendTree" id=40]
+[sub_resource type="AnimationNodeBlendTree" id=41]
 graph_offset = Vector2( -831, -22 )
-nodes/Animation/node = SubResource( 38 )
+nodes/Animation/node = SubResource( 39 )
 nodes/Animation/position = Vector2( -320, 120 )
-nodes/TimeScale/node = SubResource( 39 )
+nodes/TimeScale/node = SubResource( 40 )
 nodes/TimeScale/position = Vector2( 0, 120 )
 node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=41]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=42]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=43]
 switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=44]
 switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=45]
 switch_mode = 2
 auto_advance = true
-priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=46]
 switch_mode = 2
@@ -1111,6 +1107,9 @@ auto_advance = true
 priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=47]
+switch_mode = 2
+auto_advance = true
+priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=48]
 
@@ -1121,134 +1120,140 @@ priority = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id=51]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=52]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=53]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=54]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=55]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=56]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=57]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=58]
 switch_mode = 2
 auto_advance = true
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=59]
+switch_mode = 2
+auto_advance = true
+priority = 2
 
-[sub_resource type="AnimationNodeStateMachine" id=60]
-states/attack_1/node = SubResource( 26 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=61]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id=62]
+states/attack_1/node = SubResource( 27 )
 states/attack_1/position = Vector2( 396, 80 )
-states/attack_1_no_left/node = SubResource( 27 )
-states/attack_1_no_left/position = Vector2( 867, -485 )
-states/attack_2/node = SubResource( 28 )
+states/attack_1_right_weapon/node = SubResource( 28 )
+states/attack_1_right_weapon/position = Vector2( 953, -352 )
+states/attack_2/node = SubResource( 29 )
 states/attack_2/position = Vector2( 672, 80 )
-states/attack_2_no_right/node = SubResource( 29 )
-states/attack_2_no_right/position = Vector2( 190, 14 )
-states/attack_3/node = SubResource( 30 )
+states/attack_2_left_weapon/node = SubResource( 30 )
+states/attack_2_left_weapon/position = Vector2( 98, -75 )
+states/attack_3/node = SubResource( 31 )
 states/attack_3/position = Vector2( 943, 80 )
-states/idle_top/node = SubResource( 31 )
+states/idle_top/node = SubResource( 32 )
 states/idle_top/position = Vector2( 672, -75 )
-states/idle_top_no_left_sword/node = SubResource( 32 )
-states/idle_top_no_left_sword/position = Vector2( 700, -357 )
-states/idle_top_no_right_sword/node = SubResource( 33 )
-states/idle_top_no_right_sword/position = Vector2( 396, -75 )
-states/idle_top_no_swords/node = SubResource( 34 )
-states/idle_top_no_swords/position = Vector2( 220, -192 )
-states/sword_throw_left_bt/node = SubResource( 37 )
-states/sword_throw_left_bt/position = Vector2( 926, -192 )
-states/sword_throw_right_bt/node = SubResource( 40 )
-states/sword_throw_right_bt/position = Vector2( 396, -357 )
-transitions = [ "idle_top", "attack_1", SubResource( 41 ), "attack_1", "attack_2", SubResource( 42 ), "attack_2", "attack_3", SubResource( 43 ), "attack_3", "idle_top", SubResource( 44 ), "attack_2", "idle_top", SubResource( 45 ), "attack_1", "idle_top", SubResource( 46 ), "idle_top_no_swords", "idle_top_no_left_sword", SubResource( 47 ), "idle_top_no_swords", "idle_top_no_right_sword", SubResource( 48 ), "idle_top_no_right_sword", "idle_top", SubResource( 49 ), "idle_top_no_left_sword", "idle_top", SubResource( 50 ), "idle_top_no_left_sword", "attack_1_no_left", SubResource( 51 ), "attack_1_no_left", "idle_top_no_left_sword", SubResource( 52 ), "idle_top_no_right_sword", "attack_2_no_right", SubResource( 53 ), "attack_2_no_right", "idle_top_no_right_sword", SubResource( 54 ), "idle_top_no_left_sword", "sword_throw_right_bt", SubResource( 55 ), "sword_throw_right_bt", "idle_top_no_swords", SubResource( 56 ), "idle_top", "sword_throw_left_bt", SubResource( 57 ), "sword_throw_left_bt", "idle_top_no_left_sword", SubResource( 58 ), "idle_top_no_right_sword", "sword_throw_left_bt", SubResource( 59 ) ]
+states/idle_top_left_weapon/node = SubResource( 33 )
+states/idle_top_left_weapon/position = Vector2( 396, -75 )
+states/idle_top_no_weapons/node = SubResource( 34 )
+states/idle_top_no_weapons/position = Vector2( 220, -192 )
+states/idle_top_right_weapon/node = SubResource( 35 )
+states/idle_top_right_weapon/position = Vector2( 701, -357 )
+states/weapon_throw_left_bt/node = SubResource( 38 )
+states/weapon_throw_left_bt/position = Vector2( 926, -192 )
+states/weapon_throw_right_bt/node = SubResource( 41 )
+states/weapon_throw_right_bt/position = Vector2( 396, -357 )
+transitions = [ "idle_top", "attack_1", SubResource( 42 ), "attack_1", "attack_2", SubResource( 43 ), "attack_2", "attack_3", SubResource( 44 ), "attack_3", "idle_top", SubResource( 45 ), "attack_2", "idle_top", SubResource( 46 ), "attack_1", "idle_top", SubResource( 47 ), "idle_top_no_weapons", "idle_top_right_weapon", SubResource( 48 ), "idle_top_no_weapons", "idle_top_left_weapon", SubResource( 49 ), "idle_top_left_weapon", "idle_top", SubResource( 50 ), "idle_top_right_weapon", "idle_top", SubResource( 51 ), "idle_top_right_weapon", "attack_1_right_weapon", SubResource( 52 ), "attack_1_right_weapon", "idle_top_right_weapon", SubResource( 53 ), "idle_top_left_weapon", "attack_2_left_weapon", SubResource( 54 ), "attack_2_left_weapon", "idle_top_left_weapon", SubResource( 55 ), "idle_top_right_weapon", "weapon_throw_right_bt", SubResource( 56 ), "weapon_throw_right_bt", "idle_top_no_weapons", SubResource( 57 ), "idle_top", "weapon_throw_left_bt", SubResource( 58 ), "weapon_throw_left_bt", "idle_top_right_weapon", SubResource( 59 ), "idle_top_left_weapon", "weapon_throw_left_bt", SubResource( 60 ), "weapon_throw_left_bt", "idle_top_no_weapons", SubResource( 61 ) ]
 start_node = "idle_top"
-graph_offset = Vector2( 21.553, -352.983 )
-
-[sub_resource type="AnimationNodeAnimation" id=61]
-animation = "jump"
-
-[sub_resource type="AnimationNodeOneShot" id=62]
-filters = [ ".", "Armature/Skeleton:leg_1_l", "Armature/Skeleton:leg_1_r", "Armature/Skeleton:leg_2_l", "Armature/Skeleton:leg_2_r", "Armature/Skeleton:torso", "Armature/Skeleton:waist" ]
+graph_offset = Vector2( -169.447, -434.983 )
 
 [sub_resource type="AnimationNodeAnimation" id=63]
-animation = "running_front"
+animation = "jump"
 
-[sub_resource type="AnimationNodeAnimation" id=64]
-animation = "running_left"
+[sub_resource type="AnimationNodeOneShot" id=64]
+filters = [ ".", "Armature/Skeleton:leg_1_l", "Armature/Skeleton:leg_1_r", "Armature/Skeleton:leg_2_l", "Armature/Skeleton:leg_2_r", "Armature/Skeleton:torso", "Armature/Skeleton:waist" ]
 
 [sub_resource type="AnimationNodeAnimation" id=65]
-animation = "running_right"
+animation = "running_front"
 
 [sub_resource type="AnimationNodeAnimation" id=66]
-animation = "running_frontleft"
+animation = "running_left"
 
 [sub_resource type="AnimationNodeAnimation" id=67]
-animation = "running_frontright"
+animation = "running_right"
 
 [sub_resource type="AnimationNodeAnimation" id=68]
-animation = "idle_bottom"
+animation = "running_frontleft"
 
 [sub_resource type="AnimationNodeAnimation" id=69]
-animation = "running_back"
+animation = "running_frontright"
 
 [sub_resource type="AnimationNodeAnimation" id=70]
-animation = "running_backleft"
+animation = "idle_bottom"
 
 [sub_resource type="AnimationNodeAnimation" id=71]
+animation = "running_back"
+
+[sub_resource type="AnimationNodeAnimation" id=72]
+animation = "running_backleft"
+
+[sub_resource type="AnimationNodeAnimation" id=73]
 animation = "running_backright"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=72]
+[sub_resource type="AnimationNodeBlendSpace2D" id=74]
 auto_triangles = false
-blend_point_0/node = SubResource( 63 )
+blend_point_0/node = SubResource( 65 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 64 )
+blend_point_1/node = SubResource( 66 )
 blend_point_1/pos = Vector2( -1, 0 )
-blend_point_2/node = SubResource( 65 )
+blend_point_2/node = SubResource( 67 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 66 )
+blend_point_3/node = SubResource( 68 )
 blend_point_3/pos = Vector2( -1, 1 )
-blend_point_4/node = SubResource( 67 )
+blend_point_4/node = SubResource( 69 )
 blend_point_4/pos = Vector2( 1, 1 )
-blend_point_5/node = SubResource( 68 )
+blend_point_5/node = SubResource( 70 )
 blend_point_5/pos = Vector2( 0, 0 )
-blend_point_6/node = SubResource( 69 )
+blend_point_6/node = SubResource( 71 )
 blend_point_6/pos = Vector2( 0, -1 )
-blend_point_7/node = SubResource( 70 )
+blend_point_7/node = SubResource( 72 )
 blend_point_7/pos = Vector2( -1, -1 )
-blend_point_8/node = SubResource( 71 )
+blend_point_8/node = SubResource( 73 )
 blend_point_8/pos = Vector2( 1, -1 )
 triangles = PoolIntArray( 1, 3, 5, 0, 3, 5, 0, 4, 5, 2, 4, 5, 1, 5, 7, 5, 6, 7, 2, 5, 8, 5, 6, 8 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeBlendTree" id=73]
-graph_offset = Vector2( 84.6112, 211.613 )
-nodes/Add2/node = SubResource( 24 )
+[sub_resource type="AnimationNodeBlendTree" id=75]
+graph_offset = Vector2( -160, -130 )
+nodes/Add2/node = SubResource( 25 )
 nodes/Add2/position = Vector2( 620, 20 )
-nodes/TimeScale/node = SubResource( 25 )
+nodes/TimeScale/node = SubResource( 26 )
 nodes/TimeScale/position = Vector2( 210, 60 )
-nodes/attack_sm/node = SubResource( 60 )
+nodes/attack_sm/node = SubResource( 62 )
 nodes/attack_sm/position = Vector2( 300, 220 )
-nodes/jump/node = SubResource( 61 )
+nodes/jump/node = SubResource( 63 )
 nodes/jump/position = Vector2( 20, 70 )
-nodes/jump_os/node = SubResource( 62 )
+nodes/jump_os/node = SubResource( 64 )
 nodes/jump_os/position = Vector2( 410, -40 )
 nodes/output/position = Vector2( 860, 120 )
-nodes/run_bs2d/node = SubResource( 72 )
+nodes/run_bs2d/node = SubResource( 74 )
 nodes/run_bs2d/position = Vector2( 180, -100 )
 node_connections = [ "output", 0, "Add2", "TimeScale", 0, "jump", "Add2", 0, "jump_os", "Add2", 1, "attack_sm", "jump_os", 0, "run_bs2d", "jump_os", 1, "TimeScale" ]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=74]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=76]
 
 [node name="MeleeCarry1" type="KinematicBody"]
 collision_layer = 2
-collision_mask = 61
+collision_mask = 157
 script = ExtResource( 1 )
 
 [node name="BodyCollisionShape" type="CollisionShape" parent="."]
@@ -1265,6 +1270,10 @@ transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 1.68
 keep_aspect = 0
 current = true
 fov = 100.0
+
+[node name="RayCast" type="RayCast" parent="Camera"]
+collision_mask = 16
+collide_with_areas = true
 
 [node name="Armature" type="Spatial" parent="."]
 transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, -0.117602, 0 )
@@ -1359,45 +1368,47 @@ material/0 = null
 [node name="InteractionArea" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.14523, -0.0666927 )
 collision_layer = 2
-collision_mask = 32
+collision_mask = 16
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236104, -0.771078 )
-shape = SubResource( 75 )
+shape = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack_1 = SubResource( 5 )
-anims/attack_2 = SubResource( 6 )
-anims/attack_3 = SubResource( 7 )
-anims/idle_bottom = SubResource( 8 )
-anims/idle_top = SubResource( 9 )
-anims/idle_top_no_left_sword = SubResource( 10 )
-anims/idle_top_no_right_sword = SubResource( 11 )
-anims/idle_top_no_swords = SubResource( 12 )
-anims/jump = SubResource( 13 )
-anims/running_back = SubResource( 14 )
-anims/running_backleft = SubResource( 15 )
-anims/running_backright = SubResource( 16 )
-anims/running_front = SubResource( 17 )
-anims/running_frontleft = SubResource( 18 )
-anims/running_frontright = SubResource( 19 )
-anims/running_left = SubResource( 20 )
-anims/running_right = SubResource( 21 )
-anims/sword_throw_left = SubResource( 22 )
-anims/sword_throw_right = SubResource( 23 )
+anims/attack_1 = SubResource( 6 )
+anims/attack_2 = SubResource( 7 )
+anims/attack_3 = SubResource( 8 )
+anims/idle_bottom = SubResource( 9 )
+anims/idle_top = SubResource( 10 )
+anims/idle_top_no_left_sword = SubResource( 11 )
+anims/idle_top_no_right_sword = SubResource( 12 )
+anims/idle_top_no_swords = SubResource( 13 )
+anims/jump = SubResource( 14 )
+anims/running_back = SubResource( 15 )
+anims/running_backleft = SubResource( 16 )
+anims/running_backright = SubResource( 17 )
+anims/running_front = SubResource( 18 )
+anims/running_frontleft = SubResource( 19 )
+anims/running_frontright = SubResource( 20 )
+anims/running_left = SubResource( 21 )
+anims/running_right = SubResource( 22 )
+anims/sword_throw_left = SubResource( 23 )
+anims/sword_throw_right = SubResource( 24 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 73 )
+tree_root = SubResource( 75 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 process_mode = 0
 parameters/Add2/add_amount = 1.0
 parameters/TimeScale/scale = 2.5
-parameters/attack_sm/playback = SubResource( 74 )
-parameters/attack_sm/sword_throw_left_bt/TimeScale/scale = 0.8
-parameters/attack_sm/sword_throw_right_bt/TimeScale/scale = 0.8
+parameters/attack_sm/playback = SubResource( 76 )
+parameters/attack_sm/weapon_throw_left_bt/TimeScale/scale = 1.25
+parameters/attack_sm/weapon_throw_right_bt/TimeScale/scale = 1.25
 parameters/jump_os/active = false
 parameters/run_bs2d/blend_position = Vector2( 0, 0 )
 
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="PlayerHUD" parent="." instance=ExtResource( 3 )]
