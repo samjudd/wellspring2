@@ -1271,9 +1271,13 @@ keep_aspect = 0
 current = true
 fov = 100.0
 
-[node name="RayCast" type="RayCast" parent="Camera"]
+[node name="TargetingRaycast" type="RayCast" parent="Camera"]
+visible = false
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
 collision_mask = 16
 collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Armature" type="Spatial" parent="."]
 transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, -0.117602, 0 )
@@ -1356,9 +1360,11 @@ bone_name = "head"
 
 [node name="LeftSwordSpawnPoint" type="Position3D" parent="Armature/Skeleton/headAttachment"]
 transform = Transform( -0.941576, 0.253021, -0.222293, 0.332129, 0.807085, -0.488164, 0.0558932, -0.533474, -0.843968, -0.229, 0.156775, -0.941 )
+visible = false
 
 [node name="RightSwordSpawnPoint" type="Position3D" parent="Armature/Skeleton/headAttachment"]
 transform = Transform( -0.938974, -0.297471, -0.17274, -0.0809943, 0.679239, -0.729434, 0.334318, -0.670929, -0.661881, 0.238, -0.050225, -0.966 )
+visible = false
 
 [node name="Body" type="MeshInstance" parent="Armature/Skeleton"]
 mesh = SubResource( 3 )

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 public class MeleeCarry1Weapon : KinematicBody
 {
   [Export]
-  public float _spinVelocityRPS = 1.5f;
+  public float _spinVelocityRPS = 3.0f;
   [Export]
-  public float _throwVelocity = 15.0f;
+  public float _throwVelocity = 22.0f;
   [Export]
   public float _minDetectorWeight = 0.25f;
   public bool isRightWeapon;
@@ -27,7 +27,7 @@ public class MeleeCarry1Weapon : KinematicBody
     _pickupHitbox.Monitoring = false;
 
     // Get list of all detector raycasts for later use
-    MakeDetectorList(GetNode<Spatial>("Detectors"));
+    MakeDetectorList(GetNode<Spatial>("Detectors/radial"));
   }
 
   public override void _PhysicsProcess(float delta)
@@ -44,8 +44,9 @@ public class MeleeCarry1Weapon : KinematicBody
   private void ProcessMovement(float delta)
   {
     // no drag at the moment, do gravity acceleration here
-    _velocity += delta * (Vector3)PhysicsServer.AreaGetParam(GetWorld().Space, PhysicsServer.AreaParameter.GravityVector);
-    // do rotation here, RotateX doesn't work for some reason but this does... 
+    Vector3 gravityVector = (Vector3)PhysicsServer.AreaGetParam(GetWorld().Space, PhysicsServer.AreaParameter.GravityVector) * (float)PhysicsServer.AreaGetParam(GetWorld().Space, PhysicsServer.AreaParameter.Gravity);
+    _velocity += delta * gravityVector;
+    // rotate around local x axis to spin sword
     RotateObjectLocal(Vector3.Left, -_spinVelocityRPS * 2 * Mathf.Pi * delta);
   }
 
@@ -54,15 +55,8 @@ public class MeleeCarry1Weapon : KinematicBody
     // stop updating movement
     _processMovement = false;
 
-    // get surface normal
-    RayCast normalFinder = GetNode<RayCast>("NormalFinder");
-    normalFinder.GlobalTransform = normalFinder.GlobalTransform.LookingAt(collision.Position, Vector3.Up);
-    normalFinder.ForceRaycastUpdate();
-    Vector3 surfaceNormal = normalFinder.GetCollisionNormal();
-    GD.Print(surfaceNormal);
-
-    // need to rotate weapon so +y axis is opposite parallel to surface normal and move it into body to be "stuck in"
-    GlobalTransform = Normal2Basis(GlobalTransform, -surfaceNormal);
+    // need to rotate weapon so +y axis is parallel to velocity and move it into body to be "stuck in"
+    GlobalTransform = Normal2Basis(GlobalTransform, _velocity.Normalized());
     Vector3 localDelta = ToLocal(collision.Position) - ToLocal(GetNode<Position3D>("PenetrationPoint").GlobalTransform.origin);
     TranslateObjectLocal(localDelta);
 
@@ -70,12 +64,12 @@ public class MeleeCarry1Weapon : KinematicBody
     _pickupHitbox.Monitoring = true;
     _pickupHitbox.Monitorable = true;
 
-    // visualize collision location
-    // MeshInstance debugTeleportLocation = GetNode<MeshInstance>("DebugTeleportLocation");
-    // debugTeleportLocation.Visible = true;
-    // Transform placeholder = debugTeleportLocation.GlobalTransform;
-    // placeholder.origin = collision.Position;
-    // debugTeleportLocation.GlobalTransform = placeholder;
+    // visualize teleport location
+    MeshInstance debugTeleportLocation = GetNode<MeshInstance>("DebugTeleportLocation");
+    debugTeleportLocation.Visible = true;
+    Transform placeholder = debugTeleportLocation.GlobalTransform;
+    placeholder.origin = GetTeleportLocation();
+    debugTeleportLocation.GlobalTransform = placeholder;
   }
 
   public void Throw(Vector3 globalThrowDirection)
@@ -83,7 +77,7 @@ public class MeleeCarry1Weapon : KinematicBody
     _velocity += globalThrowDirection * _throwVelocity;
   }
 
-  private void PickupCallback(Area area)
+  public void PickupCallback()
   {
     QueueFree();
   }
@@ -93,21 +87,25 @@ public class MeleeCarry1Weapon : KinematicBody
     // get weighted sum of all 
     Vector3 resultant = Vector3.Zero;
     Spatial detector = GetNode<Spatial>("Detectors");
-    GD.Print("new throw with detector position", detector.GlobalTransform.origin.ToString());
+    RayCast bottomRaycast = detector.GetNode<RayCast>("bottom");
+    bottomRaycast.ForceRaycastUpdate();
+    if (!bottomRaycast.IsColliding())
+    {
+      DrawSphere(bottomRaycast.GetCollisionPoint());  
+    }
     foreach (RayCast cast in _detectorList)
     {
       cast.ForceRaycastUpdate();
       if (cast.IsColliding())
       {
         // get collision point in local coordinates to detector spatial in middle of sword
-        Vector3 collisionPoint = detector.GlobalTransform.XformInv(cast.GetCollisionPoint());
-        DrawSphere(collisionPoint);
-        GD.Print(cast.Name, " activated with length ", collisionPoint.Length().ToString());
-        resultant += collisionPoint.Normalized() * (1 - Mathf.Min(collisionPoint.Length(), _minDetectorWeight));
+        DrawSphere(cast.GetCollisionPoint());
+        Vector3 collisionVector = cast.Transform.XformInv(cast.GetCollisionPoint());
+        resultant += cast.GetCollisionNormal() * (1 - Mathf.Min(collisionVector.Length(), _minDetectorWeight));
       }
     }
-    // return 1m in opposite direction to weighted average, should be free location
-    return detector.Transform.Xform(-resultant.Normalized());
+    // return average of normals
+    return Transform.origin + resultant.Normalized();
   }
 
   private void MakeDetectorList(Node node)
@@ -119,14 +117,15 @@ public class MeleeCarry1Weapon : KinematicBody
     }
   }
 
-  private void DrawSphere(Vector3 location)
+  private void DrawSphere(Vector3 globalLocation)
   {
     MeshInstance sphere = new MeshInstance();
     SphereMesh shape = new SphereMesh();
-    GD.Print("sphere id", sphere.GetInstanceId().ToString());
     GetNode<Spatial>("Detectors").AddChild(sphere);
     sphere.Owner = GetNode<Spatial>("Detectors");
-    sphere.Transform.Translated(location);
+    Transform placeholder = sphere.GlobalTransform;
+    placeholder.origin = globalLocation;
+    sphere.GlobalTransform = placeholder;
     shape.Radius = 0.05f;
     shape.Height = shape.Radius * 2.0f;
     sphere.Mesh = shape;

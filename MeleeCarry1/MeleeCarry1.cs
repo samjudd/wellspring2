@@ -9,7 +9,7 @@ public class MeleeCarry1 : Player
   private Timer _attackTimer;
   private float _attackDuration = 0.666f;
   private bool _hasRightWeapon = true;
-
+  private RayCast _targetingRaycast;
 
   public override void _Ready()
   {
@@ -21,8 +21,10 @@ public class MeleeCarry1 : Player
     // get spawn positions
     _leftSwordSpawn = GetNode<Position3D>("Armature/Skeleton/headAttachment/LeftSwordSpawnPoint");
     _rightSwordSpawn = GetNode<Position3D>("Armature/Skeleton/headAttachment/RightSwordSpawnPoint");
-    // connect 
+    // connect interaction area to body for sword pickup
     GetNode<Area>("InteractionArea").Connect("area_entered", this, "InteractionCallback");
+    // get reference to targeting raycast for teleporting
+    _targetingRaycast = GetNode<RayCast>("Camera/TargetingRaycast");
   }
   
   protected override void ProcessInput(float delta)
@@ -61,15 +63,22 @@ public class MeleeCarry1 : Player
     else if (Input.IsActionJustPressed("secondary_mouse"))
     {
       string currentNode = _attackSM.GetCurrentNode();
-      if (currentNode == "idle_top" || currentNode == "idle_top_left_weapon")
-      {
+      if (_targetingRaycast.IsColliding() && ((Area)_targetingRaycast.GetCollider()).GetParent() is MeleeCarry1Weapon weapon)
+        Teleport(weapon);
+      else if (currentNode == "idle_top" || currentNode == "idle_top_left_weapon")
         _attackSM.Travel("weapon_throw_left_bt");
-      }
       else if (currentNode == "idle_top_right_weapon")
-      {
         _attackSM.Travel("weapon_throw_right_bt");
-      }
     }
+  }
+
+  private void Teleport(MeleeCarry1Weapon weapon)
+  {
+    Transform placeholder = Transform;
+    placeholder.origin = weapon.GetTeleportLocation();
+    Transform = placeholder;
+    InteractionCallback(weapon.GetNode<Area>("PickupArea"));
+    weapon.PickupCallback();
   }
 
   // need this here so that godot can see it to have it as a callback
