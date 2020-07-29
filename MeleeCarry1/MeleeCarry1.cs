@@ -78,7 +78,7 @@ public class MeleeCarry1 : Player
     placeholder.origin = weapon.GetTeleportLocation();
     Transform = placeholder;
     InteractionCallback(weapon.GetNode<Area>("PickupArea"));
-    weapon.PickupCallback();
+    weapon.PickupCallback(weapon.GetNode<Area>("PickupArea"));
   }
 
   // need this here so that godot can see it to have it as a callback

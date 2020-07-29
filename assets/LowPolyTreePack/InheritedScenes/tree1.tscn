@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/LowPolyTreePack/Textures/LowPolyTreePack.material" type="Material" id=1]
 
@@ -17,11 +17,11 @@ surfaces/0 = {
 }
 
 [sub_resource type="CylinderShape" id=2]
-radius = 1.61095
-height = 1.40755
+radius = 0.49017
+height = 3.00274
 
 [sub_resource type="CylinderShape" id=3]
-radius = 0.7
+radius = 0.643459
 height = 3.28517
 
 [sub_resource type="CylinderShape" id=4]
@@ -29,26 +29,30 @@ radius = 0.292742
 height = 2.41491
 
 [sub_resource type="CylinderShape" id=5]
-radius = 0.746606
-height = 3.91186
+radius = 0.586766
+height = 4.2028
 
 [sub_resource type="CylinderShape" id=6]
+radius = 0.49017
+height = 3.00274
+
+[sub_resource type="CylinderShape" id=7]
 radius = 0.273456
 height = 2.53501
 
-[sub_resource type="CylinderShape" id=7]
+[sub_resource type="CylinderShape" id=8]
 radius = 0.220663
 height = 2.7805
 
-[sub_resource type="CylinderShape" id=8]
+[sub_resource type="CylinderShape" id=9]
 radius = 0.340347
 height = 1.46078
 
-[sub_resource type="CylinderShape" id=9]
+[sub_resource type="CylinderShape" id=10]
 radius = 0.256212
 height = 2.28566
 
-[sub_resource type="CylinderShape" id=10]
+[sub_resource type="CylinderShape" id=11]
 radius = 0.256212
 height = 3.12058
 
@@ -61,11 +65,11 @@ mesh = SubResource( 1 )
 material/0 = ExtResource( 1 )
 
 [node name="CollisionShape_Trunk1" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.530111, -0.400587 )
+transform = Transform( 0.749141, -0.662411, 1.0792e-07, 0, -1.62921e-07, -1, 0.662411, 0.749141, -1.22051e-07, 0.197233, 0.148608, -0.0666862 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape_Trunk2" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.844047, 0.536269, 0, -0.536269, 0.844047, 0, 0.929823, 0.739098 )
+transform = Transform( 1, 0, 0, 0, 0.802557, 0.596575, 0, -0.596575, 0.802557, 0, 0.941617, 0.870296 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape_Trunk3" type="CollisionShape" parent="."]
@@ -73,25 +77,29 @@ transform = Transform( 1, 0, 0, 0, 0.780899, -0.624657, 0, 0.624657, 0.780899, -
 shape = SubResource( 4 )
 
 [node name="CollisionShape_Trunk4" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.13945, -0.400587 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.132791, 2.6675, -0.289352 )
 shape = SubResource( 5 )
+
+[node name="CollisionShape_Trunk5" type="CollisionShape" parent="."]
+transform = Transform( -0.711192, -0.702997, 1.14533e-07, 0, -1.62921e-07, -1, 0.702997, -0.711192, 1.15868e-07, -0.0611398, 0.148608, 0.175938 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape_Branch1" type="CollisionShape" parent="."]
 transform = Transform( 0.986711, 0.162482, -2.64717e-08, 0, -1.62921e-07, -1, -0.162482, 0.986711, -1.60756e-07, -0.164804, 5.12646, 1.38206 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="CollisionShape_Branch2" type="CollisionShape" parent="."]
 transform = Transform( -0.0509518, -0.806485, -0.589055, 0.037141, 0.587883, -0.808093, 0.99801, -0.0630519, 1.02725e-08, -3.5449, 5.33481, -0.0117782 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="CollisionShape_Branch3" type="CollisionShape" parent="."]
 transform = Transform( 0.223585, -0.932289, 0.284337, -0.0186859, -0.295769, -0.955077, 0.974505, 0.208228, -0.0835502, -1.51759, 4.55571, -0.0117782 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="CollisionShape_Branch4" type="CollisionShape" parent="."]
 transform = Transform( 0.933333, 0.356742, 0.0403093, 0.109811, -0.176776, -0.978106, -0.341806, 0.917325, -0.204165, -0.874643, 5.06779, -2.25146 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="CollisionShape_Branch5" type="CollisionShape" parent="."]
 transform = Transform( -0.153733, -0.912791, 0.378389, 0.0755882, -0.392683, -0.916562, 0.985217, -0.112304, 0.129364, 1.6327, 5.22453, -0.587297 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )

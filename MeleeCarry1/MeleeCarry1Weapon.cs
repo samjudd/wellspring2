@@ -65,11 +65,11 @@ public class MeleeCarry1Weapon : KinematicBody
     _pickupHitbox.Monitorable = true;
 
     // visualize teleport location
-    MeshInstance debugTeleportLocation = GetNode<MeshInstance>("DebugTeleportLocation");
-    debugTeleportLocation.Visible = true;
-    Transform placeholder = debugTeleportLocation.GlobalTransform;
-    placeholder.origin = GetTeleportLocation();
-    debugTeleportLocation.GlobalTransform = placeholder;
+    // MeshInstance debugTeleportLocation = GetNode<MeshInstance>("DebugTeleportLocation");
+    // debugTeleportLocation.Visible = true;
+    // Transform placeholder = debugTeleportLocation.GlobalTransform;
+    // placeholder.origin = GetTeleportLocation();
+    // debugTeleportLocation.GlobalTransform = placeholder;
   }
 
   public void Throw(Vector3 globalThrowDirection)
@@ -77,7 +77,7 @@ public class MeleeCarry1Weapon : KinematicBody
     _velocity += globalThrowDirection * _throwVelocity;
   }
 
-  public void PickupCallback()
+  public void PickupCallback(Area area)
   {
     QueueFree();
   }
@@ -99,7 +99,6 @@ public class MeleeCarry1Weapon : KinematicBody
       if (cast.IsColliding())
       {
         // get collision point in local coordinates to detector spatial in middle of sword
-        DrawSphere(cast.GetCollisionPoint());
         Vector3 collisionVector = cast.Transform.XformInv(cast.GetCollisionPoint());
         resultant += cast.GetCollisionNormal() * (1 - Mathf.Min(collisionVector.Length(), _minDetectorWeight));
       }
