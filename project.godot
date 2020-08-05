@@ -8,21 +8,36 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "ResourceFormatLoader",
+"class": "HTerrainDataLoader",
+"language": "GDScript",
+"path": "res://addons/zylann.hterrain/hterrain_resource_loader.gd"
+}, {
+"base": "ResourceFormatSaver",
+"class": "HTerrainDataSaver",
+"language": "GDScript",
+"path": "res://addons/zylann.hterrain/hterrain_resource_saver.gd"
+} ]
 _global_script_class_icons={
-
+"HTerrainDataLoader": "",
+"HTerrainDataSaver": ""
 }
 
 [application]
 
 config/name="wellspring2"
-run/main_scene="res://map v1.tscn"
+run/main_scene="res://environment/map v1.tscn"
 config/icon="res://icon.png"
 
 [display]
 
 window/size/width=1920
 window/size/height=1080
+
+[editor_plugins]
+
+enabled=PoolStringArray( "zylann.hterrain" )
 
 [input]
 

@@ -47,6 +47,9 @@ public class Player : KinematicBody
     _initialHeadTransform = _skeleton.GetBonePose(_headBoneIndex);
     _debugCamera = GetNode<Camera>("../DebugCamera");
     Input.SetMouseMode(Input.MouseMode.Captured);
+
+    // activate animationTree in case it's not
+    _animationTree.Active = true;
   }
 
   public override void _Process(float delta)
@@ -177,7 +180,7 @@ public class Player : KinematicBody
       RotateY(Mathf.Deg2Rad(-mouseEvent.Relative.x * _mouseSensitivity));
 
       Vector3 cameraRot = _camera.RotationDegrees;
-      cameraRot.x = Mathf.Clamp(cameraRot.x, -70, 70);
+      cameraRot.x = Mathf.Clamp(cameraRot.x, -85, 85);
       _camera.RotationDegrees = cameraRot;
     }
   }

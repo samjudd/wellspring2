@@ -1,8 +1,9 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=96 format=2]
 
 [ext_resource path="res://MeleeCarry1/MeleeCarry1.cs" type="Script" id=1]
 [ext_resource path="res://MeleeCarry1/MeleeCarry1_material.material" type="Material" id=2]
 [ext_resource path="res://PlayerHUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MeleeCarry1/teleportSphere.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.3
@@ -503,6 +504,66 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id=15]
 length = 0.666667
+step = 0.0166667
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Armature/Skeleton:sword_l")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -2.88128e-08, -7.567e-09, -5.96046e-08, -1.42109e-14, 8.88178e-15, 1.26218e-28, 1, 1, 1, 1, 0.0166667, 1, 5.90808e-08, -1.07801e-07, -5.96046e-08, -0.000309081, -4.02045e-07, 0.00553553, 0.999985, 1, 1, 1, 0.0333333, 1, 2.75322e-08, 1.30385e-07, -5.96046e-08, -0.00116603, -1.52434e-06, 0.0208861, 0.999781, 1, 1, 1, 0.05, 1, -1.50758e-08, 5.76256e-08, 0, -0.00246698, -3.25153e-06, 0.0441855, 0.99902, 1, 1, 1, 0.133333, 1, 1.50758e-08, -5.76256e-08, 0, -0.0117521, -1.55524e-05, 0.210488, 0.977526, 1, 1, 1, 0.15, 1, 0, 0, 0, -0.0133585, -1.76674e-05, 0.239262, 0.970863, 1, 1, 1, 0.166667, 1, -3.01516e-08, 1.15368e-07, 5.96046e-08, -0.0146263, -1.93857e-05, 0.261967, 0.964966, 1, 1, 1, 0.183333, 1, 0, 0, -5.96046e-08, -0.0154576, -2.04563e-05, 0.276856, 0.960787, 1, 1, 1, 0.2, 1, 1.45577e-07, -8.5216e-08, 0, -0.0157565, -2.0847e-05, 0.282212, 0.959223, 1, 1, 1, 0.366667, 1, 1.45577e-07, -8.5216e-08, 0, -0.0157566, -2.08814e-05, 0.282212, 0.959223, 1, 1, 1, 0.383333, 1, -3.01516e-08, 1.15368e-07, 0, -0.0424356, -0.00606985, 0.288, 0.95667, 1, 1, 1, 0.4, 1, 0, 0, 5.96046e-08, -0.114911, -0.0225166, 0.30261, 0.945894, 1, 1, 1, 0.416667, 1, -1.15309e-07, -3.01516e-08, -5.96046e-08, -0.220789, -0.0465815, 0.320955, 0.919821, 1, 1, 1, 0.433333, 1, -2.30619e-07, -6.03031e-08, 0, -0.342316, -0.0742628, 0.337338, 0.873789, 1, 1, 1, 0.45, 1, -3.01516e-08, 1.15368e-07, 0, -0.457709, -0.100613, 0.347675, 0.812097, 1, 1, 1, 0.466667, 1, -1.30385e-07, 2.7474e-08, 0, -0.54891, -0.121494, 0.351557, 0.748562, 1, 1, 1, 0.483334, 1, 0, 0, 0, -0.606636, -0.134741, 0.351632, 0.700138, 1, 1, 1, 0.5, 1, -2.26428e-08, 8.64966e-08, 0, -0.626944, -0.139408, 0.351143, 0.681326, 1, 1, 1, 0.516667, 1, 1.15368e-07, 3.01516e-08, 0, -0.614696, -0.136684, 0.344284, 0.696373, 1, 1, 1, 0.533333, 1, -8.88831e-08, -1.31084e-07, -5.96046e-08, -0.579022, -0.128752, 0.324303, 0.736874, 1, 1, 1, 0.55, 1, 2.04309e-07, 1.61235e-07, 1.78814e-07, -0.520033, -0.115635, 0.291264, 0.794581, 1, 1, 1, 0.566667, 1, 1.22876e-07, 1.28057e-09, 0, -0.438885, -0.0975909, 0.245814, 0.858738, 1, 1, 1, 0.583333, 1, -1.15309e-07, -3.01516e-08, 5.96046e-08, -0.341211, -0.075872, 0.191108, 0.917222, 1, 1, 1, 0.6, 1, -3.01516e-08, 1.15368e-07, 0, -0.238079, -0.0529394, 0.133345, 0.960591, 1, 1, 1, 0.616667, 1, 0, 0, -5.96046e-08, -0.142912, -0.0317781, 0.0800434, 0.985981, 1, 1, 1, 0.633333, 1, 5.76838e-08, 1.5134e-08, 0, -0.0669834, -0.0148945, 0.0375165, 0.996937, 1, 1, 1, 0.65, 1, -6.03031e-08, 2.30619e-07, -5.96046e-08, -0.0176399, -0.00392241, 0.00987977, 0.999788, 1, 1, 1, 0.666667, 1, -2.88128e-08, -7.567e-09, -5.96046e-08, -1.42109e-14, 8.88178e-15, 1.26218e-28, 1, 1, 1, 1 )
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Armature/Skeleton:arm_2_l")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray( 0, 1, -2.95695e-08, 0, 0, 6.82194e-08, 1.67638e-08, -7.45058e-09, 1, 1, 1, 1, 0.0166667, 1, -5.89062e-08, 2.23517e-08, -8.9407e-08, 0.00012684, -4.35231e-05, -0.000386322, 1, 1, 1, 1, 0.0333333, 1, 0, 0, 0, 0.000477374, -0.000164209, -0.00145456, 0.999999, 1, 1, 1, 0.0666667, 1, 2.91038e-10, 2.98023e-08, -8.9407e-08, 0.00167232, -0.000574918, -0.00509448, 0.999985, 1, 1, 1, 0.166667, 1, -2.37604e-07, -2.23517e-08, 0, 0.0059858, -0.00205844, -0.0182358, 0.999814, 1, 1, 1, 0.183333, 1, 1.21887e-07, -1.49012e-08, 0, 0.00633855, -0.0021797, -0.0193106, 0.999791, 1, 1, 1, 0.2, 1, -1.16532e-07, -2.98023e-08, 0, 0.00646622, -0.0022237, -0.0196994, 0.999783, 1, 1, 1, 0.366667, 1, -1.16532e-07, -2.98023e-08, 0, 0.00646604, -0.0022237, -0.0196994, 0.999783, 1, 1, 1, 0.383333, 1, 1.18627e-07, 4.47035e-08, -8.9407e-08, -0.0195064, -0.00171118, -0.0197506, 0.999613, 1, 1, 1, 0.4, 1, 0, 0, 0, -0.0897893, -0.000317323, -0.019822, 0.995764, 1, 1, 1, 0.416667, 1, -2.38535e-07, -1.49012e-08, 0, -0.192082, 0.00173015, -0.0197489, 0.981179, 1, 1, 1, 0.433333, 1, 2.38419e-07, 7.45058e-09, 5.96046e-08, -0.309752, 0.00411441, -0.019393, 0.950611, 1, 1, 1, 0.45, 1, -1.16648e-07, -3.72529e-08, 5.96046e-08, -0.422842, 0.00643774, -0.0187502, 0.905987, 1, 1, 1, 0.466667, 1, 5.52973e-09, -2.98023e-08, -2.98023e-08, -0.514089, 0.00833852, -0.0179856, 0.857507, 1, 1, 1, 0.483334, 1, -1.16415e-10, -7.45058e-09, 5.96046e-08, -0.573148, 0.00958339, -0.0173544, 0.819212, 1, 1, 1, 0.5, 1, -1.17579e-07, -2.98023e-08, 5.96046e-08, -0.594233, 0.0100308, -0.0170995, 0.804048, 1, 1, 1, 0.516667, 1, 1.74623e-10, -7.45058e-09, 2.98023e-08, -0.580654, 0.00980161, -0.0167088, 0.81392, 1, 1, 1, 0.533333, 1, -1.16765e-07, -5.21541e-08, 1.19209e-07, -0.542262, 0.00915358, -0.0156041, 0.840014, 1, 1, 1, 0.55, 1, 1.74623e-09, -2.23517e-08, 2.98023e-08, -0.481826, 0.00813334, -0.0138649, 0.876119, 1, 1, 1, 0.583333, 1, -1.16415e-10, -7.45058e-09, 5.96046e-08, -0.312296, 0.00527158, -0.00898653, 0.949928, 1, 1, 1, 0.616667, 1, 1.74623e-10, 1.49012e-08, -2.98023e-08, -0.132469, 0.0022362, -0.00381201, 0.991177, 1, 1, 1, 0.633333, 1, -5.89062e-08, 2.23517e-08, -8.9407e-08, -0.0627626, 0.00105954, -0.00180612, 0.998026, 1, 1, 1, 0.65, 1, 1.74623e-10, 1.49012e-08, -2.98023e-08, -0.0166717, 0.000281435, -0.000479689, 0.999861, 1, 1, 1, 0.666667, 1, -2.95695e-08, 0, 0, 6.82194e-08, 1.67638e-08, -7.45058e-09, 1, 1, 1, 1 )
+tracks/2/type = "transform"
+tracks/2/path = NodePath("Armature/Skeleton:arm_1_l")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/keys = PoolRealArray( 0, 1, 0, 0, 0, -1.41561e-07, -1.11758e-08, -2.23517e-07, 1, 1, 1, 1, 0.0166667, 1, 0, 0, 0, 0.0109028, 0.00853876, -0.00905603, 0.999863, 1, 1, 1, 0.0333333, 1, 0, 0, 0, 0.0420067, 0.0328983, -0.0348908, 0.997966, 1, 1, 1, 0.05, 1, 0, 0, 0, 0.0914318, 0.0716064, -0.0759432, 0.990326, 1, 1, 1, 0.0666667, 1, 0, 0, 0, 0.15662, 0.12266, -0.130088, 0.97134, 1, 1, 1, 0.0833333, 1, 0, 0, 0, 0.232743, 0.182277, -0.193316, 0.93554, 1, 1, 1, 0.1, 1, 0, 0, 0, 0.312188, 0.244495, -0.259303, 0.880638, 1, 1, 1, 0.116667, 1, 0, 0, 0, 0.386189, 0.302451, -0.320768, 0.810241, 1, 1, 1, 0.133333, 1, 0, 0, 0, 0.447902, 0.350782, -0.372027, 0.733439, 1, 1, 1, 0.15, 1, 0, 0, 0, 0.494347, 0.387157, -0.410604, 0.661162, 1, 1, 1, 0.166667, 1, 0, 0, 0, 0.525847, 0.411826, -0.436768, 0.602593, 1, 1, 1, 0.183333, 1, 0, 0, 0, 0.544066, 0.426095, -0.4519, 0.564111, 1, 1, 1, 0.2, 1, 0, 0, 0, 0.550161, 0.430868, -0.456963, 0.550328, 1, 1, 1, 0.366667, 1, 0, 0, 0, 0.550161, 0.430868, -0.456963, 0.550328, 1, 1, 1, 0.383333, 1, 0, 0, 0, 0.552589, 0.431483, -0.447111, 0.555481, 1, 1, 1, 0.4, 1, 0, 0, 0, 0.558709, 0.432251, -0.419995, 0.569743, 1, 1, 1, 0.416667, 1, 0, 0, 0, 0.566496, 0.43132, -0.379041, 0.591078, 1, 1, 1, 0.433333, 1, 0, 0, 0, 0.573796, 0.426779, -0.328119, 0.617216, 1, 1, 1, 0.45, 1, 0, 0, 0, 0.578689, 0.417024, -0.272105, 0.645886, 1, 1, 1, 0.466667, 1, 0, 0, 0, 0.579866, 0.401086, -0.216886, 0.675164, 1, 1, 1, 0.483334, 1, 0, 0, 0, 0.57683, 0.378759, -0.168831, 0.703779, 1, 1, 1, 0.5, 1, 0, 0, 0, 0.569781, 0.350431, -0.134049, 0.731149, 1, 1, 1, 0.516667, 1, 0, 0, 0, 0.550167, 0.31777, -0.11, 0.764355, 1, 1, 1, 0.533333, 1, 0, 0, 0, 0.510603, 0.281315, -0.0892546, 0.807577, 1, 1, 1, 0.55, 1, 0, 0, 0, 0.452777, 0.240433, -0.0706335, 0.855685, 1, 1, 1, 0.566667, 1, 0, 0, 0, 0.379285, 0.195541, -0.0536337, 0.90279, 1, 1, 1, 0.583333, 1, 0, 0, 0, 0.295113, 0.1485, -0.0382915, 0.943075, 1, 1, 1, 0.6, 1, 0, 0, 0, 0.207906, 0.102519, -0.0249963, 0.97244, 1, 1, 1, 0.616667, 1, 0, 0, 0, 0.126773, 0.0614468, -0.0142367, 0.989924, 1, 1, 1, 0.633333, 1, 0, 0, 0, 0.0604294, 0.0288609, -0.00638128, 0.997735, 1, 1, 1, 0.65, 1, 0, 0, 0, 0.0161238, 0.00760259, -0.00161005, 0.99984, 1, 1, 1, 0.666667, 1, 0, 0, 0, -1.41561e-07, -1.11758e-08, -2.23517e-07, 1, 1, 1, 1 )
+tracks/3/type = "transform"
+tracks/3/path = NodePath("Armature/Skeleton:sword_r")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/keys = PoolRealArray( 0, 1, 0, -1.04308e-07, -5.96046e-08, -7.45058e-08, 9.71481e-09, 1.45378e-10, 1, 1, 1, 1, 0.0166667, 1, 0, 2.98023e-08, -5.96046e-08, -0.000106152, 8.31261e-06, -0.002353, 0.999997, 1, 1, 1, 0.0333333, 1, 0, 7.45058e-08, 1.19209e-07, -0.000399924, 3.12618e-05, -0.00886214, 0.999961, 1, 1, 1, 0.05, 1, 1.19209e-07, -1.49012e-08, -8.9407e-08, -0.000844167, 6.60165e-05, -0.0187042, 0.999825, 1, 1, 1, 0.166667, 1, -2.38419e-07, -2.98023e-08, -2.98023e-08, -0.00500525, 0.000391272, -0.1109, 0.993819, 1, 1, 1, 0.183333, 1, -1.19209e-07, -1.49012e-08, 0, -0.00529773, 0.000414164, -0.117382, 0.993073, 1, 1, 1, 0.2, 1, -1.19209e-07, 0, 0, -0.00540347, 0.000422418, -0.119725, 0.992792, 1, 1, 1, 0.366667, 1, -1.19209e-07, 0, 0, -0.00540366, 0.000422445, -0.119725, 0.992792, 1, 1, 1, 0.383333, 1, 1.19209e-07, 0, 0, -0.0304627, 0.00350976, -0.119974, 0.992303, 1, 1, 1, 0.4, 1, -1.19209e-07, -2.98023e-08, -2.98023e-08, -0.0981172, 0.0118318, -0.120202, 0.987818, 1, 1, 1, 0.416667, 1, -1.19209e-07, 0, 0, -0.196281, 0.0238796, -0.11939, 0.972959, 1, 1, 1, 0.433333, 1, 0, -4.47035e-08, -2.98023e-08, -0.309002, 0.0376673, -0.116688, 0.943124, 1, 1, 1, 0.45, 1, 0, -1.49012e-08, -8.9407e-08, -0.417457, 0.0508578, -0.112025, 0.90033, 1, 1, 1, 0.466667, 1, 0, 2.98023e-08, 0, -0.505324, 0.061424, -0.106288, 0.854153, 1, 1, 1, 0.483334, 1, 0, 5.96046e-08, 2.98023e-08, -0.562523, 0.0681041, -0.100865, 0.817775, 1, 1, 1, 0.5, 1, 0, -2.98023e-08, -2.98023e-08, -0.583128, 0.0701355, -0.0970318, 0.803509, 1, 1, 1, 0.516667, 1, 0, 4.47035e-08, -8.9407e-08, -0.569977, 0.0680716, -0.0926071, 0.813583, 1, 1, 1, 0.533333, 1, -1.19209e-07, 2.98023e-08, 0, -0.53245, 0.063268, -0.0850176, 0.839802, 1, 1, 1, 0.55, 1, 0, -2.98023e-08, -2.98023e-08, -0.473243, 0.0560183, -0.0745692, 0.875981, 1, 1, 1, 0.583333, 1, -1.19209e-07, -2.98023e-08, -2.98023e-08, -0.306899, 0.0361332, -0.0474551, 0.949871, 1, 1, 1, 0.616667, 1, 0, 1.63913e-07, 5.96046e-08, -0.130237, 0.0152786, -0.0198827, 0.991166, 1, 1, 1, 0.633333, 1, 1.19209e-07, 1.04308e-07, 5.96046e-08, -0.0617142, 0.00722988, -0.00937509, 0.998024, 1, 1, 1, 0.65, 1, 5.96046e-08, 1.04308e-07, 5.96046e-08, -0.0163945, 0.00191835, -0.00247991, 0.999861, 1, 1, 1, 0.666667, 1, 0, -1.04308e-07, -5.96046e-08, -2.98023e-08, 9.71483e-09, 1.45384e-10, 1, 1, 1, 1 )
+tracks/4/type = "transform"
+tracks/4/path = NodePath("Armature/Skeleton:arm_2_r")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, -1.11759e-08, -1.49012e-08, 4.47035e-08, 1, 1, 1, 1, 0.0166667, 1, -6.70552e-08, -1.49012e-08, -1.78814e-07, -0.00069172, -0.00250465, -0.003521, 0.999991, 1, 1, 1, 0.0333333, 1, -1.19209e-07, 5.96046e-08, 2.98023e-08, -0.00260692, -0.00944138, -0.0132726, 0.999864, 1, 1, 1, 0.05, 1, 8.9407e-08, -2.98023e-08, 8.9407e-08, -0.00550775, -0.019949, -0.0280442, 0.999393, 1, 1, 1, 0.166667, 1, -1.11759e-07, 4.47035e-08, 0, -0.0326169, -0.118136, -0.166075, 0.978468, 1, 1, 1, 0.183333, 1, -2.01166e-07, 1.19209e-07, -5.96046e-08, -0.0344924, -0.12493, -0.175625, 0.975889, 1, 1, 1, 0.2, 1, -2.01166e-07, 7.45058e-08, -8.9407e-08, -0.0351686, -0.127378, -0.179068, 0.974922, 1, 1, 1, 0.366667, 1, -2.01166e-07, 7.45058e-08, -8.9407e-08, -0.0351688, -0.127378, -0.179068, 0.974922, 1, 1, 1, 0.383333, 1, 1.04308e-07, -4.47035e-08, 2.98023e-08, -0.0676359, -0.120997, -0.18365, 0.973169, 1, 1, 1, 0.4, 1, 8.9407e-08, -2.98023e-08, 8.9407e-08, -0.157218, -0.102677, -0.195182, 0.962623, 1, 1, 1, 0.416667, 1, 1.49012e-08, 2.98023e-08, 0, -0.290435, -0.0733805, -0.209253, 0.930847, 1, 1, 1, 0.433333, 1, -8.19564e-08, 0, -1.19209e-07, -0.443298, -0.0364241, -0.220354, 0.868104, 1, 1, 1, 0.45, 1, 3.72529e-08, -1.49012e-08, -8.9407e-08, -0.583568, 0.00119377, -0.224594, 0.780387, 1, 1, 1, 0.466667, 1, 1.04308e-07, -4.47035e-08, 2.98023e-08, -0.687551, 0.0318196, -0.222414, 0.690502, 1, 1, 1, 0.483334, 1, 0, 0, 0, -0.749098, 0.0507373, -0.217298, 0.623746, 1, 1, 1, 0.5, 1, 1.49012e-08, -1.49012e-08, -2.98023e-08, -0.770441, 0.0556521, -0.212587, 0.59844, 1, 1, 1, 0.516667, 1, 1.11759e-07, -7.45058e-08, 0, -0.758092, 0.0523432, -0.205794, 0.616609, 1, 1, 1, 0.533333, 1, -1.19209e-07, 5.96046e-08, 2.98023e-08, -0.719109, 0.0480178, -0.192924, 0.66585, 1, 1, 1, 0.55, 1, -9.68575e-08, 2.98023e-08, -2.98023e-08, -0.651444, 0.0423912, -0.173218, 0.737441, 1, 1, 1, 0.566667, 1, 0, 0, 0, -0.553952, 0.0353151, -0.14627, 0.818838, 1, 1, 1, 0.583333, 1, 7.45058e-09, -1.49012e-08, 0, -0.432206, 0.0270971, -0.113484, 0.894195, 1, 1, 1, 0.6, 1, 0, 0, 0, -0.301036, 0.0186134, -0.0786782, 0.950179, 1, 1, 1, 0.616667, 1, -9.68575e-08, 1.49012e-08, -5.96046e-08, -0.179646, 0.0109785, -0.0467711, 0.982558, 1, 1, 1, 0.633333, 1, 0, 0, 0, -0.0836051, 0.00505844, -0.0216954, 0.99625, 1, 1, 1, 0.65, 1, -6.70552e-08, -1.49012e-08, -1.78814e-07, -0.0218952, 0.00131337, -0.00566573, 0.999743, 1, 1, 1, 0.666667, 1, 0, 0, 0, -1.11759e-08, -1.49012e-08, 4.47035e-08, 1, 1, 1, 1 )
+tracks/5/type = "transform"
+tracks/5/path = NodePath("Armature/Skeleton:arm_1_r")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/keys = PoolRealArray( 0, 1, 0, 0, 0, -9.31321e-09, 8.19564e-08, -2.38419e-07, 1, 1, 1, 1, 0.0166667, 1, 0, 0, 0, 0.00749577, -0.00717311, 0.0122288, 0.999871, 1, 1, 1, 0.0333333, 1, 0, 0, 0, 0.0288494, -0.0276064, 0.0470639, 0.998093, 1, 1, 1, 0.05, 1, 0, 0, 0, 0.0627028, -0.0600017, 0.102292, 0.990961, 1, 1, 1, 0.0666667, 1, 0, 0, 0, 0.107269, -0.102648, 0.174997, 0.97331, 1, 1, 1, 0.0833333, 1, 0, 0, 0, 0.159321, -0.152457, 0.259912, 0.940117, 1, 1, 1, 0.1, 1, 0, 0, 0, 0.213856, -0.204643, 0.348879, 0.889196, 1, 1, 1, 0.116667, 1, 0, 0, 0, 0.265085, -0.253666, 0.432454, 0.823631, 1, 1, 1, 0.133333, 1, 0, 0, 0, 0.308337, -0.295054, 0.503015, 0.751563, 1, 1, 1, 0.15, 1, 0, 0, 0, 0.341354, -0.326649, 0.556878, 0.683128, 1, 1, 1, 0.166667, 1, 0, 0, 0, 0.364053, -0.34837, 0.593908, 0.627198, 1, 1, 1, 0.183333, 1, 0, 0, 0, 0.377324, -0.361069, 0.615557, 0.590208, 1, 1, 1, 0.2, 1, 0, 0, 0, 0.38179, -0.365343, 0.622844, 0.576911, 1, 1, 1, 0.366667, 1, 0, 0, 0, 0.38179, -0.365343, 0.622844, 0.576911, 1, 1, 1, 0.383333, 1, 0, 0, 0, 0.38725, -0.361901, 0.617657, 0.581003, 1, 1, 1, 0.4, 1, 0, 0, 0, 0.401553, -0.352109, 0.602863, 0.592732, 1, 1, 1, 0.416667, 1, 0, 0, 0, 0.421446, -0.336622, 0.579364, 0.61107, 1, 1, 1, 0.433333, 1, 0, 0, 0, 0.443557, -0.316068, 0.548007, 0.63486, 1, 1, 1, 0.45, 1, 0, 0, 0, 0.464509, -0.291183, 0.50982, 0.662969, 1, 1, 1, 0.466667, 1, 0, 0, 0, 0.481045, -0.262879, 0.466114, 0.694426, 1, 1, 1, 0.483334, 1, 0, 0, 0, 0.490141, -0.232204, 0.418449, 0.728521, 1, 1, 1, 0.5, 1, 0, 0, 0, 0.489012, -0.200266, 0.36849, 0.764838, 1, 1, 1, 0.516667, 1, 0, 0, 0, 0.47131, -0.169245, 0.318477, 0.804858, 1, 1, 1, 0.533333, 1, 0, 0, 0, 0.434396, -0.140057, 0.268953, 0.848144, 1, 1, 1, 0.55, 1, 0, 0, 0, 0.381196, -0.112279, 0.219623, 0.890982, 1, 1, 1, 0.566667, 1, 0, 0, 0, 0.315567, -0.0860382, 0.17115, 0.929367, 1, 1, 1, 0.6, 1, 0, 0, 0, 0.169694, -0.0408022, 0.0836045, 0.981096, 1, 1, 1, 0.616667, 1, 0, 0, 0, 0.102959, -0.0235016, 0.0487905, 0.99321, 1, 1, 1, 0.633333, 1, 0, 0, 0, 0.0489642, -0.0106697, 0.0224211, 0.998492, 1, 1, 1, 0.65, 1, 0, 0, 0, 0.0130509, -0.00272751, 0.00579651, 0.999894, 1, 1, 1, 0.666667, 1, 0, 0, 0, -9.31321e-09, 8.19564e-08, -2.38419e-07, 1, 1, 1, 1 )
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.45 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "MarkWaveCallback"
+} ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.666667
 loop = true
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Armature/Skeleton:leg_2_l")
@@ -554,7 +615,7 @@ tracks/6/imported = true
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 length = 0.666667
 loop = true
 tracks/0/type = "transform"
@@ -607,7 +668,7 @@ tracks/6/imported = true
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=18]
 length = 0.666667
 loop = true
 tracks/0/type = "transform"
@@ -660,7 +721,7 @@ tracks/6/imported = true
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=19]
 length = 0.666667
 loop = true
 tracks/0/type = "transform"
@@ -713,7 +774,7 @@ tracks/6/imported = true
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=20]
 length = 0.666667
 loop = true
 tracks/0/type = "transform"
@@ -766,7 +827,7 @@ tracks/6/imported = true
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=21]
 length = 0.666667
 loop = true
 tracks/0/type = "transform"
@@ -819,7 +880,7 @@ tracks/6/imported = true
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=22]
 length = 0.666667
 loop = true
 tracks/0/type = "transform"
@@ -872,7 +933,7 @@ tracks/6/imported = true
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=23]
 length = 0.666667
 loop = true
 tracks/0/type = "transform"
@@ -925,7 +986,53 @@ tracks/6/imported = true
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=24]
+length = 0.666667
+step = 0.0166667
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Armature/Skeleton:sword_l")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -2.88128e-08, -7.567e-09, -5.96046e-08, -1.42109e-14, 8.88178e-15, 1.26218e-28, 1, 1, 1, 1, 0.0166667, 1, -3.01516e-08, 1.15368e-07, 0, -0.000458925, -0.000127818, 0.000477986, 1, 1, 1, 1, 0.0333333, 1, 0, 0, -5.96046e-08, -0.0018052, -0.000502804, 0.00188018, 0.999996, 1, 1, 1, 0.05, 1, -3.01516e-08, 1.15368e-07, -5.96046e-08, -0.00399393, -0.00111245, 0.00416002, 0.999983, 1, 1, 1, 0.0666667, 1, 0, 0, 5.96046e-08, -0.00698143, -0.00194455, 0.00727159, 0.999947, 1, 1, 1, 0.1, 1, -6.03031e-08, 2.30619e-07, 0, -0.0151788, -0.00422778, 0.0158098, 0.999751, 1, 1, 1, 0.35, 1, 1.50758e-08, -5.76256e-08, 1.19209e-07, -0.136126, -0.0379156, 0.141784, 0.97976, 1, 1, 1, 0.666667, 1, -5.76256e-08, -1.50176e-08, 0, -0.248867, -0.0693175, 0.259211, 0.930629, 1, 1, 1 )
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Armature/Skeleton:arm_2_l")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray( 0, 1, -2.95695e-08, 0, 0, 6.82194e-08, 1.67638e-08, -7.45058e-09, 1, 1, 1, 1, 0.0166667, 1, 7.10133e-09, -5.96046e-08, 0, 0.000195518, -6.71783e-05, -0.000595888, 1, 1, 1, 1, 0.0333333, 1, 3.69619e-08, -2.98023e-08, -8.9407e-08, 0.000769356, -0.00026452, -0.00234394, 0.999997, 1, 1, 1, 0.05, 1, 2.98605e-08, 2.98023e-08, -8.9407e-08, 0.00170212, -0.000585288, -0.00518552, 0.999985, 1, 1, 1, 0.0666667, 1, 0, 0, 0, 0.0029749, -0.00102303, -0.00906317, 0.999954, 1, 1, 1, 0.1, 1, -2.21771e-08, -2.98023e-08, -8.9407e-08, 0.00646626, -0.00222361, -0.0196995, 0.999783, 1, 1, 1, 0.366667, 1, -7.10133e-09, 5.96046e-08, 0, 0.0618848, -0.0212819, -0.188532, 0.979884, 1, 1, 1, 0.65, 1, 2.93367e-08, -2.23517e-08, 1.19209e-07, 0.10589, -0.036415, -0.322592, 0.939891, 1, 1, 1, 0.666667, 1, 1.41445e-08, -1.2666e-07, 2.98023e-08, 0.106073, -0.0364782, -0.323152, 0.939676, 1, 1, 1 )
+tracks/2/type = "transform"
+tracks/2/path = NodePath("Armature/Skeleton:arm_1_l")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/keys = PoolRealArray( 0, 1, 0, 0, 0, -1.41561e-07, -1.11758e-08, -2.23517e-07, 1, 1, 1, 1, 0.0166667, 1, 0, 0, 0, -2.47745e-07, -2.9695e-08, -0.000433073, 1, 1, 1, 1, 0.0333333, 1, 0, 0, 0, -8.19182e-08, 2.24913e-08, -0.00170316, 0.999999, 1, 1, 1, 0.05, 1, 0, 0, 0, -1.30819e-07, -1.14992e-07, -0.00376667, 0.999993, 1, 1, 1, 0.0666667, 1, 0, 0, 0, -1.43372e-07, 8.39427e-09, -0.00658084, 0.999978, 1, 1, 1, 0.1, 1, 0, 0, 0, -1.66717e-07, -6.46795e-08, -0.0142898, 0.999898, 1, 1, 1, 0.5, 1, 0, 0, 0, -3.7615e-08, 1.33074e-07, -0.198884, 0.980023, 1, 1, 1, 0.583333, 1, 0, 0, 0, -6.31055e-08, -8.36678e-09, -0.225012, 0.974356, 1, 1, 1, 0.6, 1, 0, 0, 0, -6.69841e-08, 8.06469e-09, -0.228442, 0.973557, 1, 1, 1, 0.616667, 1, 0, 0, 0, -7.67936e-08, -8.97521e-10, -0.231181, 0.972911, 1, 1, 1, 0.633333, 1, 0, 0, 0, -8.99917e-08, 5.60581e-08, -0.233188, 0.972432, 1, 1, 1, 0.65, 1, 0, 0, 0, -9.70351e-08, 4.25597e-08, -0.234423, 0.972135, 1, 1, 1, 0.666667, 1, 0, 0, 0, -6.41601e-08, 1.15145e-07, -0.234844, 0.972033, 1, 1, 1 )
+tracks/3/type = "transform"
+tracks/3/path = NodePath("Armature/Skeleton:sword_r")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/keys = PoolRealArray( 0, 1, 0, -1.04308e-07, -5.96046e-08, -7.45058e-08, 9.71481e-09, 1.45378e-10, 1, 1, 1, 1, 0.0166667, 1, 0, 1.04308e-07, 5.96046e-08, -0.000161443, 3.0433e-05, -0.000355902, 1, 1, 1, 1, 0.0333333, 1, 5.96046e-08, 1.04308e-07, 5.96046e-08, -0.000634906, 0.000119661, -0.00139964, 0.999999, 1, 1, 1, 0.05, 1, -5.96046e-08, 1.04308e-07, 5.96046e-08, -0.00140412, 0.000264647, -0.00309552, 0.999994, 1, 1, 1, 0.0666667, 1, 0, 1.04308e-07, 5.96046e-08, -0.00245319, 0.000462363, -0.00540801, 0.999982, 1, 1, 1, 0.1, 1, 0, -7.45058e-08, -1.19209e-07, -0.00532618, 0.00100382, -0.0117415, 0.999916, 1, 1, 1, 0.566667, 1, -1.19209e-07, -4.47035e-08, -2.98023e-08, -0.0823474, 0.0155202, -0.181534, 0.979808, 1, 1, 1, 0.6, 1, -5.96046e-08, -5.96046e-08, -1.49012e-07, -0.0851604, 0.0160504, -0.187735, 0.978389, 1, 1, 1, 0.616667, 1, 1.78814e-07, 2.08616e-07, -2.98023e-08, -0.0861865, 0.0162438, -0.189997, 0.977859, 1, 1, 1, 0.633333, 1, 0, -4.47035e-08, 2.68221e-07, -0.0869386, 0.0163855, -0.191655, 0.977467, 1, 1, 1, 0.65, 1, -5.96046e-08, 0, 0, -0.0874013, 0.0164727, -0.192675, 0.977224, 1, 1, 1, 0.666667, 1, 0, -1.04308e-07, -5.96046e-08, -0.0875591, 0.0165025, -0.193023, 0.97714, 1, 1, 1 )
+tracks/4/type = "transform"
+tracks/4/path = NodePath("Armature/Skeleton:arm_2_r")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, -1.11759e-08, -1.49012e-08, 4.47035e-08, 1, 1, 1, 1, 0.0166667, 1, 5.21541e-08, -5.96046e-08, 0, -0.000372667, -5.96158e-08, 2.97801e-08, 1, 1, 1, 1, 0.0333333, 1, -9.68575e-08, 1.49012e-08, -5.96046e-08, -0.00146549, 2.97149e-08, 5.96483e-08, 0.999999, 1, 1, 1, 0.05, 1, -5.21541e-08, 1.49012e-08, -2.98023e-08, -0.0032415, -2.95607e-08, -7.4602e-08, 0.999995, 1, 1, 1, 0.0666667, 1, -1.49012e-08, 1.49012e-08, 5.96046e-08, -0.0056626, -7.49265e-08, 7.40827e-08, 0.999984, 1, 1, 1, 0.1, 1, 3.72529e-08, 0, 8.9407e-08, -0.0122934, -1.46548e-09, 1.192e-07, 0.999925, 1, 1, 1, 0.666667, 1, 5.96046e-08, 8.9407e-08, -2.98023e-08, -0.202123, -1.12122e-07, 1.74657e-07, 0.97936, 1, 1, 1 )
+tracks/5/type = "transform"
+tracks/5/path = NodePath("Armature/Skeleton:arm_1_r")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/keys = PoolRealArray( 0, 1, 0, 0, 0, -9.31321e-09, 8.19564e-08, -2.38419e-07, 1, 1, 1, 1, 0.0166667, 1, 0, 0, 0, -0.000302981, -0.000200015, 0.000996775, 0.999999, 1, 1, 1, 0.0333333, 1, 0, 0, 0, -0.0011918, -0.000787164, 0.00392256, 0.999991, 1, 1, 1, 0.05, 1, 0, 0, 0, -0.00263987, -0.00174332, 0.00868757, 0.999957, 1, 1, 1, 0.0666667, 1, 0, 0, 0, -0.00462013, -0.00305158, 0.0152063, 0.999869, 1, 1, 1, 0.1, 1, 0, 0, 0, -0.0100787, -0.00665748, 0.0331741, 0.999377, 1, 1, 1, 0.266667, 1, 0, 0, 0, -0.060348, -0.0398622, 0.198635, 0.977401, 1, 1, 1, 0.4, 1, 0, 0, 0, -0.111095, -0.0733828, 0.365669, 0.921172, 1, 1, 1, 0.583333, 1, 0, 0, 0, -0.15831, -0.10457, 0.521076, 0.832156, 1, 1, 1, 0.6, 1, 0, 0, 0, -0.160374, -0.105934, 0.527872, 0.82729, 1, 1, 1, 0.616667, 1, 0, 0, 0, -0.162009, -0.107013, 0.533252, 0.823373, 1, 1, 1, 0.633333, 1, 0, 0, 0, -0.163199, -0.107799, 0.537169, 0.820485, 1, 1, 1, 0.65, 1, 0, 0, 0, -0.163927, -0.108281, 0.539567, 0.8187, 1, 1, 1, 0.666667, 1, 0, 0, 0, -0.164175, -0.108444, 0.540383, 0.818091, 1, 1, 1 )
+
+[sub_resource type="Animation" id=25]
 length = 0.666667
 step = 0.0166667
 tracks/0/type = "transform"
@@ -978,7 +1085,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=26]
 length = 0.666667
 step = 0.0166667
 tracks/0/type = "transform"
@@ -1031,225 +1138,319 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="AnimationNodeAdd2" id=25]
+[sub_resource type="Animation" id=27]
+resource_name = "teleport"
+length = 0.333334
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("teleportSphere:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.333333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("teleportSphere:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.333333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.1, 0.1, 0.1 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.333333 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "TeleportCallback"
+} ]
+}
+
+[sub_resource type="AnimationNodeAdd2" id=28]
 filters = [ "Armature/Skeleton:arm_1_l", "Armature/Skeleton:arm_1_r", "Armature/Skeleton:arm_2_l", "Armature/Skeleton:arm_2_r", "Armature/Skeleton:sword_l", "Armature/Skeleton:sword_r" ]
 
-[sub_resource type="AnimationNodeTimeScale" id=26]
-
-[sub_resource type="AnimationNodeAnimation" id=27]
-animation = "attack_1"
-
-[sub_resource type="AnimationNodeAnimation" id=28]
-animation = "attack_1"
-
-[sub_resource type="AnimationNodeAnimation" id=29]
-animation = "attack_2"
+[sub_resource type="AnimationNodeTimeScale" id=29]
 
 [sub_resource type="AnimationNodeAnimation" id=30]
-animation = "attack_2"
+animation = "attack_1"
 
 [sub_resource type="AnimationNodeAnimation" id=31]
-animation = "attack_3"
+animation = "attack_1"
 
 [sub_resource type="AnimationNodeAnimation" id=32]
-animation = "idle_top"
+animation = "attack_2"
 
 [sub_resource type="AnimationNodeAnimation" id=33]
-animation = "idle_top_no_right_sword"
+animation = "attack_2"
 
 [sub_resource type="AnimationNodeAnimation" id=34]
-animation = "idle_top_no_swords"
+animation = "attack_3"
 
 [sub_resource type="AnimationNodeAnimation" id=35]
-animation = "idle_top_no_left_sword"
+animation = "idle_top"
 
 [sub_resource type="AnimationNodeAnimation" id=36]
-animation = "sword_throw_left"
+animation = "idle_top_no_right_sword"
 
-[sub_resource type="AnimationNodeTimeScale" id=37]
+[sub_resource type="AnimationNodeAnimation" id=37]
+animation = "idle_top_no_swords"
 
-[sub_resource type="AnimationNodeBlendTree" id=38]
-graph_offset = Vector2( -910, -34 )
-nodes/Animation/node = SubResource( 36 )
-nodes/Animation/position = Vector2( -400, 120 )
-nodes/TimeScale/node = SubResource( 37 )
-nodes/TimeScale/position = Vector2( -60, 120 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "idle_top_no_left_sword"
 
 [sub_resource type="AnimationNodeAnimation" id=39]
-animation = "sword_throw_right"
+animation = "mark_wave"
 
 [sub_resource type="AnimationNodeTimeScale" id=40]
 
 [sub_resource type="AnimationNodeBlendTree" id=41]
-graph_offset = Vector2( -831, -22 )
+graph_offset = Vector2( -369.182, 0 )
 nodes/Animation/node = SubResource( 39 )
-nodes/Animation/position = Vector2( -320, 120 )
+nodes/Animation/position = Vector2( -230, 120 )
 nodes/TimeScale/node = SubResource( 40 )
-nodes/TimeScale/position = Vector2( 0, 120 )
+nodes/TimeScale/position = Vector2( 20, 110 )
 node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+[sub_resource type="AnimationNodeAnimation" id=42]
+animation = "summon_totem"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=43]
-switch_mode = 2
+[sub_resource type="AnimationNodeTimeScale" id=43]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=44]
-switch_mode = 2
+[sub_resource type="AnimationNodeBlendTree" id=44]
+graph_offset = Vector2( -346, -36 )
+nodes/Animation/node = SubResource( 42 )
+nodes/Animation/position = Vector2( -250, 130 )
+nodes/TimeScale/node = SubResource( 43 )
+nodes/TimeScale/position = Vector2( 50, 120 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=45]
-switch_mode = 2
-auto_advance = true
+[sub_resource type="AnimationNodeAnimation" id=45]
+animation = "sword_throw_left"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=46]
-switch_mode = 2
-auto_advance = true
-priority = 2
+[sub_resource type="AnimationNodeTimeScale" id=46]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=47]
-switch_mode = 2
-auto_advance = true
-priority = 2
+[sub_resource type="AnimationNodeBlendTree" id=47]
+graph_offset = Vector2( -910, -34 )
+nodes/Animation/node = SubResource( 45 )
+nodes/Animation/position = Vector2( -400, 120 )
+nodes/TimeScale/node = SubResource( 46 )
+nodes/TimeScale/position = Vector2( -60, 120 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=48]
+[sub_resource type="AnimationNodeAnimation" id=48]
+animation = "sword_throw_right"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=49]
+[sub_resource type="AnimationNodeTimeScale" id=49]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=50]
+[sub_resource type="AnimationNodeBlendTree" id=50]
+graph_offset = Vector2( -831, -22 )
+nodes/Animation/node = SubResource( 48 )
+nodes/Animation/position = Vector2( -320, 120 )
+nodes/TimeScale/node = SubResource( 49 )
+nodes/TimeScale/position = Vector2( 0, 120 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=51]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=52]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=53]
 switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=54]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=55]
 switch_mode = 2
 auto_advance = true
+priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=56]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=57]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=58]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=59]
 switch_mode = 2
 auto_advance = true
 priority = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=57]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=60]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=61]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=62]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=63]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=64]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=65]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=66]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=67]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=68]
+switch_mode = 2
+auto_advance = true
+priority = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=69]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=70]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id=62]
-states/attack_1/node = SubResource( 27 )
-states/attack_1/position = Vector2( 396, 80 )
-states/attack_1_right_weapon/node = SubResource( 28 )
-states/attack_1_right_weapon/position = Vector2( 953, -352 )
-states/attack_2/node = SubResource( 29 )
-states/attack_2/position = Vector2( 672, 80 )
-states/attack_2_left_weapon/node = SubResource( 30 )
-states/attack_2_left_weapon/position = Vector2( 98, -75 )
-states/attack_3/node = SubResource( 31 )
-states/attack_3/position = Vector2( 943, 80 )
-states/idle_top/node = SubResource( 32 )
-states/idle_top/position = Vector2( 672, -75 )
-states/idle_top_left_weapon/node = SubResource( 33 )
-states/idle_top_left_weapon/position = Vector2( 396, -75 )
-states/idle_top_no_weapons/node = SubResource( 34 )
-states/idle_top_no_weapons/position = Vector2( 220, -192 )
-states/idle_top_right_weapon/node = SubResource( 35 )
-states/idle_top_right_weapon/position = Vector2( 701, -357 )
-states/weapon_throw_left_bt/node = SubResource( 38 )
-states/weapon_throw_left_bt/position = Vector2( 926, -192 )
-states/weapon_throw_right_bt/node = SubResource( 41 )
-states/weapon_throw_right_bt/position = Vector2( 396, -357 )
-transitions = [ "idle_top", "attack_1", SubResource( 42 ), "attack_1", "attack_2", SubResource( 43 ), "attack_2", "attack_3", SubResource( 44 ), "attack_3", "idle_top", SubResource( 45 ), "attack_2", "idle_top", SubResource( 46 ), "attack_1", "idle_top", SubResource( 47 ), "idle_top_no_weapons", "idle_top_right_weapon", SubResource( 48 ), "idle_top_no_weapons", "idle_top_left_weapon", SubResource( 49 ), "idle_top_left_weapon", "idle_top", SubResource( 50 ), "idle_top_right_weapon", "idle_top", SubResource( 51 ), "idle_top_right_weapon", "attack_1_right_weapon", SubResource( 52 ), "attack_1_right_weapon", "idle_top_right_weapon", SubResource( 53 ), "idle_top_left_weapon", "attack_2_left_weapon", SubResource( 54 ), "attack_2_left_weapon", "idle_top_left_weapon", SubResource( 55 ), "idle_top_right_weapon", "weapon_throw_right_bt", SubResource( 56 ), "weapon_throw_right_bt", "idle_top_no_weapons", SubResource( 57 ), "idle_top", "weapon_throw_left_bt", SubResource( 58 ), "weapon_throw_left_bt", "idle_top_right_weapon", SubResource( 59 ), "idle_top_left_weapon", "weapon_throw_left_bt", SubResource( 60 ), "weapon_throw_left_bt", "idle_top_no_weapons", SubResource( 61 ) ]
-start_node = "idle_top"
-graph_offset = Vector2( -169.447, -434.983 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=71]
 
-[sub_resource type="AnimationNodeAnimation" id=63]
+[sub_resource type="AnimationNodeStateMachineTransition" id=72]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=73]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=74]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=75]
+states/attack_1/node = SubResource( 30 )
+states/attack_1/position = Vector2( 515.75, 79.5898 )
+states/attack_1_right_weapon/node = SubResource( 31 )
+states/attack_1_right_weapon/position = Vector2( 953, -352 )
+states/attack_2/node = SubResource( 32 )
+states/attack_2/position = Vector2( 671.25, 80.0859 )
+states/attack_2_left_weapon/node = SubResource( 33 )
+states/attack_2_left_weapon/position = Vector2( 98, -75 )
+states/attack_3/node = SubResource( 34 )
+states/attack_3/position = Vector2( 826.5, 80.0898 )
+states/idle_top/node = SubResource( 35 )
+states/idle_top/position = Vector2( 672, -75 )
+states/idle_top_left_weapon/node = SubResource( 36 )
+states/idle_top_left_weapon/position = Vector2( 396, -75 )
+states/idle_top_no_weapons/node = SubResource( 37 )
+states/idle_top_no_weapons/position = Vector2( 220, -192 )
+states/idle_top_right_weapon/node = SubResource( 38 )
+states/idle_top_right_weapon/position = Vector2( 701, -357 )
+states/mark_wave_bt/node = SubResource( 41 )
+states/mark_wave_bt/position = Vector2( 990.944, 21.3275 )
+states/summon_totem_bt/node = SubResource( 44 )
+states/summon_totem_bt/position = Vector2( 990.944, -110.173 )
+states/weapon_throw_left_bt/node = SubResource( 47 )
+states/weapon_throw_left_bt/position = Vector2( 926, -192 )
+states/weapon_throw_right_bt/node = SubResource( 50 )
+states/weapon_throw_right_bt/position = Vector2( 396, -357 )
+transitions = [ "idle_top", "attack_1", SubResource( 51 ), "attack_1", "attack_2", SubResource( 52 ), "attack_2", "attack_3", SubResource( 53 ), "attack_3", "idle_top", SubResource( 54 ), "attack_2", "idle_top", SubResource( 55 ), "attack_1", "idle_top", SubResource( 56 ), "idle_top_no_weapons", "idle_top_right_weapon", SubResource( 57 ), "idle_top_no_weapons", "idle_top_left_weapon", SubResource( 58 ), "idle_top_left_weapon", "idle_top", SubResource( 59 ), "idle_top_right_weapon", "idle_top", SubResource( 60 ), "idle_top_right_weapon", "attack_1_right_weapon", SubResource( 61 ), "attack_1_right_weapon", "idle_top_right_weapon", SubResource( 62 ), "idle_top_left_weapon", "attack_2_left_weapon", SubResource( 63 ), "attack_2_left_weapon", "idle_top_left_weapon", SubResource( 64 ), "idle_top_right_weapon", "weapon_throw_right_bt", SubResource( 65 ), "weapon_throw_right_bt", "idle_top_no_weapons", SubResource( 66 ), "idle_top", "weapon_throw_left_bt", SubResource( 67 ), "weapon_throw_left_bt", "idle_top_right_weapon", SubResource( 68 ), "idle_top_left_weapon", "weapon_throw_left_bt", SubResource( 69 ), "weapon_throw_left_bt", "idle_top_no_weapons", SubResource( 70 ), "idle_top", "mark_wave_bt", SubResource( 71 ), "mark_wave_bt", "idle_top", SubResource( 72 ), "idle_top", "summon_totem_bt", SubResource( 73 ), "summon_totem_bt", "idle_top", SubResource( 74 ) ]
+start_node = "idle_top"
+graph_offset = Vector2( 155.444, -299.673 )
+
+[sub_resource type="AnimationNodeAnimation" id=76]
 animation = "jump"
 
-[sub_resource type="AnimationNodeOneShot" id=64]
+[sub_resource type="AnimationNodeOneShot" id=77]
 filters = [ ".", "Armature/Skeleton:leg_1_l", "Armature/Skeleton:leg_1_r", "Armature/Skeleton:leg_2_l", "Armature/Skeleton:leg_2_r", "Armature/Skeleton:torso", "Armature/Skeleton:waist" ]
 
-[sub_resource type="AnimationNodeAnimation" id=65]
+[sub_resource type="AnimationNodeAnimation" id=78]
 animation = "running_front"
 
-[sub_resource type="AnimationNodeAnimation" id=66]
+[sub_resource type="AnimationNodeAnimation" id=79]
 animation = "running_left"
 
-[sub_resource type="AnimationNodeAnimation" id=67]
+[sub_resource type="AnimationNodeAnimation" id=80]
 animation = "running_right"
 
-[sub_resource type="AnimationNodeAnimation" id=68]
+[sub_resource type="AnimationNodeAnimation" id=81]
 animation = "running_frontleft"
 
-[sub_resource type="AnimationNodeAnimation" id=69]
+[sub_resource type="AnimationNodeAnimation" id=82]
 animation = "running_frontright"
 
-[sub_resource type="AnimationNodeAnimation" id=70]
+[sub_resource type="AnimationNodeAnimation" id=83]
 animation = "idle_bottom"
 
-[sub_resource type="AnimationNodeAnimation" id=71]
+[sub_resource type="AnimationNodeAnimation" id=84]
 animation = "running_back"
 
-[sub_resource type="AnimationNodeAnimation" id=72]
+[sub_resource type="AnimationNodeAnimation" id=85]
 animation = "running_backleft"
 
-[sub_resource type="AnimationNodeAnimation" id=73]
+[sub_resource type="AnimationNodeAnimation" id=86]
 animation = "running_backright"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=74]
+[sub_resource type="AnimationNodeBlendSpace2D" id=87]
 auto_triangles = false
-blend_point_0/node = SubResource( 65 )
+blend_point_0/node = SubResource( 78 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 66 )
+blend_point_1/node = SubResource( 79 )
 blend_point_1/pos = Vector2( -1, 0 )
-blend_point_2/node = SubResource( 67 )
+blend_point_2/node = SubResource( 80 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 68 )
+blend_point_3/node = SubResource( 81 )
 blend_point_3/pos = Vector2( -1, 1 )
-blend_point_4/node = SubResource( 69 )
+blend_point_4/node = SubResource( 82 )
 blend_point_4/pos = Vector2( 1, 1 )
-blend_point_5/node = SubResource( 70 )
+blend_point_5/node = SubResource( 83 )
 blend_point_5/pos = Vector2( 0, 0 )
-blend_point_6/node = SubResource( 71 )
+blend_point_6/node = SubResource( 84 )
 blend_point_6/pos = Vector2( 0, -1 )
-blend_point_7/node = SubResource( 72 )
+blend_point_7/node = SubResource( 85 )
 blend_point_7/pos = Vector2( -1, -1 )
-blend_point_8/node = SubResource( 73 )
+blend_point_8/node = SubResource( 86 )
 blend_point_8/pos = Vector2( 1, -1 )
 triangles = PoolIntArray( 1, 3, 5, 0, 3, 5, 0, 4, 5, 2, 4, 5, 1, 5, 7, 5, 6, 7, 2, 5, 8, 5, 6, 8 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeBlendTree" id=75]
-graph_offset = Vector2( -160, -130 )
-nodes/Add2/node = SubResource( 25 )
-nodes/Add2/position = Vector2( 620, 20 )
-nodes/TimeScale/node = SubResource( 26 )
-nodes/TimeScale/position = Vector2( 210, 60 )
-nodes/attack_sm/node = SubResource( 62 )
-nodes/attack_sm/position = Vector2( 300, 220 )
-nodes/jump/node = SubResource( 63 )
-nodes/jump/position = Vector2( 20, 70 )
-nodes/jump_os/node = SubResource( 64 )
-nodes/jump_os/position = Vector2( 410, -40 )
-nodes/output/position = Vector2( 860, 120 )
-nodes/run_bs2d/node = SubResource( 74 )
-nodes/run_bs2d/position = Vector2( 180, -100 )
-node_connections = [ "output", 0, "Add2", "TimeScale", 0, "jump", "Add2", 0, "jump_os", "Add2", 1, "attack_sm", "jump_os", 0, "run_bs2d", "jump_os", 1, "TimeScale" ]
+[sub_resource type="AnimationNodeAnimation" id=88]
+animation = "teleport"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=76]
+[sub_resource type="AnimationNodeOneShot" id=89]
+
+[sub_resource type="AnimationNodeBlendTree" id=90]
+graph_offset = Vector2( -398, -157.39 )
+nodes/Add2/node = SubResource( 28 )
+nodes/Add2/position = Vector2( 460, 0 )
+nodes/TimeScale/node = SubResource( 29 )
+nodes/TimeScale/position = Vector2( 40, 0 )
+nodes/attack_sm/node = SubResource( 75 )
+nodes/attack_sm/position = Vector2( 140, 160 )
+nodes/jump/node = SubResource( 76 )
+nodes/jump/position = Vector2( -140, 0 )
+nodes/jump_os/node = SubResource( 77 )
+nodes/jump_os/position = Vector2( 240, -100 )
+nodes/output/position = Vector2( 860, 120 )
+nodes/run_bs2d/node = SubResource( 87 )
+nodes/run_bs2d/position = Vector2( 20, -160 )
+nodes/teleport/node = SubResource( 88 )
+nodes/teleport/position = Vector2( 420, 240 )
+nodes/teleport_os/node = SubResource( 89 )
+nodes/teleport_os/position = Vector2( 660, 60 )
+node_connections = [ "output", 0, "teleport_os", "TimeScale", 0, "jump", "Add2", 0, "jump_os", "Add2", 1, "attack_sm", "jump_os", 0, "run_bs2d", "jump_os", 1, "TimeScale", "teleport_os", 0, "Add2", "teleport_os", 1, "teleport" ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=91]
 
 [node name="MeleeCarry1" type="KinematicBody"]
 collision_layer = 2
@@ -1270,14 +1471,14 @@ transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 1.68
 keep_aspect = 0
 current = true
 fov = 100.0
+far = 1000.0
 
 [node name="TargetingRaycast" type="RayCast" parent="Camera"]
 visible = false
 enabled = true
 cast_to = Vector3( 0, 0, -100 )
-collision_mask = 16
+collision_mask = 24
 collide_with_areas = true
-collide_with_bodies = false
 
 [node name="Armature" type="Spatial" parent="."]
 transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, -0.117602, 0 )
@@ -1366,6 +1567,10 @@ visible = false
 transform = Transform( -0.938974, -0.297471, -0.17274, -0.0809943, 0.679239, -0.729434, 0.334318, -0.670929, -0.661881, 0.238, -0.050225, -0.966 )
 visible = false
 
+[node name="MarkWaveSpawnPoint" type="Position3D" parent="Armature/Skeleton/headAttachment"]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -2.26947e-07, 0.134775, -1.503 )
+visible = false
+
 [node name="Body" type="MeshInstance" parent="Armature/Skeleton"]
 mesh = SubResource( 3 )
 skin = SubResource( 4 )
@@ -1381,6 +1586,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236104, -0.771078 )
 shape = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_process_mode = 0
 anims/attack_1 = SubResource( 6 )
 anims/attack_2 = SubResource( 7 )
 anims/attack_3 = SubResource( 8 )
@@ -1390,31 +1596,40 @@ anims/idle_top_no_left_sword = SubResource( 11 )
 anims/idle_top_no_right_sword = SubResource( 12 )
 anims/idle_top_no_swords = SubResource( 13 )
 anims/jump = SubResource( 14 )
-anims/running_back = SubResource( 15 )
-anims/running_backleft = SubResource( 16 )
-anims/running_backright = SubResource( 17 )
-anims/running_front = SubResource( 18 )
-anims/running_frontleft = SubResource( 19 )
-anims/running_frontright = SubResource( 20 )
-anims/running_left = SubResource( 21 )
-anims/running_right = SubResource( 22 )
-anims/sword_throw_left = SubResource( 23 )
-anims/sword_throw_right = SubResource( 24 )
+anims/mark_wave = SubResource( 15 )
+anims/running_back = SubResource( 16 )
+anims/running_backleft = SubResource( 17 )
+anims/running_backright = SubResource( 18 )
+anims/running_front = SubResource( 19 )
+anims/running_frontleft = SubResource( 20 )
+anims/running_frontright = SubResource( 21 )
+anims/running_left = SubResource( 22 )
+anims/running_right = SubResource( 23 )
+anims/summon_totem = SubResource( 24 )
+anims/sword_throw_left = SubResource( 25 )
+anims/sword_throw_right = SubResource( 26 )
+anims/teleport = SubResource( 27 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 75 )
+tree_root = SubResource( 90 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 process_mode = 0
 parameters/Add2/add_amount = 1.0
 parameters/TimeScale/scale = 2.5
-parameters/attack_sm/playback = SubResource( 76 )
+parameters/attack_sm/playback = SubResource( 91 )
+parameters/attack_sm/mark_wave_bt/TimeScale/scale = 0.66
+parameters/attack_sm/summon_totem_bt/TimeScale/scale = 0.25
 parameters/attack_sm/weapon_throw_left_bt/TimeScale/scale = 1.25
 parameters/attack_sm/weapon_throw_right_bt/TimeScale/scale = 1.25
 parameters/jump_os/active = false
 parameters/run_bs2d/blend_position = Vector2( 0, 0 )
+parameters/teleport_os/active = false
 
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="PlayerHUD" parent="." instance=ExtResource( 3 )]
+
+[node name="teleportSphere" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.848632, 0 )
+visible = false

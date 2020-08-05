@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
+[ext_resource path="res://MeleeCarry1/SigilOfTeleportation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MeleeCarry1/MeleeCarry1_material.material" type="Material" id=2]
 [ext_resource path="res://MeleeCarry1/MeleeCarry1Weapon.cs" type="Script" id=3]
 
@@ -136,3 +137,6 @@ material/0 = null
 [node name="PenetrationPoint" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.531664, 0 )
 visible = false
+
+[node name="SigilOfTeleportation" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.303086, -0.104582, 0.140363, -0.175, 0.175, -0.247487, 0.00376868, -0.284496, -0.203834, 0, -0.0780097, 0 )

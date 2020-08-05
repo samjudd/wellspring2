@@ -53,9 +53,12 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MeleeCarry1\MarkWave.cs" />
     <Compile Include="MeleeCarry1\MeleeCarry1Weapon.cs" />
+    <Compile Include="MeleeCarry1\SigilOfTeleportation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MeleeCarry1\MeleeCarry1.cs" />
+    <Compile Include="scripts\Enemy.cs" />
     <Compile Include="scripts\Player.cs" />
   </ItemGroup>
   <ItemGroup>
