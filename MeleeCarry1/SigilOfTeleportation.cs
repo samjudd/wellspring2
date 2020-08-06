@@ -12,7 +12,8 @@ public class SigilOfTeleportation : Spatial
   {
     _sigilTimer = GetNode<Timer>("SigilTimer");
     _sigilTimer.Connect("timeout", this, "Timeout");
-    _sigilTimer.Start(_sigilTime);
+    if (_sigilTime > 0.0f)
+      _sigilTimer.Start(_sigilTime);
   }
 
   private void Timeout()

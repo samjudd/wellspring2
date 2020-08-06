@@ -4,6 +4,7 @@ public class MeleeCarry1 : Player
 {
   private PackedScene _weaponPS;
   private PackedScene _markWavePS;
+  private PackedScene _totemPS;
   private Position3D _leftSwordSpawn;
   private Position3D _rightSwordSpawn;
   private Position3D _waveSpawn;
@@ -14,23 +15,28 @@ public class MeleeCarry1 : Player
   private RayCast _targetingRaycast;
   private MeleeCarry1Weapon _teleportWeapon;
   private Enemy _teleportEnemy;
+  private TeleportationTotem _teleportTotem;
 
   public override void _Ready()
   {
     base._Ready();
+    // get references to scene components to be used
     _attackSM = (AnimationNodeStateMachinePlayback)_animationTree.Get("parameters/attack_sm/playback");
     _attackTimer = GetNode<Timer>("AttackTimer");
+    _targetingRaycast = GetNode<RayCast>("Camera/TargetingRaycast");
+
     // load packed scenes 
     _weaponPS = (PackedScene)ResourceLoader.Load("res://MeleeCarry1/MeleeCarry1_weapon.tscn");
     _markWavePS = (PackedScene)ResourceLoader.Load("res://MeleeCarry1/MarkWave.tscn");
+    _totemPS = (PackedScene)ResourceLoader.Load("res://MeleeCarry1/TeleportationTotem.tscn");
+
     // get spawn positions
     _leftSwordSpawn = GetNode<Position3D>("Armature/Skeleton/headAttachment/LeftSwordSpawnPoint");
     _rightSwordSpawn = GetNode<Position3D>("Armature/Skeleton/headAttachment/RightSwordSpawnPoint");
     _waveSpawn = GetNode<Position3D>("Armature/Skeleton/headAttachment/MarkWaveSpawnPoint");
+
     // connect interaction area to body for sword pickup
     GetNode<Area>("InteractionArea").Connect("area_entered", this, "InteractionCallback");
-    // get reference to targeting raycast for teleporting
-    _targetingRaycast = GetNode<RayCast>("Camera/TargetingRaycast");
   }
 
   protected override void ProcessInput(float delta)
@@ -71,13 +77,11 @@ public class MeleeCarry1 : Player
       if (_targetingRaycast.GetCollider() is CollisionObject collidedWith && (collidedWith.HasNode("SigilOfTeleportation") || collidedWith.GetParent().HasNode("SigilOfTeleportation")))
       {
         if (collidedWith.GetParent() is MeleeCarry1Weapon weapon)
-        {
           TeleportWeapon(weapon);
-        }
         else if (collidedWith is Enemy enemy)
-        {
           TeleportEnemy(enemy);
-        }
+        else if (collidedWith is TeleportationTotem totem)
+          TeleportTotem(totem);
       }
       else if (currentNode == "idle_top" || currentNode == "idle_top_left_weapon")
         _attackSM.Travel("weapon_throw_left_bt");
@@ -94,7 +98,7 @@ public class MeleeCarry1 : Player
     //  ---------------------- Summon Totem ----------------------
     else if (Input.IsActionJustPressed("ability_2") && currentNode == "idle_top")
     {
-      _attackSM.Travel("summon_totem_bt");
+      SummonTotem();
     }
   }
 
@@ -108,6 +112,26 @@ public class MeleeCarry1 : Player
   {
     _animationTree.Set("parameters/teleport_os/active", true);
     _teleportEnemy = enemy;
+  }
+
+  private void TeleportTotem(TeleportationTotem totem)
+  {
+    _animationTree.Set("parameters/teleport_os/active", true);
+    _teleportTotem = totem;
+  }
+
+  private void SummonTotem()
+  {
+    // if the raycast is colliding and the collider it is colliding with is the ground summon totem
+    if (_targetingRaycast.IsColliding() && ((PhysicsBody)_targetingRaycast.GetCollider()).GetCollisionLayerBit((int)Util.CollisionLayers.GROUND))
+    {
+      TeleportationTotem summonTotem = (TeleportationTotem)_totemPS.Instance();
+      GetTree().Root.AddChild(summonTotem);
+      Transform placeholder = summonTotem.GlobalTransform;
+      placeholder.origin = _targetingRaycast.GetCollisionPoint();
+      summonTotem.GlobalTransform = placeholder;
+      _attackSM.Travel("summon_totem_bt");
+    }
   }
 
   private void TeleportCallback()
@@ -130,6 +154,12 @@ public class MeleeCarry1 : Player
       _teleportEnemy = null;
       GlobalTransform = placeholder;
       RotationDegrees = new Vector3(0.0f, RotationDegrees.y + 180.0f, 0.0f);
+    }
+    else if (_teleportTotem != null)
+    {
+      placeholder.origin = _teleportTotem.GetTeleportLocation();
+      _teleportTotem = null;
+      GlobalTransform = placeholder;
     }
   }
 

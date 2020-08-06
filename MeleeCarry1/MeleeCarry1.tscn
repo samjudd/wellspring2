@@ -1224,7 +1224,7 @@ nodes/Animation/node = SubResource( 39 )
 nodes/Animation/position = Vector2( -230, 120 )
 nodes/TimeScale/node = SubResource( 40 )
 nodes/TimeScale/position = Vector2( 20, 110 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeAnimation" id=42]
 animation = "summon_totem"
@@ -1237,7 +1237,7 @@ nodes/Animation/node = SubResource( 42 )
 nodes/Animation/position = Vector2( -250, 130 )
 nodes/TimeScale/node = SubResource( 43 )
 nodes/TimeScale/position = Vector2( 50, 120 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeAnimation" id=45]
 animation = "sword_throw_left"
@@ -1250,7 +1250,7 @@ nodes/Animation/node = SubResource( 45 )
 nodes/Animation/position = Vector2( -400, 120 )
 nodes/TimeScale/node = SubResource( 46 )
 nodes/TimeScale/position = Vector2( -60, 120 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeAnimation" id=48]
 animation = "sword_throw_right"
@@ -1263,7 +1263,7 @@ nodes/Animation/node = SubResource( 48 )
 nodes/Animation/position = Vector2( -320, 120 )
 nodes/TimeScale/node = SubResource( 49 )
 nodes/TimeScale/position = Vector2( 0, 120 )
-node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=51]
 
@@ -1357,7 +1357,7 @@ states/idle_top_no_weapons/position = Vector2( 220, -192 )
 states/idle_top_right_weapon/node = SubResource( 38 )
 states/idle_top_right_weapon/position = Vector2( 701, -357 )
 states/mark_wave_bt/node = SubResource( 41 )
-states/mark_wave_bt/position = Vector2( 990.944, 21.3275 )
+states/mark_wave_bt/position = Vector2( 990.944, 8.3275 )
 states/summon_totem_bt/node = SubResource( 44 )
 states/summon_totem_bt/position = Vector2( 990.944, -110.173 )
 states/weapon_throw_left_bt/node = SubResource( 47 )
@@ -1366,7 +1366,7 @@ states/weapon_throw_right_bt/node = SubResource( 50 )
 states/weapon_throw_right_bt/position = Vector2( 396, -357 )
 transitions = [ "idle_top", "attack_1", SubResource( 51 ), "attack_1", "attack_2", SubResource( 52 ), "attack_2", "attack_3", SubResource( 53 ), "attack_3", "idle_top", SubResource( 54 ), "attack_2", "idle_top", SubResource( 55 ), "attack_1", "idle_top", SubResource( 56 ), "idle_top_no_weapons", "idle_top_right_weapon", SubResource( 57 ), "idle_top_no_weapons", "idle_top_left_weapon", SubResource( 58 ), "idle_top_left_weapon", "idle_top", SubResource( 59 ), "idle_top_right_weapon", "idle_top", SubResource( 60 ), "idle_top_right_weapon", "attack_1_right_weapon", SubResource( 61 ), "attack_1_right_weapon", "idle_top_right_weapon", SubResource( 62 ), "idle_top_left_weapon", "attack_2_left_weapon", SubResource( 63 ), "attack_2_left_weapon", "idle_top_left_weapon", SubResource( 64 ), "idle_top_right_weapon", "weapon_throw_right_bt", SubResource( 65 ), "weapon_throw_right_bt", "idle_top_no_weapons", SubResource( 66 ), "idle_top", "weapon_throw_left_bt", SubResource( 67 ), "weapon_throw_left_bt", "idle_top_right_weapon", SubResource( 68 ), "idle_top_left_weapon", "weapon_throw_left_bt", SubResource( 69 ), "weapon_throw_left_bt", "idle_top_no_weapons", SubResource( 70 ), "idle_top", "mark_wave_bt", SubResource( 71 ), "mark_wave_bt", "idle_top", SubResource( 72 ), "idle_top", "summon_totem_bt", SubResource( 73 ), "summon_totem_bt", "idle_top", SubResource( 74 ) ]
 start_node = "idle_top"
-graph_offset = Vector2( 155.444, -299.673 )
+graph_offset = Vector2( -141.556, -519.673 )
 
 [sub_resource type="AnimationNodeAnimation" id=76]
 animation = "jump"
@@ -1430,13 +1430,13 @@ animation = "teleport"
 [sub_resource type="AnimationNodeOneShot" id=89]
 
 [sub_resource type="AnimationNodeBlendTree" id=90]
-graph_offset = Vector2( -398, -157.39 )
+graph_offset = Vector2( -422, -267 )
 nodes/Add2/node = SubResource( 28 )
 nodes/Add2/position = Vector2( 460, 0 )
 nodes/TimeScale/node = SubResource( 29 )
 nodes/TimeScale/position = Vector2( 40, 0 )
 nodes/attack_sm/node = SubResource( 75 )
-nodes/attack_sm/position = Vector2( 140, 160 )
+nodes/attack_sm/position = Vector2( 180, 140 )
 nodes/jump/node = SubResource( 76 )
 nodes/jump/position = Vector2( -140, 0 )
 nodes/jump_os/node = SubResource( 77 )
@@ -1445,16 +1445,16 @@ nodes/output/position = Vector2( 860, 120 )
 nodes/run_bs2d/node = SubResource( 87 )
 nodes/run_bs2d/position = Vector2( 20, -160 )
 nodes/teleport/node = SubResource( 88 )
-nodes/teleport/position = Vector2( 420, 240 )
+nodes/teleport/position = Vector2( 460, 200 )
 nodes/teleport_os/node = SubResource( 89 )
 nodes/teleport_os/position = Vector2( 660, 60 )
-node_connections = [ "output", 0, "teleport_os", "TimeScale", 0, "jump", "Add2", 0, "jump_os", "Add2", 1, "attack_sm", "jump_os", 0, "run_bs2d", "jump_os", 1, "TimeScale", "teleport_os", 0, "Add2", "teleport_os", 1, "teleport" ]
+node_connections = [ "TimeScale", 0, "jump", "Add2", 0, "jump_os", "Add2", 1, "attack_sm", "jump_os", 0, "run_bs2d", "jump_os", 1, "TimeScale", "teleport_os", 0, "Add2", "teleport_os", 1, "teleport", "output", 0, "teleport_os" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=91]
 
 [node name="MeleeCarry1" type="KinematicBody"]
 collision_layer = 2
-collision_mask = 157
+collision_mask = 413
 script = ExtResource( 1 )
 
 [node name="BodyCollisionShape" type="CollisionShape" parent="."]
@@ -1477,7 +1477,7 @@ far = 1000.0
 visible = false
 enabled = true
 cast_to = Vector3( 0, 0, -100 )
-collision_mask = 24
+collision_mask = 281
 collide_with_areas = true
 
 [node name="Armature" type="Spatial" parent="."]

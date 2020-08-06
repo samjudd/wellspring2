@@ -56,7 +56,7 @@ public class MeleeCarry1Weapon : KinematicBody
     _processMovement = false;
 
     // need to rotate weapon so +y axis is parallel to velocity and move it into body to be "stuck in"
-    GlobalTransform = Normal2Basis(GlobalTransform, _velocity.Normalized());
+    GlobalTransform = Util.Normal2Basis(GlobalTransform, _velocity.Normalized());
     Vector3 localDelta = ToLocal(collision.Position) - ToLocal(GetNode<Position3D>("PenetrationPoint").GlobalTransform.origin);
     TranslateObjectLocal(localDelta);
 
@@ -64,7 +64,7 @@ public class MeleeCarry1Weapon : KinematicBody
     _pickupHitbox.Monitoring = true;
     _pickupHitbox.Monitorable = true;
 
-    // visualize teleport location
+    // visualize teleport location (leave for later to update teleport location further)
     // MeshInstance debugTeleportLocation = GetNode<MeshInstance>("DebugTeleportLocation");
     // debugTeleportLocation.Visible = true;
     // Transform placeholder = debugTeleportLocation.GlobalTransform;
@@ -88,11 +88,11 @@ public class MeleeCarry1Weapon : KinematicBody
     Vector3 resultant = Vector3.Zero;
     Spatial detector = GetNode<Spatial>("Detectors");
     RayCast bottomRaycast = detector.GetNode<RayCast>("bottom");
+
     bottomRaycast.ForceRaycastUpdate();
     if (!bottomRaycast.IsColliding())
-    {
-      DrawSphere(bottomRaycast.GetCollisionPoint());  
-    }
+      Util.DrawSphere(bottomRaycast.GetCollisionPoint(), detector);  
+    
     foreach (RayCast cast in _detectorList)
     {
       cast.ForceRaycastUpdate();
@@ -103,6 +103,7 @@ public class MeleeCarry1Weapon : KinematicBody
         resultant += cast.GetCollisionNormal() * (1 - Mathf.Min(collisionVector.Length(), _minDetectorWeight));
       }
     }
+
     // return average of normals
     return Transform.origin + resultant.Normalized();
   }
@@ -114,43 +115,5 @@ public class MeleeCarry1Weapon : KinematicBody
     {
       _detectorList.Add((RayCast)node.GetChild(i));
     }
-  }
-
-  private void DrawSphere(Vector3 globalLocation)
-  {
-    MeshInstance sphere = new MeshInstance();
-    SphereMesh shape = new SphereMesh();
-    GetNode<Spatial>("Detectors").AddChild(sphere);
-    sphere.Owner = GetNode<Spatial>("Detectors");
-    Transform placeholder = sphere.GlobalTransform;
-    placeholder.origin = globalLocation;
-    sphere.GlobalTransform = placeholder;
-    shape.Radius = 0.05f;
-    shape.Height = shape.Radius * 2.0f;
-    sphere.Mesh = shape;
-    sphere.Visible = true;
-  }
-
-  private Transform Normal2Basis(Transform xform, Vector3 normal)
-  {
-    // cross each unit global basis vector with the normal to get a second perpendicular vector
-    Vector3 v2 = Vector3.Zero;
-    if (Vector3.Forward.Cross(normal).Length() >= 1e-3)
-      v2 = Vector3.Forward.Cross(normal);
-    else if (Vector3.Up.Cross(normal).Length() >= 1e-3)
-      v2 = Vector3.Up.Cross(normal);
-    else if (Vector3.Right.Cross(normal).Length() >= 1e-3)
-      v2 = Vector3.Right.Cross(normal);
-    else 
-      GD.PrintErr("No secondary perpendicular vector could be found, something is wrong.");
-    v2 = v2.Normalized();
-
-    // cross the first 2 vectors to get a third
-    Vector3 v3 = normal.Cross(v2);
-
-    // make basis with 3 vectors
-    xform.basis = new Basis(v3, normal, v2);
-    xform.basis = xform.basis.Orthonormalized();
-    return xform;
   }
 }

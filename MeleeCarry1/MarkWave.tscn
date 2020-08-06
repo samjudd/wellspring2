@@ -20,7 +20,7 @@ surfaces/0 = {
 "vertex_count": 544
 }
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=3]
 extents = Vector3( 0.420983, 0.0191376, 0.089403 )
 
 [sub_resource type="Animation" id=4]
@@ -73,13 +73,11 @@ collision_mask = 8
 
 [node name="CollisionShape" type="CollisionShape" parent="MarkWave/MarkWave"]
 transform = Transform( 0.898733, 0, -0.292331, 0, 1, 0, 0.657745, 0, 0.898733, -0.348017, 0, 0.260982 )
-shape = SubResource( 5 )
-disabled = true
+shape = SubResource( 3 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="MarkWave/MarkWave"]
 transform = Transform( 0.899237, 0, 0.291641, 0, 1, 0, -0.656192, 0, 0.899237, 0.35062, 0, 0.260982 )
-shape = SubResource( 5 )
-disabled = true
+shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/expand = SubResource( 4 )
