@@ -15,21 +15,23 @@ public class Util
       GROUND
   }
 
+  // Unclear how |xform| is used, it seems to seems to be written only?
+  // Also a little unclear what this is doing.
   public static Transform Normal2Basis(Transform xform, Vector3 normal)
   {
     // cross each unit global basis vector with the normal to get a second perpendicular vector
     Vector3 v2 = Vector3.Zero;
-    if (Vector3.Forward.Cross(normal).Length() >= 1e-3)
+    if (Vector3.Forward.Cross(normal).Length() >= 1e-3) // Why .001, floating point comparrison can be super-complicated depending on domian and expectations; what is the goal here?
       v2 = Vector3.Forward.Cross(normal);
     else if (Vector3.Up.Cross(normal).Length() >= 1e-3)
       v2 = Vector3.Up.Cross(normal);
     else if (Vector3.Right.Cross(normal).Length() >= 1e-3)
       v2 = Vector3.Right.Cross(normal);
     else 
-      GD.PrintErr("No secondary perpendicular vector could be found, something is wrong.");
+      GD.PrintErr("No secondary perpendicular vector could be found, something is wrong."); // return null or make error more visible.
     v2 = v2.Normalized();
 
-    // cross the first 2 vectors to get a third
+    // cross the first 2 vectors to get a third [This comment isn't clarifying the code at all]
     Vector3 v3 = normal.Cross(v2);
 
     // make basis with 3 vectors (this sets normal to be the y vector of the new basis)
@@ -38,6 +40,7 @@ public class Util
     return xform;
   }
 
+  // sphere diameter should probably not be defaulted here.
   public static void DrawSphere(Vector3 globalLocation, Spatial parent, float diameter = 0.05f)
   {
     MeshInstance sphere = new MeshInstance();

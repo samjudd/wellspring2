@@ -43,6 +43,7 @@ public class MeleeCarry1Weapon : KinematicBody
 
   private void ProcessMovement(float delta)
   {
+    // Can we extract this to some base class and handle parameterized movement there?
     // no drag at the moment, do gravity acceleration here
     Vector3 gravityVector = (Vector3)PhysicsServer.AreaGetParam(GetWorld().Space, PhysicsServer.AreaParameter.GravityVector) * (float)PhysicsServer.AreaGetParam(GetWorld().Space, PhysicsServer.AreaParameter.Gravity);
     _velocity += delta * gravityVector;
