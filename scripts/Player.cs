@@ -22,7 +22,7 @@ public class Player : KinematicBody
   public float _sprintAccel = 12.0f;
 
   // Current velocity in world coordinates
-  protected Vector3 _vel = new Vector3();
+  protected Vector3 _vel = new Vector3(); // Explicit zeros.
   protected AnimationTree _animationTree;
   protected Camera _camera;
 
@@ -32,7 +32,7 @@ public class Player : KinematicBody
   private  Skeleton _skeleton;
   private bool _isSprinting = false;
   private int _headBoneIndex;
-  private Transform _initialHeadTransform;
+  private Transform _initialHeadTransform; // Is this only used at the beginning, what is "intial" relative to.
   private Camera _debugCamera;
   private bool _jumping = false;
   private bool _isOnFloorLast = true;
@@ -40,16 +40,17 @@ public class Player : KinematicBody
   // Called when the node enters the scene tree for the first time.
   public override void _Ready()
   {
+    // use named constants for these strings, makes refactoring easier.
     _camera = GetNode<Camera>("Camera");
     _animationTree = GetNode<AnimationTree>("AnimationTree");
     _skeleton = GetNode<Skeleton>("Armature/Skeleton");
-    _headBoneIndex = _skeleton.FindBone("head");
+    _headBoneIndex = _skeleton.FindBone("head"); 
     _initialHeadTransform = _skeleton.GetBonePose(_headBoneIndex);
     _debugCamera = GetNode<Camera>("../DebugCamera");
-    Input.SetMouseMode(Input.MouseMode.Captured);
+    Input.SetMouseMode(Input.MouseMode.Captured); // Seems weird for input and player logic to be conbined, input handling seems like it should be its own thing.
 
     // activate animationTree in case it's not
-    _animationTree.Active = true;
+    _animationTree.Active = true; // if this is a global animation tree, it should probably happen elsewhere.
   }
 
   public override void _Process(float delta)
@@ -138,7 +139,7 @@ public class Player : KinematicBody
 
   private void ProcessMovement(float delta)
   {
-    _dir.y = 0;
+    _dir.y = 0; // Why do you need to do this?
     _dir = _dir.Normalized();
 
     _vel.y += delta * _gravity;
@@ -154,6 +155,10 @@ public class Player : KinematicBody
       target *= _maxSpeed;
 
     float accel;
+    // You should really have brackets here, or at the very least use a formatter.
+    // nested ifs that rely on purely the indentation for understanding context is super bug-prone
+    // It caused an enourmous security issue at Apple a couple of years ago.
+    // A ternary here might not be bad
     if (_dir.Dot(hvel) > 0.0f)
       if (_isSprinting)
         accel = _sprintAccel;
@@ -162,12 +167,13 @@ public class Player : KinematicBody
     else
       accel = _deaccel;
     
-    if (_jumping)
-      accel = _deaccel / 50.0f;
+    if (_jumping)  accel = _deaccel / 50.0f;
 
     hvel = hvel.LinearInterpolate(target, accel * delta);
     _vel.x = hvel.x;
     _vel.z = hvel.z;
+    // It is kinda unclear what each of these parameters is used for from the callsite.
+    // You can make parameters more clear with enums or comments with the arg name like Slide(_vel, /*respect_gravity=*/false);
     _vel = MoveAndSlide(_vel, Vector3.Up, false, 4, Mathf.Deg2Rad(_maxSlopeAngle));
   }
 
@@ -180,11 +186,12 @@ public class Player : KinematicBody
       RotateY(Mathf.Deg2Rad(-mouseEvent.Relative.x * _mouseSensitivity));
 
       Vector3 cameraRot = _camera.RotationDegrees;
-      cameraRot.x = Mathf.Clamp(cameraRot.x, -85, 85);
+      cameraRot.x = Mathf.Clamp(cameraRot.x, -85, 85); // Prefer to have named constants over hard-coding.
       _camera.RotationDegrees = cameraRot;
     }
   }
 
+  // Can you not give this a definition at all if it isn't meant to be used.
   protected virtual void JumpCallback()
   {
     GD.PrintErr("This function needs to be overwritten in the child in order to work.");

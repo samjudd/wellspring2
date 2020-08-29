@@ -10,14 +10,14 @@ public class MeleeCarry1 : Player
   private Position3D _waveSpawn;
   private AnimationNodeStateMachinePlayback _attackSM;
   private Timer _attackTimer;
-  private float _attackDuration = 0.666f;
+  private float _attackDuration = 0.666f; // Extract this to config.
   private bool _hasRightWeapon = true;
   private RayCast _targetingRaycast;
   private MeleeCarry1Weapon _teleportWeapon;
   private Enemy _teleportEnemy;
   private TeleportationTotem _teleportTotem;
 
-  public override void _Ready()
+  public override void _Ready() // Why does it have the leading underscore if it is public.
   {
     base._Ready();
     // get references to scene components to be used
@@ -45,6 +45,7 @@ public class MeleeCarry1 : Player
     string currentNode = _attackSM.GetCurrentNode();
 
     //  ----------------------- Attacking -----------------------
+    // I thought these animation graphs were handled w/o code?
     if (Input.IsActionJustPressed("main_mouse"))
     {
       if (currentNode == "idle_top")
@@ -169,6 +170,7 @@ public class MeleeCarry1 : Player
     _vel.y = _jumpSpeed;
   }
 
+  // Maybe a single throw callback would be preferable that takes an enum Weapon { LEFT_SWORD, RIGHT_SWORD} or smth like that.
   private void LeftThrowCallback()
   {
     // instance weapon
