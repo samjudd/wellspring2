@@ -25,7 +25,7 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ExportRelease|AnyCPU' ">
-    <DebugType>portable</DebugType>
+    <DebugType>portable</DebugType> 
     <Optimize>true</Optimize>
     <DefineConstants>$(GodotDefineConstants);GODOT;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>

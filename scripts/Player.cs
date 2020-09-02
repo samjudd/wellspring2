@@ -26,10 +26,9 @@ public class Player : KinematicBody
   protected AnimationTree _animationTree;
   protected Camera _camera;
 
-
   // Player input direction in global coordinates
   private Vector3 _dir = new Vector3();
-  private  Skeleton _skeleton;
+  private Skeleton _skeleton;
   private bool _isSprinting = false;
   private int _headBoneIndex;
   private Transform _initialHeadTransform;
@@ -86,7 +85,7 @@ public class Player : KinematicBody
       _animationTree.Set("parameters/jump_os/active", true);
       _jumping = true;
     }
-    
+
     //  ----------------------- Walking -----------------------
     Vector2 inputMovementVector = new Vector2();
 
@@ -161,7 +160,7 @@ public class Player : KinematicBody
         accel = _accel;
     else
       accel = _deaccel;
-    
+
     if (_jumping)
       accel = _deaccel / 50.0f;
 
@@ -185,8 +184,5 @@ public class Player : KinematicBody
     }
   }
 
-  protected virtual void JumpCallback()
-  {
-    GD.PrintErr("This function needs to be overwritten in the child in order to work.");
-  }
+  protected virtual void JumpCallback() { }
 }
