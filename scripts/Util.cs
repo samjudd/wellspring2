@@ -1,22 +1,19 @@
 using Godot;
 
-public class Util
-{
-  public enum CollisionLayers
-  {
-      ENVIRONMENT,
-      PLAYER,
-      FRIENDLY,
-      ENEMY,
-      INTERACTIVE,
-      PLAYER_ATTACK,
-      FRIENDLY_ATTACK,
-      ENEMY_ATTACK,
-      GROUND
+public class Util {
+  public enum CollisionLayers {
+    ENVIRONMENT,
+    PLAYER,
+    FRIENDLY,
+    ENEMY,
+    INTERACTIVE,
+    PLAYER_ATTACK,
+    FRIENDLY_ATTACK,
+    ENEMY_ATTACK,
+    GROUND
   }
 
-  public static Transform Normal2Basis(Transform xform, Vector3 normal)
-  {
+  public static Transform Normal2Basis(Transform xform, Vector3 normal) {
     // cross each unit global basis vector with the normal to get a second perpendicular vector
     Vector3 v2 = Vector3.Zero;
     if (Vector3.Forward.Cross(normal).Length() >= 1e-3)
@@ -25,7 +22,7 @@ public class Util
       v2 = Vector3.Up.Cross(normal);
     else if (Vector3.Right.Cross(normal).Length() >= 1e-3)
       v2 = Vector3.Right.Cross(normal);
-    else 
+    else
       GD.PrintErr("No secondary perpendicular vector could be found, something is wrong.");
     v2 = v2.Normalized();
 
@@ -38,8 +35,7 @@ public class Util
     return xform;
   }
 
-  public static void DrawSphere(Vector3 globalLocation, Spatial parent, float diameter = 0.05f)
-  {
+  public static void DrawSphere(Vector3 globalLocation, Spatial parent, float diameter = 0.05f) {
     MeshInstance sphere = new MeshInstance();
     SphereMesh shape = new SphereMesh();
     parent.AddChild(sphere);

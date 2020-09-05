@@ -1,23 +1,20 @@
 using Godot;
 using System;
 
-public class SigilOfTeleportation : Spatial
-{
+public class SigilOfTeleportation : Spatial {
   [Export]
   public float _sigilTime = 5.0f;
 
   private Timer _sigilTimer;
 
-    public override void _Ready()
-  {
+  public override void _Ready() {
     _sigilTimer = GetNode<Timer>("SigilTimer");
     _sigilTimer.Connect("timeout", this, "Timeout");
     if (_sigilTime > 0.0f)
       _sigilTimer.Start(_sigilTime);
   }
 
-  private void Timeout()
-  {
+  private void Timeout() {
     QueueFree();
   }
 }
