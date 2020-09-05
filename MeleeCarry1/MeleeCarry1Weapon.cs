@@ -1,8 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 
-public class MeleeCarry1Weapon : KinematicBody
-{
+public class MeleeCarry1Weapon : KinematicBody {
   [Export]
   public float _spinVelocityRPS = 3.0f;
   [Export]
@@ -16,8 +15,7 @@ public class MeleeCarry1Weapon : KinematicBody
   private Area _pickupHitbox;
   private List<RayCast> _detectorList = new List<RayCast>();
 
-  public override void _Ready()
-  {
+  public override void _Ready() {
     _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
     // get ref to pickup hitbox and turn it off
@@ -30,10 +28,8 @@ public class MeleeCarry1Weapon : KinematicBody
     MakeDetectorList(GetNode<Spatial>("Detectors/radial"));
   }
 
-  public override void _PhysicsProcess(float delta)
-  {
-    if (_processMovement)
-    {
+  public override void _PhysicsProcess(float delta) {
+    if (_processMovement) {
       ProcessMovement(delta);
       KinematicCollision collision = MoveAndCollide(_velocity * delta);
       if (collision != null)
@@ -41,17 +37,15 @@ public class MeleeCarry1Weapon : KinematicBody
     }
   }
 
-  private void ProcessMovement(float delta)
-  {
+  private void ProcessMovement(float delta) {
     // no drag at the moment, do gravity acceleration here
-    Vector3 gravityVector = (Vector3)PhysicsServer.AreaGetParam(GetWorld().Space, PhysicsServer.AreaParameter.GravityVector) * (float)PhysicsServer.AreaGetParam(GetWorld().Space, PhysicsServer.AreaParameter.Gravity);
+    Vector3 gravityVector = (Vector3) PhysicsServer.AreaGetParam(GetWorld().Space, PhysicsServer.AreaParameter.GravityVector) * (float) PhysicsServer.AreaGetParam(GetWorld().Space, PhysicsServer.AreaParameter.Gravity);
     _velocity += delta * gravityVector;
     // rotate around local x axis to spin sword
     RotateObjectLocal(Vector3.Left, -_spinVelocityRPS * 2 * Mathf.Pi * delta);
   }
 
-  private void CollisionHandler(KinematicCollision collision)
-  {
+  private void CollisionHandler(KinematicCollision collision) {
     // stop updating movement
     _processMovement = false;
 
@@ -72,32 +66,27 @@ public class MeleeCarry1Weapon : KinematicBody
     // debugTeleportLocation.GlobalTransform = placeholder;
   }
 
-  public void Throw(Vector3 globalThrowDirection)
-  {
+  public void Throw(Vector3 globalThrowDirection) {
     _velocity += globalThrowDirection * _throwVelocity;
   }
 
-  public void PickupCallback(Area area)
-  {
+  public void PickupCallback(Area area) {
     QueueFree();
   }
 
-  public Vector3 GetTeleportLocation()
-  {
-    // get weighted sum of all 
+  public Vector3 GetTeleportLocation() {
+    // get weighted sum of all
     Vector3 resultant = Vector3.Zero;
     Spatial detector = GetNode<Spatial>("Detectors");
     RayCast bottomRaycast = detector.GetNode<RayCast>("bottom");
 
     bottomRaycast.ForceRaycastUpdate();
     if (!bottomRaycast.IsColliding())
-      Util.DrawSphere(bottomRaycast.GetCollisionPoint(), detector);  
-    
-    foreach (RayCast cast in _detectorList)
-    {
+      Util.DrawSphere(bottomRaycast.GetCollisionPoint(), detector);
+
+    foreach (RayCast cast in _detectorList) {
       cast.ForceRaycastUpdate();
-      if (cast.IsColliding())
-      {
+      if (cast.IsColliding()) {
         // get collision point in local coordinates to detector spatial in middle of sword
         Vector3 collisionVector = cast.Transform.XformInv(cast.GetCollisionPoint());
         resultant += cast.GetCollisionNormal() * (1 - Mathf.Min(collisionVector.Length(), _minDetectorWeight));
@@ -108,12 +97,10 @@ public class MeleeCarry1Weapon : KinematicBody
     return Transform.origin + resultant.Normalized();
   }
 
-  private void MakeDetectorList(Node node)
-  {
+  private void MakeDetectorList(Node node) {
     int numChildren = node.GetChildCount();
-    for (int i = 0; i < numChildren; i++)
-    {
-      _detectorList.Add((RayCast)node.GetChild(i));
+    for (int i = 0; i < numChildren; i++) {
+      _detectorList.Add((RayCast) node.GetChild(i));
     }
   }
 }

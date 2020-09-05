@@ -1,7 +1,6 @@
 using Godot;
 
-public class Player : KinematicBody
-{
+public class Player : KinematicBody {
   [Export]
   public float _gravity = -9.8f;
   [Export]
@@ -37,8 +36,7 @@ public class Player : KinematicBody
   private bool _isOnFloorLast = true;
 
   // Called when the node enters the scene tree for the first time.
-  public override void _Ready()
-  {
+  public override void _Ready() {
     _camera = GetNode<Camera>("Camera");
     _animationTree = GetNode<AnimationTree>("AnimationTree");
     _skeleton = GetNode<Skeleton>("Armature/Skeleton");
@@ -51,37 +49,31 @@ public class Player : KinematicBody
     _animationTree.Active = true;
   }
 
-  public override void _Process(float delta)
-  {
+  public override void _Process(float delta) {
     // rotate head and arms with camera
     Transform currentHeadTransform = _initialHeadTransform.Rotated(Vector3.Right, _camera.Rotation.x);
     _skeleton.SetBonePose(_headBoneIndex, currentHeadTransform);
 
-    // set camera position to same as head bone position 
+    // set camera position to same as head bone position
     _camera.Translation = _skeleton.GetBoneGlobalPose(_headBoneIndex).origin;
   }
 
-  public override void _PhysicsProcess(float delta)
-  {
+  public override void _PhysicsProcess(float delta) {
     ProcessStateUpdates(delta);
     ProcessInput(delta);
     ProcessMovement(delta);
   }
 
-  private void ProcessStateUpdates(float delta)
-  {
-    if (_isOnFloorLast == false && IsOnFloor())
-    {
+  private void ProcessStateUpdates(float delta) {
+    if (_isOnFloorLast == false && IsOnFloor()) {
       _jumping = false;
     }
     _isOnFloorLast = IsOnFloor();
   }
 
-  protected virtual void ProcessInput(float delta)
-  {
+  protected virtual void ProcessInput(float delta) {
     //  ----------------------- Jumping -----------------------
-    if (!_jumping && Input.IsActionJustPressed("movement_jump"))
-    {
+    if (!_jumping && Input.IsActionJustPressed("movement_jump")) {
       _animationTree.Set("parameters/jump_os/active", true);
       _jumping = true;
     }
@@ -99,14 +91,11 @@ public class Player : KinematicBody
       inputMovementVector.x += -1;
 
     // if you're jumping ignore directional input
-    if (!_jumping)
-    {
+    if (!_jumping) {
       // set running animation
       _animationTree.Set("parameters/run_bs2d/blend_position", inputMovementVector);
       inputMovementVector = inputMovementVector.Normalized();
-    }
-    else
-    {
+    } else {
       inputMovementVector = Vector2.Zero;
     }
     // convert local movement vectors to global movement vectors
@@ -114,20 +103,18 @@ public class Player : KinematicBody
     _dir += GlobalTransform.basis.x * inputMovementVector.x;
     _dir += GlobalTransform.basis.z * inputMovementVector.y;
 
-    //  ----------------------- Sprinting ----------------------- 
+    //  ----------------------- Sprinting -----------------------
     _isSprinting = Input.IsActionPressed("movement_sprint") && !_jumping;
 
-    // -------------- Capturing/Freeing the cursor -------------- 
-    if (Input.IsActionJustPressed("ui_cancel"))
-    {
+    // -------------- Capturing/Freeing the cursor --------------
+    if (Input.IsActionJustPressed("ui_cancel")) {
       if (Input.GetMouseMode() == Input.MouseMode.Visible)
         Input.SetMouseMode(Input.MouseMode.Captured);
       else
         Input.SetMouseMode(Input.MouseMode.Visible);
     }
     // ---------------- Change Camera for Debug ----------------
-    if (Input.IsActionJustPressed("debug_swap_camera"))
-    {
+    if (Input.IsActionJustPressed("debug_swap_camera")) {
       if (_camera.Current)
         _debugCamera.Current = true;
       else if (_debugCamera.Current)
@@ -135,8 +122,7 @@ public class Player : KinematicBody
     }
   }
 
-  private void ProcessMovement(float delta)
-  {
+  private void ProcessMovement(float delta) {
     _dir.y = 0;
     _dir = _dir.Normalized();
 
@@ -170,10 +156,8 @@ public class Player : KinematicBody
     _vel = MoveAndSlide(_vel, Vector3.Up, false, 4, Mathf.Deg2Rad(_maxSlopeAngle));
   }
 
-  public override void _Input(InputEvent @event)
-  {
-    if (@event is InputEventMouseMotion && Input.GetMouseMode() == Input.MouseMode.Captured)
-    {
+  public override void _Input(InputEvent @event) {
+    if (@event is InputEventMouseMotion && Input.GetMouseMode() == Input.MouseMode.Captured) {
       InputEventMouseMotion mouseEvent = @event as InputEventMouseMotion;
       _camera.RotateX(Mathf.Deg2Rad(mouseEvent.Relative.y * _mouseSensitivity));
       RotateY(Mathf.Deg2Rad(-mouseEvent.Relative.x * _mouseSensitivity));
@@ -184,5 +168,5 @@ public class Player : KinematicBody
     }
   }
 
-  protected virtual void JumpCallback() { }
+  protected virtual void JumpCallback() {}
 }
