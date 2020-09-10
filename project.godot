@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="wellspring2"
-run/main_scene="res://environment/map v1.tscn"
+run/main_scene="res://environment/map v1_MeleeCarry1.tscn"
 config/icon="res://icon.png"
 
 [display]

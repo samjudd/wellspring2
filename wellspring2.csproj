@@ -25,7 +25,7 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ExportRelease|AnyCPU' ">
-    <DebugType>portable</DebugType> 
+    <DebugType>portable</DebugType>
     <Optimize>true</Optimize>
     <DefineConstants>$(GodotDefineConstants);GODOT;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -62,6 +62,8 @@
     <Compile Include="scripts\Enemy.cs" />
     <Compile Include="scripts\Player.cs" />
     <Compile Include="scripts\Util.cs" />
+    <Compile Include="scripts\Ability.cs" />
+    <Compile Include="Skirmisher\Skirmisher.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies">

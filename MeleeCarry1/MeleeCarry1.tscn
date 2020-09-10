@@ -1430,7 +1430,7 @@ animation = "teleport"
 [sub_resource type="AnimationNodeOneShot" id=89]
 
 [sub_resource type="AnimationNodeBlendTree" id=90]
-graph_offset = Vector2( -422, -267 )
+graph_offset = Vector2( -334, -76.5796 )
 nodes/Add2/node = SubResource( 28 )
 nodes/Add2/position = Vector2( 460, 0 )
 nodes/TimeScale/node = SubResource( 29 )

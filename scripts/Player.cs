@@ -20,11 +20,34 @@ public class Player : KinematicBody
   public float _maxSprintSpeed = 8.0f;
   [Export]
   public float _sprintAccel = 12.0f;
+  [Export]
+  public bool _lockXRotation = false;
+  [Export]
+  public bool _lockYRotation = false;
+  [Export]
+  public bool _lockXMovement = false;
+  [Export]
+  public bool _lockZMovement = false;
+  [Export]
+  public float _ability1Cooldown = 10.0f;
+  [Export]
+  public float _ability2Cooldown = 10.0f;
+  [Export]
+  public float _ability3Cooldown = 10.0f;
+  [Export]
+  public float _ability4Cooldown = 10.0f;
+
 
   // Current velocity in world coordinates
   protected Vector3 _vel = new Vector3();
   protected AnimationTree _animationTree;
   protected Camera _camera;
+  protected Ability _ability1;
+  protected Ability _ability2;
+  protected Ability _ability3;
+  protected Ability _ability4;
+  protected float _health = 100.0f;
+  protected float _energy = 200.0f;
 
   // Player input direction in global coordinates
   private Vector3 _dir = new Vector3();
@@ -175,12 +198,16 @@ public class Player : KinematicBody
     if (@event is InputEventMouseMotion && Input.GetMouseMode() == Input.MouseMode.Captured)
     {
       InputEventMouseMotion mouseEvent = @event as InputEventMouseMotion;
-      _camera.RotateX(Mathf.Deg2Rad(mouseEvent.Relative.y * _mouseSensitivity));
-      RotateY(Mathf.Deg2Rad(-mouseEvent.Relative.x * _mouseSensitivity));
+      if (!_lockYRotation)
+        RotateY(Mathf.Deg2Rad(-mouseEvent.Relative.x * _mouseSensitivity));
 
-      Vector3 cameraRot = _camera.RotationDegrees;
-      cameraRot.x = Mathf.Clamp(cameraRot.x, -85, 85);
-      _camera.RotationDegrees = cameraRot;
+      if (!_lockXRotation)
+      {
+        _camera.RotateX(Mathf.Deg2Rad(mouseEvent.Relative.y * _mouseSensitivity));
+        Vector3 cameraRot = _camera.RotationDegrees;
+        cameraRot.x = Mathf.Clamp(cameraRot.x, -85, 85);
+        _camera.RotationDegrees = cameraRot;
+      }
     }
   }
 
