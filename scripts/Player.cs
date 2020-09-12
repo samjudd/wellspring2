@@ -164,20 +164,17 @@ public class Player : KinematicBody
 
   private void ProcessMovement(float delta)
   {
-    // normalize player input direction
+    // normalize direction input by player
     _dir = _dir.Normalized();
+
+    // add gravity to current velocity
     _vel += delta * _gravity;
 
+    // create var with only horizontal velocity
     Vector3 hvel = _vel;
     hvel.y = 0;
 
-    Vector3 target = _dir;
-
-    if (_isSprinting)
-      target *= _maxSprintSpeed;
-    else
-      target *= _maxSpeed;
-
+    // set acceleration based on movement input compared to velocity
     float accel;
     if (_dir.Dot(hvel) > 0.0f)
     {
@@ -192,9 +189,19 @@ public class Player : KinematicBody
     if (_jumping)
       accel = _deaccel / 50.0f;
 
-    hvel = hvel.LinearInterpolate(target, accel * delta);
+    // scale input velcity based on max speed 
+    if (_isSprinting)
+      _dir *= _maxSprintSpeed;
+    else
+      _dir *= _maxSpeed;
+
+    // update horizontal velocity to accelerate based on player input 
+    hvel = hvel.LinearInterpolate(_dir, accel * delta);
     _vel.x = hvel.x;
     _vel.z = hvel.z;
+
+    // param guide: MoveAndSlide(object linear velocity, global up direction, slide on slopes yes/no, max slides in a frame, max angle that is considered a slope)
+    // returns velocity updated for any collisions and moves player
     _vel = MoveAndSlide(_vel, Vector3.Up, false, 4, Mathf.Deg2Rad(_maxSlopeAngle));
   }
 
