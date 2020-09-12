@@ -4,20 +4,20 @@ public class Util
 {
   public enum CollisionLayers
   {
-      ENVIRONMENT,
-      PLAYER,
-      FRIENDLY,
-      ENEMY,
-      INTERACTIVE,
-      PLAYER_ATTACK,
-      FRIENDLY_ATTACK,
-      ENEMY_ATTACK,
-      GROUND
+    ENVIRONMENT,
+    PLAYER,
+    FRIENDLY,
+    ENEMY,
+    INTERACTIVE,
+    PLAYER_ATTACK,
+    FRIENDLY_ATTACK,
+    ENEMY_ATTACK,
+    GROUND
   }
 
   public static Transform Normal2Basis(Transform xform, Vector3 normal)
   {
-    // cross each unit global basis vector with the normal to get a second perpendicular vector
+    // cross each unit global basis vector with the normal to get a second vector perpendicular to the normal vector
     Vector3 v2 = Vector3.Zero;
     if (Vector3.Forward.Cross(normal).Length() >= 1e-3)
       v2 = Vector3.Forward.Cross(normal);
@@ -25,14 +25,17 @@ public class Util
       v2 = Vector3.Up.Cross(normal);
     else if (Vector3.Right.Cross(normal).Length() >= 1e-3)
       v2 = Vector3.Right.Cross(normal);
-    else 
+    else
+    {
       GD.PrintErr("No secondary perpendicular vector could be found, something is wrong.");
+      // need to return some sort of thing that will throw an error 
+    }
     v2 = v2.Normalized();
 
-    // cross the first 2 vectors to get a third
+    // cross the input normal vector with our calculated vector above to get a third vector perpendicular to both 
     Vector3 v3 = normal.Cross(v2);
 
-    // make basis with 3 vectors (this sets normal to be the y vector of the new basis)
+    // we can then create an orthonormal basis with the 3 vectors that has a y basis component parallel ot the normal vector
     xform.basis = new Basis(v3, normal, v2);
     xform.basis = xform.basis.Orthonormalized();
     return xform;

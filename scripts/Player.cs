@@ -29,6 +29,8 @@ public class Player : KinematicBody
   [Export]
   public bool _lockZMovement = false;
   [Export]
+  public float _fieldOfView = 85.0f;
+  [Export]
   public float _ability1Cooldown = 10.0f;
   [Export]
   public float _ability2Cooldown = 10.0f;
@@ -39,7 +41,7 @@ public class Player : KinematicBody
 
 
   // Current velocity in world coordinates
-  protected Vector3 _vel = new Vector3();
+  protected Vector3 _vel = new Vector3(0, 0, 0);
   protected AnimationTree _animationTree;
   protected Camera _camera;
   protected Ability _ability1;
@@ -205,7 +207,7 @@ public class Player : KinematicBody
       {
         _camera.RotateX(Mathf.Deg2Rad(mouseEvent.Relative.y * _mouseSensitivity));
         Vector3 cameraRot = _camera.RotationDegrees;
-        cameraRot.x = Mathf.Clamp(cameraRot.x, -85, 85);
+        cameraRot.x = Mathf.Clamp(cameraRot.x, -_fieldOfView, _fieldOfView);
         _camera.RotationDegrees = cameraRot;
       }
     }
