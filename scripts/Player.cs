@@ -3,8 +3,6 @@ using Godot;
 public class Player : KinematicBody
 {
   [Export]
-  public float _gravity = -9.8f;
-  [Export]
   public float _maxSpeed = 5.0f;
   [Export]
   public float _jumpSpeed = 6.0f;
@@ -52,6 +50,7 @@ public class Player : KinematicBody
   protected float _energy = 200.0f;
 
   // Player input direction in global coordinates
+  private Vector3 _gravity;
   private Vector3 _dir = new Vector3();
   private Skeleton _skeleton;
   private bool _isSprinting = false;
@@ -74,6 +73,9 @@ public class Player : KinematicBody
 
     // activate animationTree in case it's not
     _animationTree.Active = true;
+
+    // define gravity from params in editor
+    _gravity = (Vector3)PhysicsServer.AreaGetParam(GetWorld().Space, PhysicsServer.AreaParameter.GravityVector) * (float)PhysicsServer.AreaGetParam(GetWorld().Space, PhysicsServer.AreaParameter.Gravity);
   }
 
   public override void _Process(float delta)
@@ -114,13 +116,13 @@ public class Player : KinematicBody
     //  ----------------------- Walking -----------------------
     Vector2 inputMovementVector = new Vector2();
 
-    if (Input.IsActionPressed("movement_forward"))
+    if (Input.IsActionPressed("movement_forward") && !_lockZMovement)
       inputMovementVector.y += 1;
-    if (Input.IsActionPressed("movement_backward"))
+    if (Input.IsActionPressed("movement_backward") && !_lockZMovement)
       inputMovementVector.y += -1;
-    if (Input.IsActionPressed("movement_left"))
+    if (Input.IsActionPressed("movement_left") && !_lockXMovement)
       inputMovementVector.x += 1;
-    if (Input.IsActionPressed("movement_right"))
+    if (Input.IsActionPressed("movement_right") && !_lockXMovement)
       inputMovementVector.x += -1;
 
     // if you're jumping ignore directional input
@@ -162,10 +164,9 @@ public class Player : KinematicBody
 
   private void ProcessMovement(float delta)
   {
-    _dir.y = 0;
+    // normalize player input direction
     _dir = _dir.Normalized();
-
-    _vel.y += delta * _gravity;
+    _vel += delta * _gravity;
 
     Vector3 hvel = _vel;
     hvel.y = 0;
@@ -179,10 +180,12 @@ public class Player : KinematicBody
 
     float accel;
     if (_dir.Dot(hvel) > 0.0f)
+    {
       if (_isSprinting)
         accel = _sprintAccel;
       else
         accel = _accel;
+    }
     else
       accel = _deaccel;
 
