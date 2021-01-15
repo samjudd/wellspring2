@@ -10,14 +10,13 @@ public class SigilOfTeleportation : Spatial
   public override void _Ready()
   {
     _sigilTimer = GetNode<Timer>("SigilTimer");
-    _sigilTimer.Connect("timeout", this, "Timeout");
+    _sigilTimer.Connect("timeout", this, nameof(Timeout));
     if (_sigilDuration > 0.0f)
       _sigilTimer.Start(_sigilDuration);
   }
 
   private void Timeout()
   {
-    // delete from scene tree at end of scene
     QueueFree();
   }
 }

@@ -1187,133 +1187,156 @@ filters = [ "Armature/Skeleton:arm_1_l", "Armature/Skeleton:arm_1_r", "Armature/
 [sub_resource type="AnimationNodeTimeScale" id=29]
 
 [sub_resource type="AnimationNodeAnimation" id=30]
-animation = "attack_1"
+animation = "jump"
 
-[sub_resource type="AnimationNodeAnimation" id=31]
-animation = "attack_1"
+[sub_resource type="AnimationNodeOneShot" id=31]
+filters = [ ".", "Armature/Skeleton:leg_1_l", "Armature/Skeleton:leg_1_r", "Armature/Skeleton:leg_2_l", "Armature/Skeleton:leg_2_r", "Armature/Skeleton:torso", "Armature/Skeleton:waist" ]
 
 [sub_resource type="AnimationNodeAnimation" id=32]
-animation = "attack_2"
+animation = "running_front"
 
 [sub_resource type="AnimationNodeAnimation" id=33]
-animation = "attack_2"
+animation = "running_left"
 
 [sub_resource type="AnimationNodeAnimation" id=34]
-animation = "attack_3"
+animation = "running_right"
 
 [sub_resource type="AnimationNodeAnimation" id=35]
-animation = "idle_top"
+animation = "running_frontleft"
 
 [sub_resource type="AnimationNodeAnimation" id=36]
-animation = "idle_top_no_right_sword"
+animation = "running_frontright"
 
 [sub_resource type="AnimationNodeAnimation" id=37]
-animation = "idle_top_no_swords"
+animation = "idle_bottom"
 
 [sub_resource type="AnimationNodeAnimation" id=38]
-animation = "idle_top_no_left_sword"
+animation = "running_back"
 
 [sub_resource type="AnimationNodeAnimation" id=39]
+animation = "running_backleft"
+
+[sub_resource type="AnimationNodeAnimation" id=40]
+animation = "running_backright"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=41]
+auto_triangles = false
+blend_point_0/node = SubResource( 32 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 33 )
+blend_point_1/pos = Vector2( -1, 0 )
+blend_point_2/node = SubResource( 34 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 35 )
+blend_point_3/pos = Vector2( -1, 1 )
+blend_point_4/node = SubResource( 36 )
+blend_point_4/pos = Vector2( 1, 1 )
+blend_point_5/node = SubResource( 37 )
+blend_point_5/pos = Vector2( 0, 0 )
+blend_point_6/node = SubResource( 38 )
+blend_point_6/pos = Vector2( 0, -1 )
+blend_point_7/node = SubResource( 39 )
+blend_point_7/pos = Vector2( -1, -1 )
+blend_point_8/node = SubResource( 40 )
+blend_point_8/pos = Vector2( 1, -1 )
+triangles = PoolIntArray( 1, 3, 5, 0, 3, 5, 0, 4, 5, 2, 4, 5, 1, 5, 7, 5, 6, 7, 2, 5, 8, 5, 6, 8 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=42]
+animation = "attack_1"
+
+[sub_resource type="AnimationNodeAnimation" id=43]
+animation = "attack_1"
+
+[sub_resource type="AnimationNodeAnimation" id=44]
+animation = "attack_2"
+
+[sub_resource type="AnimationNodeAnimation" id=45]
+animation = "attack_2"
+
+[sub_resource type="AnimationNodeAnimation" id=46]
+animation = "attack_3"
+
+[sub_resource type="AnimationNodeAnimation" id=47]
+animation = "idle_top"
+
+[sub_resource type="AnimationNodeAnimation" id=48]
+animation = "idle_top_no_right_sword"
+
+[sub_resource type="AnimationNodeAnimation" id=49]
+animation = "idle_top_no_swords"
+
+[sub_resource type="AnimationNodeAnimation" id=50]
+animation = "idle_top_no_left_sword"
+
+[sub_resource type="AnimationNodeAnimation" id=51]
 animation = "mark_wave"
 
-[sub_resource type="AnimationNodeTimeScale" id=40]
+[sub_resource type="AnimationNodeTimeScale" id=52]
 
-[sub_resource type="AnimationNodeBlendTree" id=41]
+[sub_resource type="AnimationNodeBlendTree" id=53]
 graph_offset = Vector2( -369.182, 0 )
-nodes/Animation/node = SubResource( 39 )
+nodes/Animation/node = SubResource( 51 )
 nodes/Animation/position = Vector2( -230, 120 )
-nodes/TimeScale/node = SubResource( 40 )
+nodes/TimeScale/node = SubResource( 52 )
 nodes/TimeScale/position = Vector2( 20, 110 )
 node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
-[sub_resource type="AnimationNodeAnimation" id=42]
+[sub_resource type="AnimationNodeAnimation" id=54]
 animation = "summon_totem"
 
-[sub_resource type="AnimationNodeTimeScale" id=43]
+[sub_resource type="AnimationNodeTimeScale" id=55]
 
-[sub_resource type="AnimationNodeBlendTree" id=44]
+[sub_resource type="AnimationNodeBlendTree" id=56]
 graph_offset = Vector2( -346, -36 )
-nodes/Animation/node = SubResource( 42 )
+nodes/Animation/node = SubResource( 54 )
 nodes/Animation/position = Vector2( -250, 130 )
-nodes/TimeScale/node = SubResource( 43 )
+nodes/TimeScale/node = SubResource( 55 )
 nodes/TimeScale/position = Vector2( 50, 120 )
 node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
-[sub_resource type="AnimationNodeAnimation" id=45]
+[sub_resource type="AnimationNodeAnimation" id=57]
 animation = "sword_throw_left"
 
-[sub_resource type="AnimationNodeTimeScale" id=46]
+[sub_resource type="AnimationNodeTimeScale" id=58]
 
-[sub_resource type="AnimationNodeBlendTree" id=47]
+[sub_resource type="AnimationNodeBlendTree" id=59]
 graph_offset = Vector2( -910, -34 )
-nodes/Animation/node = SubResource( 45 )
+nodes/Animation/node = SubResource( 57 )
 nodes/Animation/position = Vector2( -400, 120 )
-nodes/TimeScale/node = SubResource( 46 )
+nodes/TimeScale/node = SubResource( 58 )
 nodes/TimeScale/position = Vector2( -60, 120 )
 node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
 
-[sub_resource type="AnimationNodeAnimation" id=48]
+[sub_resource type="AnimationNodeAnimation" id=60]
 animation = "sword_throw_right"
 
-[sub_resource type="AnimationNodeTimeScale" id=49]
+[sub_resource type="AnimationNodeTimeScale" id=61]
 
-[sub_resource type="AnimationNodeBlendTree" id=50]
+[sub_resource type="AnimationNodeBlendTree" id=62]
 graph_offset = Vector2( -831, -22 )
-nodes/Animation/node = SubResource( 48 )
+nodes/Animation/node = SubResource( 60 )
 nodes/Animation/position = Vector2( -320, 120 )
-nodes/TimeScale/node = SubResource( 49 )
+nodes/TimeScale/node = SubResource( 61 )
 nodes/TimeScale/position = Vector2( 0, 120 )
 node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=51]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=52]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=53]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=54]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=55]
-switch_mode = 2
-auto_advance = true
-priority = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=56]
-switch_mode = 2
-auto_advance = true
-priority = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=57]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=58]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=59]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=60]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=61]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=62]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=63]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=64]
 switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=65]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=66]
 switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=67]
+switch_mode = 2
+auto_advance = true
+priority = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=68]
 switch_mode = 2
@@ -1323,13 +1346,10 @@ priority = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id=69]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=70]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=71]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=72]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=73]
 
@@ -1337,92 +1357,72 @@ auto_advance = true
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=75]
-states/attack_1/node = SubResource( 30 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=75]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=76]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=77]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=78]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=79]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=80]
+switch_mode = 2
+auto_advance = true
+priority = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=81]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=82]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=83]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=84]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=85]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=86]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=87]
+states/attack_1/node = SubResource( 42 )
 states/attack_1/position = Vector2( 515.75, 79.5898 )
-states/attack_1_right_weapon/node = SubResource( 31 )
+states/attack_1_right_weapon/node = SubResource( 43 )
 states/attack_1_right_weapon/position = Vector2( 953, -352 )
-states/attack_2/node = SubResource( 32 )
+states/attack_2/node = SubResource( 44 )
 states/attack_2/position = Vector2( 671.25, 80.0859 )
-states/attack_2_left_weapon/node = SubResource( 33 )
+states/attack_2_left_weapon/node = SubResource( 45 )
 states/attack_2_left_weapon/position = Vector2( 98, -75 )
-states/attack_3/node = SubResource( 34 )
+states/attack_3/node = SubResource( 46 )
 states/attack_3/position = Vector2( 826.5, 80.0898 )
-states/idle_top/node = SubResource( 35 )
+states/idle_top/node = SubResource( 47 )
 states/idle_top/position = Vector2( 672, -75 )
-states/idle_top_left_weapon/node = SubResource( 36 )
+states/idle_top_left_weapon/node = SubResource( 48 )
 states/idle_top_left_weapon/position = Vector2( 396, -75 )
-states/idle_top_no_weapons/node = SubResource( 37 )
+states/idle_top_no_weapons/node = SubResource( 49 )
 states/idle_top_no_weapons/position = Vector2( 220, -192 )
-states/idle_top_right_weapon/node = SubResource( 38 )
+states/idle_top_right_weapon/node = SubResource( 50 )
 states/idle_top_right_weapon/position = Vector2( 701, -357 )
-states/mark_wave_bt/node = SubResource( 41 )
+states/mark_wave_bt/node = SubResource( 53 )
 states/mark_wave_bt/position = Vector2( 990.944, 8.3275 )
-states/summon_totem_bt/node = SubResource( 44 )
+states/summon_totem_bt/node = SubResource( 56 )
 states/summon_totem_bt/position = Vector2( 990.944, -110.173 )
-states/weapon_throw_left_bt/node = SubResource( 47 )
+states/weapon_throw_left_bt/node = SubResource( 59 )
 states/weapon_throw_left_bt/position = Vector2( 926, -192 )
-states/weapon_throw_right_bt/node = SubResource( 50 )
+states/weapon_throw_right_bt/node = SubResource( 62 )
 states/weapon_throw_right_bt/position = Vector2( 396, -357 )
-transitions = [ "idle_top", "attack_1", SubResource( 51 ), "attack_1", "attack_2", SubResource( 52 ), "attack_2", "attack_3", SubResource( 53 ), "attack_3", "idle_top", SubResource( 54 ), "attack_2", "idle_top", SubResource( 55 ), "attack_1", "idle_top", SubResource( 56 ), "idle_top_no_weapons", "idle_top_right_weapon", SubResource( 57 ), "idle_top_no_weapons", "idle_top_left_weapon", SubResource( 58 ), "idle_top_left_weapon", "idle_top", SubResource( 59 ), "idle_top_right_weapon", "idle_top", SubResource( 60 ), "idle_top_right_weapon", "attack_1_right_weapon", SubResource( 61 ), "attack_1_right_weapon", "idle_top_right_weapon", SubResource( 62 ), "idle_top_left_weapon", "attack_2_left_weapon", SubResource( 63 ), "attack_2_left_weapon", "idle_top_left_weapon", SubResource( 64 ), "idle_top_right_weapon", "weapon_throw_right_bt", SubResource( 65 ), "weapon_throw_right_bt", "idle_top_no_weapons", SubResource( 66 ), "idle_top", "weapon_throw_left_bt", SubResource( 67 ), "weapon_throw_left_bt", "idle_top_right_weapon", SubResource( 68 ), "idle_top_left_weapon", "weapon_throw_left_bt", SubResource( 69 ), "weapon_throw_left_bt", "idle_top_no_weapons", SubResource( 70 ), "idle_top", "mark_wave_bt", SubResource( 71 ), "mark_wave_bt", "idle_top", SubResource( 72 ), "idle_top", "summon_totem_bt", SubResource( 73 ), "summon_totem_bt", "idle_top", SubResource( 74 ) ]
+transitions = [ "idle_top", "attack_1", SubResource( 63 ), "attack_1", "attack_2", SubResource( 64 ), "attack_2", "attack_3", SubResource( 65 ), "attack_3", "idle_top", SubResource( 66 ), "attack_2", "idle_top", SubResource( 67 ), "attack_1", "idle_top", SubResource( 68 ), "idle_top_no_weapons", "idle_top_right_weapon", SubResource( 69 ), "idle_top_no_weapons", "idle_top_left_weapon", SubResource( 70 ), "idle_top_left_weapon", "idle_top", SubResource( 71 ), "idle_top_right_weapon", "idle_top", SubResource( 72 ), "idle_top_right_weapon", "attack_1_right_weapon", SubResource( 73 ), "attack_1_right_weapon", "idle_top_right_weapon", SubResource( 74 ), "idle_top_left_weapon", "attack_2_left_weapon", SubResource( 75 ), "attack_2_left_weapon", "idle_top_left_weapon", SubResource( 76 ), "idle_top_right_weapon", "weapon_throw_right_bt", SubResource( 77 ), "weapon_throw_right_bt", "idle_top_no_weapons", SubResource( 78 ), "idle_top", "weapon_throw_left_bt", SubResource( 79 ), "weapon_throw_left_bt", "idle_top_right_weapon", SubResource( 80 ), "idle_top_left_weapon", "weapon_throw_left_bt", SubResource( 81 ), "weapon_throw_left_bt", "idle_top_no_weapons", SubResource( 82 ), "idle_top", "mark_wave_bt", SubResource( 83 ), "mark_wave_bt", "idle_top", SubResource( 84 ), "idle_top", "summon_totem_bt", SubResource( 85 ), "summon_totem_bt", "idle_top", SubResource( 86 ) ]
 start_node = "idle_top"
-graph_offset = Vector2( -141.556, -519.673 )
-
-[sub_resource type="AnimationNodeAnimation" id=76]
-animation = "jump"
-
-[sub_resource type="AnimationNodeOneShot" id=77]
-filters = [ ".", "Armature/Skeleton:leg_1_l", "Armature/Skeleton:leg_1_r", "Armature/Skeleton:leg_2_l", "Armature/Skeleton:leg_2_r", "Armature/Skeleton:torso", "Armature/Skeleton:waist" ]
-
-[sub_resource type="AnimationNodeAnimation" id=78]
-animation = "running_front"
-
-[sub_resource type="AnimationNodeAnimation" id=79]
-animation = "running_left"
-
-[sub_resource type="AnimationNodeAnimation" id=80]
-animation = "running_right"
-
-[sub_resource type="AnimationNodeAnimation" id=81]
-animation = "running_frontleft"
-
-[sub_resource type="AnimationNodeAnimation" id=82]
-animation = "running_frontright"
-
-[sub_resource type="AnimationNodeAnimation" id=83]
-animation = "idle_bottom"
-
-[sub_resource type="AnimationNodeAnimation" id=84]
-animation = "running_back"
-
-[sub_resource type="AnimationNodeAnimation" id=85]
-animation = "running_backleft"
-
-[sub_resource type="AnimationNodeAnimation" id=86]
-animation = "running_backright"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=87]
-auto_triangles = false
-blend_point_0/node = SubResource( 78 )
-blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 79 )
-blend_point_1/pos = Vector2( -1, 0 )
-blend_point_2/node = SubResource( 80 )
-blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 81 )
-blend_point_3/pos = Vector2( -1, 1 )
-blend_point_4/node = SubResource( 82 )
-blend_point_4/pos = Vector2( 1, 1 )
-blend_point_5/node = SubResource( 83 )
-blend_point_5/pos = Vector2( 0, 0 )
-blend_point_6/node = SubResource( 84 )
-blend_point_6/pos = Vector2( 0, -1 )
-blend_point_7/node = SubResource( 85 )
-blend_point_7/pos = Vector2( -1, -1 )
-blend_point_8/node = SubResource( 86 )
-blend_point_8/pos = Vector2( 1, -1 )
-triangles = PoolIntArray( 1, 3, 5, 0, 3, 5, 0, 4, 5, 2, 4, 5, 1, 5, 7, 5, 6, 7, 2, 5, 8, 5, 6, 8 )
-blend_mode = 1
+graph_offset = Vector2( -153.556, -392.673 )
 
 [sub_resource type="AnimationNodeAnimation" id=88]
 animation = "teleport"
@@ -1435,20 +1435,20 @@ nodes/Add2/node = SubResource( 28 )
 nodes/Add2/position = Vector2( 460, 0 )
 nodes/TimeScale/node = SubResource( 29 )
 nodes/TimeScale/position = Vector2( 40, 0 )
-nodes/attack_sm/node = SubResource( 75 )
-nodes/attack_sm/position = Vector2( 180, 140 )
-nodes/jump/node = SubResource( 76 )
+nodes/jump/node = SubResource( 30 )
 nodes/jump/position = Vector2( -140, 0 )
-nodes/jump_os/node = SubResource( 77 )
+nodes/jump_os/node = SubResource( 31 )
 nodes/jump_os/position = Vector2( 240, -100 )
 nodes/output/position = Vector2( 860, 120 )
-nodes/run_bs2d/node = SubResource( 87 )
+nodes/run_bs2d/node = SubResource( 41 )
 nodes/run_bs2d/position = Vector2( 20, -160 )
+nodes/stateMachine/node = SubResource( 87 )
+nodes/stateMachine/position = Vector2( 180, 140 )
 nodes/teleport/node = SubResource( 88 )
 nodes/teleport/position = Vector2( 460, 200 )
 nodes/teleport_os/node = SubResource( 89 )
 nodes/teleport_os/position = Vector2( 660, 60 )
-node_connections = [ "TimeScale", 0, "jump", "Add2", 0, "jump_os", "Add2", 1, "attack_sm", "jump_os", 0, "run_bs2d", "jump_os", 1, "TimeScale", "teleport_os", 0, "Add2", "teleport_os", 1, "teleport", "output", 0, "teleport_os" ]
+node_connections = [ "TimeScale", 0, "jump", "Add2", 0, "jump_os", "Add2", 1, "stateMachine", "jump_os", 0, "run_bs2d", "jump_os", 1, "TimeScale", "teleport_os", 0, "Add2", "teleport_os", 1, "teleport", "output", 0, "teleport_os" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=91]
 
@@ -1616,13 +1616,13 @@ anim_player = NodePath("../AnimationPlayer")
 process_mode = 0
 parameters/Add2/add_amount = 1.0
 parameters/TimeScale/scale = 2.5
-parameters/attack_sm/playback = SubResource( 91 )
-parameters/attack_sm/mark_wave_bt/TimeScale/scale = 0.66
-parameters/attack_sm/summon_totem_bt/TimeScale/scale = 0.25
-parameters/attack_sm/weapon_throw_left_bt/TimeScale/scale = 1.25
-parameters/attack_sm/weapon_throw_right_bt/TimeScale/scale = 1.25
 parameters/jump_os/active = false
 parameters/run_bs2d/blend_position = Vector2( 0, 0 )
+parameters/stateMachine/playback = SubResource( 91 )
+parameters/stateMachine/mark_wave_bt/TimeScale/scale = 0.66
+parameters/stateMachine/summon_totem_bt/TimeScale/scale = 0.25
+parameters/stateMachine/weapon_throw_left_bt/TimeScale/scale = 1.25
+parameters/stateMachine/weapon_throw_right_bt/TimeScale/scale = 1.25
 parameters/teleport_os/active = false
 
 [node name="AttackTimer" type="Timer" parent="."]

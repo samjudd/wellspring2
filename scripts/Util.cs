@@ -15,6 +15,12 @@ public class Util
     GROUND
   }
 
+  public enum WeaponHands
+  {
+    LEFT_WEAPON,
+    RIGHT_WEAPON
+  }
+
   public static Transform Normal2Basis(Transform xform, Vector3 normal)
   {
     // cross each unit global basis vector with the normal to get a second vector perpendicular to the normal vector

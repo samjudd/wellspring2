@@ -8,22 +8,21 @@ public class MeleeCarry1 : Player
   private Position3D _leftSwordSpawn;
   private Position3D _rightSwordSpawn;
   private Position3D _waveSpawn;
-  private AnimationNodeStateMachinePlayback _attackSM;
   private Timer _attackTimer;
   private float _attackDuration = 0.666f;
   private bool _hasRightWeapon = true;
-  private RayCast _targetingRaycast;
   private MeleeCarry1Weapon _teleportWeapon;
   private Enemy _teleportEnemy;
   private TeleportationTotem _teleportTotem;
+  private AnimationNodeStateMachinePlayback _stateMachineController;
+  private AnimationStateMachine _stateMachine;
+
 
   public override void _Ready()
   {
     base._Ready();
     // get references to scene components to be used
-    _attackSM = (AnimationNodeStateMachinePlayback)_animationTree.Get("parameters/attack_sm/playback");
     _attackTimer = GetNode<Timer>("AttackTimer");
-    _targetingRaycast = GetNode<RayCast>("Camera/TargetingRaycast");
 
     // load packed scenes 
     _weaponPS = (PackedScene)ResourceLoader.Load("res://MeleeCarry1/MeleeCarry1_weapon.tscn");
@@ -37,37 +36,44 @@ public class MeleeCarry1 : Player
 
     // connect interaction area to body for sword pickup
     GetNode<Area>("InteractionArea").Connect("area_entered", this, "InteractionCallback");
+
+    // setup references to state machine
+    _stateMachineController = (AnimationNodeStateMachinePlayback)_animationTree.Get("parameters/stateMachine/playback");
+    AnimationNodeBlendTree treeRoot = (AnimationNodeBlendTree)_animationTree.TreeRoot;
+    AnimationNodeStateMachine stateMachineChild = (AnimationNodeStateMachine)treeRoot.GetNode("stateMachine");
+    _stateMachine = new AnimationStateMachine(stateMachineChild, _stateMachineController);
+
   }
 
   protected override void ProcessInput(float delta)
   {
     base.ProcessInput(delta);
-    string currentNode = _attackSM.GetCurrentNode();
+    string currentNode = _stateMachineController.GetCurrentNode();
 
     //  ----------------------- Attacking -----------------------
     if (Input.IsActionJustPressed("main_mouse"))
     {
       if (currentNode == "idle_top")
       {
-        _attackSM.Travel("attack_1");
+        _stateMachineController.Travel("attack_1");
         _attackTimer.Start(_attackDuration);
       }
       else if (currentNode == "attack_1" && _attackTimer.TimeLeft < _attackDuration / 3.0f)
       {
-        _attackSM.Travel("attack_2");
+        _stateMachineController.Travel("attack_2");
         _attackTimer.Start(_attackDuration);
       }
       else if (currentNode == "attack_2" && _attackTimer.TimeLeft < _attackDuration / 3.0f)
       {
-        _attackSM.Travel("attack_3");
+        _stateMachineController.Travel("attack_3");
       }
       else if (currentNode == "idle_top_right_weapon")
       {
-        _attackSM.Travel("attack_1_right_weapon");
+        _stateMachineController.Travel("attack_1_right_weapon");
       }
       else if (currentNode == "idle_top_left_weapon")
       {
-        _attackSM.Travel("attack_2_left_weapon");
+        _stateMachineController.Travel("attack_2_left_weapon");
       }
     }
 
@@ -84,19 +90,19 @@ public class MeleeCarry1 : Player
           TeleportTotem(totem);
       }
       else if (currentNode == "idle_top" || currentNode == "idle_top_left_weapon")
-        _attackSM.Travel("weapon_throw_left_bt");
+        _stateMachineController.Travel("weapon_throw_left_bt");
       else if (currentNode == "idle_top_right_weapon")
-        _attackSM.Travel("weapon_throw_right_bt");
+        _stateMachineController.Travel("weapon_throw_right_bt");
     }
 
     //  ---------------------- Mark Wave ----------------------
-    else if (Input.IsActionJustPressed("ability_3") && currentNode == "idle_top")
+    else if (Input.IsActionJustPressed("ability_r") && currentNode == "idle_top")
     {
-      _attackSM.Travel("mark_wave_bt");
+      _stateMachineController.Travel("mark_wave_bt");
     }
 
     //  ---------------------- Summon Totem ----------------------
-    else if (Input.IsActionJustPressed("ability_2") && currentNode == "idle_top")
+    else if (Input.IsActionJustPressed("ability_e") && currentNode == "idle_top")
     {
       SummonTotem();
     }
@@ -130,7 +136,7 @@ public class MeleeCarry1 : Player
       Transform placeholder = summonTotem.GlobalTransform;
       placeholder.origin = _targetingRaycast.GetCollisionPoint();
       summonTotem.GlobalTransform = placeholder;
-      _attackSM.Travel("summon_totem_bt");
+      _stateMachineController.Travel("summon_totem_bt");
     }
   }
 
@@ -181,7 +187,7 @@ public class MeleeCarry1 : Player
     // call throw to impart velocity
     thrownWeapon.Throw(-_camera.GlobalTransform.basis.z);
     if (!_hasRightWeapon)
-      _attackSM.Travel("idle_top_no_weapons");
+      _stateMachineController.Travel("idle_top_no_weapons");
   }
 
   private void RightThrowCallback()
@@ -202,21 +208,21 @@ public class MeleeCarry1 : Player
   {
     if (area.GetParent() is MeleeCarry1Weapon pickupWeapon)
     {
-      string currentNode = _attackSM.GetCurrentNode();
+      string currentNode = _stateMachineController.GetCurrentNode();
       if (pickupWeapon.isRightWeapon)
       {
         if (currentNode == "idle_top_left_weapon")
-          _attackSM.Travel("idle_top");
+          _stateMachineController.Travel("idle_top");
         else if (currentNode == "idle_top_no_weapons")
-          _attackSM.Travel("idle_top_right_weapon");
+          _stateMachineController.Travel("idle_top_right_weapon");
         _hasRightWeapon = true;
       }
       else
       {
         if (currentNode == "idle_top_right_weapon")
-          _attackSM.Travel("idle_top");
+          _stateMachineController.Travel("idle_top");
         else if (currentNode == "idle_top_no_weapons")
-          _attackSM.Travel("idle_top_left_weapon");
+          _stateMachineController.Travel("idle_top_left_weapon");
       }
     }
   }

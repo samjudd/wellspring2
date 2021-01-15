@@ -37,11 +37,11 @@ public class Player : KinematicBody
   [Export]
   public float _ability4Cooldown = 10.0f;
 
-
   // Current velocity in world coordinates
   protected Vector3 _vel = new Vector3(0, 0, 0);
   protected AnimationTree _animationTree;
   protected Camera _camera;
+  protected RayCast _targetingRaycast;
   protected Ability _ability1;
   protected Ability _ability2;
   protected Ability _ability3;
@@ -63,12 +63,16 @@ public class Player : KinematicBody
   // Called when the node enters the scene tree for the first time.
   public override void _Ready()
   {
+    // get component references from scene tree
     _camera = GetNode<Camera>("Camera");
     _animationTree = GetNode<AnimationTree>("AnimationTree");
     _skeleton = GetNode<Skeleton>("Armature/Skeleton");
     _headBoneIndex = _skeleton.FindBone("head");
     _initialHeadTransform = _skeleton.GetBonePose(_headBoneIndex);
     _debugCamera = GetNode<Camera>("../DebugCamera");
+    _targetingRaycast = GetNode<RayCast>("Camera/TargetingRaycast");
+
+    // set input stuff (need to move elsewhere eventually)
     Input.SetMouseMode(Input.MouseMode.Captured);
 
     // activate animationTree in case it's not
@@ -93,6 +97,7 @@ public class Player : KinematicBody
     ProcessStateUpdates(delta);
     ProcessInput(delta);
     ProcessMovement(delta);
+    ProcessClassSpecific(delta);
   }
 
   private void ProcessStateUpdates(float delta)
@@ -204,6 +209,8 @@ public class Player : KinematicBody
     // returns velocity updated for any collisions and moves player
     _vel = MoveAndSlide(_vel, Vector3.Up, false, 4, Mathf.Deg2Rad(_maxSlopeAngle));
   }
+
+  protected virtual void ProcessClassSpecific(float delta) { }
 
   public override void _Input(InputEvent @event)
   {
