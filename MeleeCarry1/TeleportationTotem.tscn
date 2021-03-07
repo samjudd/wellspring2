@@ -36,3 +36,4 @@ material/0 = null
 
 [node name="SigilOfTeleportation" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08987, 0 )
+_sigilDuration = 0.0

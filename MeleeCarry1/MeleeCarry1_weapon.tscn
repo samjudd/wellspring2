@@ -140,3 +140,4 @@ visible = false
 
 [node name="SigilOfTeleportation" parent="." instance=ExtResource( 1 )]
 transform = Transform( -0.303086, -0.104582, 0.140363, -0.175, 0.175, -0.247487, 0.00376868, -0.284496, -0.203834, 0, -0.0780097, 0 )
+_sigilDuration = 0.0
