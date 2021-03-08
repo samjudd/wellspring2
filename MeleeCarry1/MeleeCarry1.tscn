@@ -1448,7 +1448,7 @@ nodes/teleport/node = SubResource( 88 )
 nodes/teleport/position = Vector2( 460, 200 )
 nodes/teleport_os/node = SubResource( 89 )
 nodes/teleport_os/position = Vector2( 660, 60 )
-node_connections = [ "TimeScale", 0, "jump", "Add2", 0, "jump_os", "Add2", 1, "stateMachine", "jump_os", 0, "run_bs2d", "jump_os", 1, "TimeScale", "teleport_os", 0, "Add2", "teleport_os", 1, "teleport", "output", 0, "teleport_os" ]
+node_connections = [ "TimeScale", 0, "jump", "jump_os", 0, "run_bs2d", "jump_os", 1, "TimeScale", "output", 0, "teleport_os", "Add2", 0, "jump_os", "Add2", 1, "stateMachine", "teleport_os", 0, "Add2", "teleport_os", 1, "teleport" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=91]
 
